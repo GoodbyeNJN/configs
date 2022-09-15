@@ -2,8 +2,27 @@
     "name": "eslint-config-goodbyenjn",
     "version": "1.0.0",
     "description": "GoodbyeNJN eslint config",
-    "main": "libs",
+    "keywords": [
+        "eslint",
+        "eslintrc",
+        "eslintconfig",
+        "config",
+        "javascript",
+        "styleguide",
+        "react",
+        "typescript"
+    ],
+    "homepage": "https://github.com/GoodbyeNJN/eslint-config-goodbyenjn",
+    "bugs": {
+        "url": "https://github.com/GoodbyeNJN/eslint-config-goodbyenjn/issues"
+    },
     "license": "MIT",
+    "author": "GoodbyeNJN <cc@fuckwall.cc>",
+    "main": "libs",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GoodbyeNJN/eslint-config-goodbyenjn.git"
+    },
     "dependencies": {
         "@babel/core": "^7.19.1",
         "@babel/eslint-parser": "^7.19.1",
