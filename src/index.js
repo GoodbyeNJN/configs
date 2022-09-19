@@ -51,6 +51,12 @@ const getRules = () => {
     const base = {
         // import 强制排序
         "import/order": ["warn", importOrderConfig],
+
+        // 合并同一个模块的 import
+        "import/no-duplicates": "warn",
+
+        // 对命名导入的名称排序
+        "sort-imports": ["warn", { ignoreCase: true, ignoreDeclarationSort: true }],
     };
 
     if (isTsProject) {
