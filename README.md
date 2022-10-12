@@ -21,7 +21,7 @@ module.exports = {
 };
 ```
 
-会根据 `node_modules` 文件夹下是否存在 `react`、`preact` 和 `typescript` 来自动启用对应的规则。
+会根据 `package.json` 文件中是否存在 `react`、`preact` 和 `typescript` 依赖项来自动启用对应的规则。
 
 ## 与 Prettier 配合使用
 
