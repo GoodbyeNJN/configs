@@ -4,7 +4,13 @@
 
 ## 使用方法
 
-在你的项目的根目录下创建一个 `.eslintrc.js` 文件，并将以下内容复制进去：
+```bash
+npm install --save-dev eslint eslint-config-goodbyenjn
+# or
+yarn add -D eslint eslint-config-goodbyenjn
+```
+
+在你的项目根目录下创建一个 `.eslintrc.js` 文件，并将以下内容复制进去：
 
 ```js
 module.exports = {
@@ -19,7 +25,13 @@ module.exports = {
 
 ## 与 Prettier 配合使用
 
-在你的项目的根目录下创建一个 `.prettierrc.js` 文件，并将以下内容复制进去：
+```bash
+npm install --save-dev prettier
+# or
+yarn add -D prettier
+```
+
+在你的项目根目录下创建一个 `.prettierrc.js` 文件，并将以下内容复制进去：
 
 ```js
 module.exports = {
