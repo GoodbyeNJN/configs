@@ -23,6 +23,10 @@
         "type": "git",
         "url": "git+https://github.com/GoodbyeNJN/eslint-config-goodbyenjn.git"
     },
+    "scripts": {
+        "publish": "np",
+        "test": "echo \"no test specified\" && exit 0"
+    },
     "dependencies": {
         "@babel/core": "^7.19.1",
         "@babel/eslint-parser": "^7.19.1",
@@ -44,5 +48,8 @@
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
+    },
+    "devDependencies": {
+        "np": "^7.6.2"
     }
 }
