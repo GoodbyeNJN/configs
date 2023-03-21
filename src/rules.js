@@ -44,6 +44,9 @@ exports.getRules = ({ isTsFile } = {}) => {
 
         // 检查未使用的变量和函数参数，忽略下划线开头的
         "no-unused-vars": ["warn", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
+
+        // 允许使用 void，方便 React 事件绑定时使用 () => void 或 () => void fn() 写法
+        "no-void": "off",
     };
 
     if (isTsProject && isTsFile) {
