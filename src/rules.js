@@ -59,6 +59,9 @@ exports.getRules = ({ isTsFile } = {}) => {
 
         // undef 检查交由 typescript 来处理
         common["no-undef"] = "off";
+
+        // 不检查访问修饰符
+        common["@typescript-eslint/explicit-member-accessibility"] = "off";
     }
 
     return common;
