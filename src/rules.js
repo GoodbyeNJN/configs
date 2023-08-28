@@ -5,9 +5,9 @@ const getImportOrderConfig = ({ isTsFile } = {}) => {
         "newlines-between": "always",
         warnOnUnassignedImports: true,
         pathGroups: [
-            // @/... 开头的视为内部模块
+            // @/... 或 ~/... 开头的视为内部模块
             {
-                pattern: "@/**",
+                pattern: "+(@|~)/**",
                 group: "internal",
             },
         ],
