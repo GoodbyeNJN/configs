@@ -35,6 +35,9 @@
             "require": "./dist/prettier.cjs"
         }
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "unbuild",
         "prepack": "unbuild",
