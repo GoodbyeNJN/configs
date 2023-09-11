@@ -7,9 +7,9 @@ const getImportOrderConfig = ({ isTsFile }: CommonParams = {}) => {
         "newlines-between": "always",
         warnOnUnassignedImports: true,
         pathGroups: [
-            // @/... 或 ~/... 开头的视为内部模块
+            // @/ ~/ #/ $/ 开头的视为内部模块
             {
-                pattern: "+(@|~)/**",
+                pattern: "+(@|~|#|$)/**",
                 group: "internal",
             } as Record<string, unknown>,
         ],
