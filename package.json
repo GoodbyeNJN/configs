@@ -42,11 +42,11 @@
         "test": "echo \"no test specified\" && exit 0"
     },
     "dependencies": {
-        "@babel/core": "^7.22.11",
-        "@babel/eslint-parser": "^7.22.11",
-        "@babel/preset-react": "^7.22.5",
-        "@typescript-eslint/eslint-plugin": "^6.4.1",
-        "@typescript-eslint/parser": "^6.4.1",
+        "@babel/core": "^7.22.17",
+        "@babel/eslint-parser": "^7.22.15",
+        "@babel/preset-react": "^7.22.15",
+        "@typescript-eslint/eslint-plugin": "^6.6.0",
+        "@typescript-eslint/parser": "^6.6.0",
         "eslint-config-alloy": "^5.1.2",
         "eslint-plugin-import": "^2.28.1",
         "eslint-plugin-react": "^7.33.2",
