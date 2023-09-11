@@ -12,4 +12,6 @@ export const isReactProject = exists("react");
 export const isPreactProject = exists("preact");
 export const isReactLikeProject = isReactProject || isPreactProject;
 
+export const isSolidProject = exists("solid-js");
+
 export const isTsProject = exists("typescript");

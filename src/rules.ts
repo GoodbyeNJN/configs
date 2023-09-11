@@ -1,4 +1,4 @@
-import { isReactLikeProject, isTsProject } from "./utils";
+import { isReactLikeProject, isSolidProject, isTsProject } from "./utils";
 
 import type { CommonParams } from "./types";
 
@@ -20,7 +20,7 @@ const getImportOrderConfig = ({ isTsFile }: CommonParams = {}) => {
         },
     } satisfies Record<string, unknown>;
 
-    if (isReactLikeProject) {
+    if (isReactLikeProject || isSolidProject) {
         // 样式文件放在最后，单独一组
         common.pathGroups.push({
             pattern: "**/*.+(sa|sc|le|c)ss",
