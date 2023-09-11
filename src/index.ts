@@ -1,6 +1,6 @@
-const { getExtends } = require("./extends");
-const { getPlugins } = require("./plugins");
-const { getRules } = require("./rules");
+import { getExtends } from "./extends";
+import { getPlugins } from "./plugins";
+import { getRules } from "./rules";
 
 const baseEslintConfig = {
     extends: getExtends(),
@@ -15,7 +15,9 @@ const tsOverride = {
     rules: getRules({ isTsFile: true }),
 };
 
-module.exports = {
+export { default as prettier } from "./prettier";
+
+export default {
     ...baseEslintConfig,
     overrides: [tsOverride],
 };

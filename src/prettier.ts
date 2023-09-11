@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from "prettier";
+
+const config: Config = {
     // 一行最多 100 字符
     printWidth: 100,
     // 使用 4 个空格缩进
@@ -39,3 +41,5 @@ module.exports = {
     // 格式化内嵌代码
     embeddedLanguageFormatting: "auto",
 };
+
+export default config;

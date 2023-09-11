@@ -1,6 +1,8 @@
-const { isReactLikeProject, isTsProject } = require("./utils");
+import { isReactLikeProject, isTsProject } from "./utils";
 
-const getImportOrderConfig = ({ isTsFile } = {}) => {
+import type { CommonParams } from "./types";
+
+const getImportOrderConfig = ({ isTsFile }: CommonParams = {}) => {
     const common = {
         "newlines-between": "always",
         warnOnUnassignedImports: true,
@@ -9,14 +11,14 @@ const getImportOrderConfig = ({ isTsFile } = {}) => {
             {
                 pattern: "+(@|~)/**",
                 group: "internal",
-            },
+            } as Record<string, unknown>,
         ],
         groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
         alphabetize: {
             order: "asc",
             caseInsensitive: true,
         },
-    };
+    } satisfies Record<string, unknown>;
 
     if (isReactLikeProject) {
         // 样式文件放在最后，单独一组
@@ -31,8 +33,8 @@ const getImportOrderConfig = ({ isTsFile } = {}) => {
     return common;
 };
 
-exports.getRules = ({ isTsFile } = {}) => {
-    const common = {
+export const getRules = ({ isTsFile }: CommonParams = {}) => {
+    const common: Record<string, unknown> = {
         // import 强制排序
         "import/order": ["warn", getImportOrderConfig({ isTsFile })],
 

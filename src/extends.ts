@@ -1,6 +1,8 @@
-const { isReactLikeProject, isTsProject } = require("./utils");
+import { isReactLikeProject, isTsProject } from "./utils";
 
-exports.getExtends = ({ isTsFile } = {}) => {
+import type { CommonParams } from "./types";
+
+export const getExtends = ({ isTsFile }: CommonParams = {}) => {
     const common = ["alloy"];
 
     if (isReactLikeProject) {
