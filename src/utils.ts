@@ -1,12 +1,16 @@
-import fs from "node:fs";
-import path from "node:path";
+import module from "node:module";
 
-const packageJsonPath = path.resolve(process.cwd() || ".", "package.json");
-const packageJson = fs.readFileSync(packageJsonPath, { encoding: "utf8" });
-const { dependencies = {}, devDependencies = {}, peerDependencies = {} } = JSON.parse(packageJson);
+const dirname = typeof __dirname === "undefined" ? import.meta.url : __dirname;
+const require = module.createRequire(dirname);
 
-const exists = (name: string) =>
-    Boolean(dependencies[name] || devDependencies[name] || peerDependencies[name]);
+const exists = (name: string) => {
+    try {
+        const module = require(name);
+        return Boolean(module);
+    } catch {
+        return false;
+    }
+};
 
 export const isReactProject = exists("react");
 export const isPreactProject = exists("preact");
