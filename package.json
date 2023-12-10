@@ -35,14 +35,15 @@
             "require": "./dist/prettier.cjs"
         }
     },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "unbuild",
-        "prepack": "unbuild",
-        "postinstall": "unbuild",
-        "test": "echo \"no test specified\" && exit 0"
+        "postbuild": "scripts/postbuild.ts"
     },
     "dependencies": {
         "@babel/core": "^7.23.5",
@@ -58,7 +59,9 @@
     },
     "devDependencies": {
         "@types/node": "^20.10.4",
-        "unbuild": "^2.0.0"
+        "tsx": "^4.6.2",
+        "unbuild": "^2.0.0",
+        "zx": "^7.2.3"
     },
     "peerDependencies": {
         "eslint": "^8.0.0",
@@ -70,5 +73,9 @@
     },
     "engines": {
         "node": ">=16"
+    },
+    "np": {
+        "yolo": true,
+        "contents": "dist"
     }
 }
