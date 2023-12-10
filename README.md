@@ -21,6 +21,8 @@ module.exports = {
 };
 ```
 
+如果你的项目为 ESM 项目，则需要在项目根目录下创建一个 `.eslintrc.mjs` 文件，
+
 会根据 `package.json` 文件中是否存在 `react`、`preact` 和 `typescript` 依赖项来自动启用对应的规则。
 
 ## 与 Prettier 配合使用
