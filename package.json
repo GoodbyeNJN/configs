@@ -45,26 +45,25 @@
         "test": "echo \"no test specified\" && exit 0"
     },
     "dependencies": {
-        "@babel/core": "^7.22.17",
-        "@babel/eslint-parser": "^7.22.15",
-        "@babel/preset-react": "^7.22.15",
-        "@typescript-eslint/eslint-plugin": "^6.6.0",
-        "@typescript-eslint/parser": "^6.6.0",
+        "@babel/core": "^7.23.5",
+        "@babel/eslint-parser": "^7.23.3",
+        "@babel/preset-react": "^7.23.3",
+        "@typescript-eslint/eslint-plugin": "^6.13.2",
+        "@typescript-eslint/parser": "^6.13.2",
         "eslint-config-alloy": "^5.1.2",
-        "eslint-plugin-import": "^2.28.1",
+        "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-solid": "^0.13.0",
-        "typescript": "^5.2.2",
-        "unbuild": "^2.0.0"
+        "eslint-plugin-solid": "^0.13.0"
     },
     "devDependencies": {
-        "@types/node": "^20.6.0"
+        "@types/node": "^20.10.4",
+        "unbuild": "^2.0.0"
     },
     "peerDependencies": {
-        "eslint": "^8.39.0",
+        "eslint": "^8.0.0",
         "prettier": "^3.0.0",
-        "typescript": "^5.0.4"
+        "typescript": "^5.0.0"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
