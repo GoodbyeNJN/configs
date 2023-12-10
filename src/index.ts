@@ -15,8 +15,6 @@ const tsOverride = {
     rules: getRules({ isTsFile: true }),
 };
 
-export { default as prettier } from "./prettier";
-
 export default {
     ...baseEslintConfig,
     overrides: [tsOverride],
