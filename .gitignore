@@ -34,3 +34,5 @@ netlify
 
 # build
 dist
+
+.temp

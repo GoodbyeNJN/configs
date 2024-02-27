@@ -1,0 +1,37 @@
+diff --git a/lib/rules/no-unused-modules.js b/lib/rules/no-unused-modules.js
+index 7e2478c8dc3dd6a1b3fd8dc08cf34625818dffe8..af12b71e37a5972a1d7af9de00dd5ae3dd01b8f7 100644
+--- a/lib/rules/no-unused-modules.js
++++ b/lib/rules/no-unused-modules.js
+@@ -23,32 +23,6 @@ var _docsUrl = require('../docsUrl');var _docsUrl2 = _interopRequireDefault(_doc
+ try {var _require =
+   require('eslint/use-at-your-own-risk');FileEnumerator = _require.FileEnumerator;
+ } catch (e) {
+-  try {var _require2 =
+-
+-    require('eslint/lib/cli-engine/file-enumerator'); // has been moved to eslint/lib/cli-engine/file-enumerator in version 6
+-    FileEnumerator = _require2.FileEnumerator;} catch (e) {
+-    try {
+-      // eslint/lib/util/glob-util has been moved to eslint/lib/util/glob-utils with version 5.3
+-      var _require3 = require('eslint/lib/util/glob-utils'),originalListFilesToProcess = _require3.listFilesToProcess;
+-
+-      // Prevent passing invalid options (extensions array) to old versions of the function.
+-      // https://github.com/eslint/eslint/blob/v5.16.0/lib/util/glob-utils.js#L178-L280
+-      // https://github.com/eslint/eslint/blob/v5.2.0/lib/util/glob-util.js#L174-L269
+-      listFilesToProcess = function listFilesToProcess(src, extensions) {
+-        return originalListFilesToProcess(src, {
+-          extensions: extensions });
+-
+-      };
+-    } catch (e) {var _require4 =
+-      require('eslint/lib/util/glob-util'),_originalListFilesToProcess = _require4.listFilesToProcess;
+-
+-      listFilesToProcess = function listFilesToProcess(src, extensions) {
+-        var patterns = src.concat(flatMap(src, function (pattern) {return extensions.map(function (extension) {return (/\*\*|\*\./.test(pattern) ? pattern : String(pattern) + '/**/*' + String(extension));});}));
+-
+-        return _originalListFilesToProcess(patterns);
+-      };
+-    }
+-  }
+ }
+ 
+ if (FileEnumerator) {

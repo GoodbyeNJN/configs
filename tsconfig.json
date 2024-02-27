@@ -2,7 +2,7 @@
     "compilerOptions": {
         "target": "ESNext",
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "Bundler",
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
 
         "isolatedModules": true,
@@ -24,9 +24,9 @@
         "noFallthroughCasesInSwitch": true,
         "noUncheckedIndexedAccess": true,
 
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "downlevelIteration": true,
+        // "emitDecoratorMetadata": true,
+        // "experimentalDecorators": true,
+        // "downlevelIteration": true,
 
         "pretty": true,
 
@@ -34,5 +34,5 @@
         "noEmit": true,
         "resolveJsonModule": true
     },
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "modules"]
 }
