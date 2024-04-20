@@ -64,7 +64,8 @@
         "eslint": "^8.0.0",
         "eslint-config-alloy": "5.1.2",
         "eslint-config-flat-gitignore": "0.1.5",
-        "eslint-plugin-i": "2.29.1",
+        "eslint-import-resolver-typescript": "3.6.1",
+        "eslint-plugin-import-x": "0.5.0",
         "eslint-plugin-react": "7.34.1",
         "eslint-plugin-react-hooks": "4.6.0",
         "eslint-plugin-vue": "9.25.0",
@@ -95,8 +96,7 @@
     },
     "pnpm": {
         "patchedDependencies": {
-            "@antfu/eslint-define-config@1.23.0-2": "patches/@antfu__eslint-define-config@1.23.0-2.patch",
-            "eslint-plugin-i@2.29.1": "patches/eslint-plugin-i@2.29.1.patch"
+            "@antfu/eslint-define-config@1.23.0-2": "patches/@antfu__eslint-define-config@1.23.0-2.patch"
         }
     }
 }
