@@ -12,6 +12,12 @@ export const imports = (
         {
             name: "goodbyenjn:imports",
             plugins: { import: pluginImport },
+            settings: {
+                "import/resolver": {
+                    typescript: true,
+                    node: true,
+                },
+            },
             rules: {
                 // import 强制排序
                 "import/order": [
@@ -19,6 +25,7 @@ export const imports = (
                     {
                         "newlines-between": "always",
                         warnOnUnassignedImports: true,
+                        pathGroupsExcludedImportTypes: ["type"],
                         pathGroups: [
                             // @/ $/ 开头的视为内部模块
                             {
@@ -53,6 +60,7 @@ export const imports = (
                     },
                 ],
 
+                "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
                 "import/first": "error",
                 "import/newline-after-import": "error",
                 "import/no-duplicates": "error",
