@@ -64,8 +64,9 @@
         "eslint": "^8.0.0",
         "eslint-config-alloy": "5.1.2",
         "eslint-config-flat-gitignore": "0.1.5",
+        "eslint-import-resolver-node": "0.3.9",
         "eslint-import-resolver-typescript": "3.6.1",
-        "eslint-plugin-import-x": "0.5.0",
+        "eslint-plugin-import-x": "file:eslint-plugin-import-x-v0.5.0.tgz",
         "eslint-plugin-react": "7.34.1",
         "eslint-plugin-react-hooks": "4.6.0",
         "eslint-plugin-vue": "9.25.0",
@@ -73,6 +74,7 @@
         "globals": "15.0.0",
         "local-pkg": "0.5.0",
         "prettier": "^3.0.0",
+        "rollup": "^4.16.4",
         "tsup": "^8.0.2",
         "tsx": "^4.7.2",
         "typescript": "^5.0.0",
@@ -95,6 +97,9 @@
         "yolo": true
     },
     "pnpm": {
+        "overrides": {
+            "rollup": "npm:@rollup/wasm-node"
+        },
         "patchedDependencies": {
             "@antfu/eslint-define-config@1.23.0-2": "patches/@antfu__eslint-define-config@1.23.0-2.patch"
         }

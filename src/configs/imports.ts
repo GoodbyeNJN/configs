@@ -1,4 +1,8 @@
-import { pluginImport } from "bundled-modules";
+import {
+    pluginImport,
+    pluginImportResolverNode,
+    pluginImportResolverTypescript,
+} from "bundled-modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 
@@ -13,10 +17,20 @@ export const imports = (
             name: "goodbyenjn:imports",
             plugins: { import: pluginImport },
             settings: {
-                "import/resolver": {
-                    typescript: true,
-                    node: true,
-                },
+                "import-x/resolver": [
+                    {
+                        name: "typescript",
+                        enable: true,
+                        options: {},
+                        resolver: pluginImportResolverTypescript,
+                    },
+                    {
+                        name: "node",
+                        enable: true,
+                        options: {},
+                        resolver: pluginImportResolverNode,
+                    },
+                ],
             },
             rules: {
                 // import 强制排序

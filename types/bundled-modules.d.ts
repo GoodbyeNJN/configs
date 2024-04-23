@@ -1,3 +1,9 @@
+interface Resolver {
+    interfaceVersion?: 1 | 2;
+    resolve: (...params: any[]) => any;
+    resolveImport: (...params: any[]) => any;
+}
+
 declare module "bundled-modules" {
     import parserTypescript from "@typescript-eslint/parser";
     import configGitignore from "eslint-config-flat-gitignore";
@@ -21,6 +27,9 @@ declare module "bundled-modules" {
     declare const pluginReactHooks: ESLint.Plugin;
     declare const pluginVue: ESLint.Plugin;
 
+    declare const pluginImportResolverNode: Resolver;
+    declare const pluginImportResolverTypescript: Resolver;
+
     export {
         parserTypescript,
         parserVue,
@@ -31,6 +40,8 @@ declare module "bundled-modules" {
         pluginReact,
         pluginReactHooks,
         pluginVue,
+        pluginImportResolverNode,
+        pluginImportResolverTypescript,
         globals,
         localPkg,
     };
