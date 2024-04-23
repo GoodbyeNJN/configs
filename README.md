@@ -82,3 +82,21 @@ const config = require("eslint-config-goodbyenjn/prettier");
 
 module.exports = config;
 ```
+
+如果你需要覆盖部分默认设置，你也可以按如下方式使用：
+
+```js
+import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn/prettier";
+
+export default withGoodbyeNJNConfig({
+    // custom configs
+});
+
+// or
+
+const { withGoodbyeNJNConfig } = require("eslint-config-goodbyenjn/prettier");
+
+module.exports = withGoodbyeNJNConfig({
+    // custom configs
+});
+```

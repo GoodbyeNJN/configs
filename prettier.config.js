@@ -1,4 +1,4 @@
 // @ts-check
-import config from "./dist/esm/prettier.js";
+import { withGoodbyeNJNConfig } from "./dist/esm/prettier.js";
 
-export default config;
+export default withGoodbyeNJNConfig();

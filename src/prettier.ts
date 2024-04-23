@@ -1,6 +1,6 @@
 import type { Config } from "prettier";
 
-const config: Config = {
+const prettierConfig: Config = {
     // 一行最多 100 字符
     printWidth: 100,
     // 使用 4 个空格缩进
@@ -42,4 +42,9 @@ const config: Config = {
     embeddedLanguageFormatting: "auto",
 };
 
-export default config;
+export const withGoodbyeNJNConfig = (config: Config = {}) => ({
+    ...prettierConfig,
+    ...config,
+});
+
+export default prettierConfig;
