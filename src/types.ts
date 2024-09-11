@@ -1,43 +1,19 @@
 import type {
-    LanguageOptions as BaseLanguageOptions,
-    ParserOptions as BaseParserOptions,
     EslintRules,
     ImportRules,
-    LinterOptions,
-    Parser,
-    ParserModule,
+    OrderOption,
+    ParserOptions,
     ReactHooksRules,
     ReactRules,
-    RuleConfig,
     TypeScriptRules,
     VueRules,
 } from "@antfu/eslint-define-config";
-// import unexported types with pnpm patch
-import type { OrderOption } from "@antfu/eslint-define-config/rules/import/order";
-import type { ESLint, Linter } from "eslint";
+import type { Linter } from "eslint";
 
 export type { EslintRules };
 
-export interface ParserOptions extends Omit<BaseParserOptions, "parser"> {
-    parser?: Parser | ParserModule | Record<string, Parser | ParserModule>;
-}
-
-export interface LanguageOptions extends Omit<BaseLanguageOptions, "parser" | "parserOptions"> {
-    parser?: Parser | ParserModule;
-    parserOptions?: ParserOptions;
-}
-
-export interface ESLintConfig<Rules = EslintRules> {
-    name?: string;
-    files?: string[];
-    ignores?: string[];
-    languageOptions?: LanguageOptions;
-    linterOptions?: LinterOptions;
-    processor?: string | Linter.Processor;
-    plugins?: Record<string, ESLint.Plugin>;
-    rules?: Partial<Rules & EslintRules & Record<string, RuleConfig>>;
-    settings?: Record<string, any>;
-}
+export type ESLintConfig<Rules extends Linter.RulesRecord = Linter.RulesRecord> =
+    Linter.Config<Rules>;
 
 export interface JavaScriptConfig {}
 
@@ -70,11 +46,11 @@ export interface Configs {
 
 export type JavaScriptOverride = Partial<EslintRules>;
 
-export type TypeScriptOverride = Partial<TypeScriptRules>;
+export type TypeScriptOverride = Partial<EslintRules & TypeScriptRules>;
 
-export type ReactOverride = Partial<ReactRules & ReactHooksRules>;
+export type ReactOverride = Partial<EslintRules & TypeScriptRules & ReactRules & ReactHooksRules>;
 
-export type VueOverride = Partial<VueRules>;
+export type VueOverride = Partial<EslintRules & TypeScriptRules & VueRules>;
 
 export type ImportsOverride = Partial<ImportRules>;
 

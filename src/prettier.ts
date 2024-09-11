@@ -42,7 +42,7 @@ const prettierConfig: Config = {
     embeddedLanguageFormatting: "auto",
 };
 
-export const withGoodbyeNJNConfig = (config: Config = {}) => ({
+export const withGoodbyeNJNConfig = (config: Config = {}): Config => ({
     ...prettierConfig,
     ...config,
 });

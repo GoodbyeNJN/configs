@@ -34,5 +34,5 @@
         "noEmit": true,
         "resolveJsonModule": true
     },
-    "exclude": ["node_modules", "modules"]
+    "exclude": ["node_modules", "tests/fixtures/**/*"]
 }

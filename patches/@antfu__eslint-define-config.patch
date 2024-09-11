@@ -1,0 +1,13 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 99a05b370800edf436fd356d7c9e1d128d5d6f3a..ee7036eec5a75272cb69bbf95f8fd08844612a90 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -14472,7 +14472,7 @@ interface NoWebpackLoaderSyntaxRule {
+ /**
+  * Option.
+  */
+-interface OrderOption {
++export interface OrderOption {
+   groups?: any[];
+   pathGroupsExcludedImportTypes?: any[];
+   distinctGroup?: boolean;

@@ -1,6 +1,5 @@
-import { configAlloy, parserTypescript, pluginTypescript } from "bundled-modules";
-
 import { GLOB_JS, GLOB_JSX, GLOB_SRC, GLOB_VUE } from "../globs";
+import { configAlloyTypescript, parserTypescript, pluginTypescript } from "../modules";
 
 import type { ESLintConfig, TypeScriptConfig, TypeScriptOverride } from "../types";
 
@@ -48,7 +47,7 @@ export const typescript = (
             name: "goodbyenjn:typescript:rules",
             files,
             rules: {
-                ...configAlloy.typescript.rules,
+                ...configAlloyTypescript.rules,
 
                 "no-undef": "off",
                 "no-unused-vars": "off",

@@ -1,0 +1,64 @@
+diff --git a/lib/index.cjs b/lib/index.cjs
+index 36f032b975b85a5ee8bdd5ced7a19bb1ce984492..5792e8740715c6746f3c46e70b7e7f3016e91123 100644
+--- a/lib/index.cjs
++++ b/lib/index.cjs
+@@ -8,7 +8,6 @@ var enhancedResolve = require('enhanced-resolve');
+ var hash_js = require('eslint-module-utils/hash.js');
+ var fg = require('fast-glob');
+ var getTsconfig = require('get-tsconfig');
+-var isBunModule = require('is-bun-module');
+ var isGlob = require('is-glob');
+ 
+ var __defProp = Object.defineProperty;
+@@ -114,7 +113,7 @@ function resolve(source, file, options) {
+   }
+   log("looking for:", source);
+   source = removeQuerystring(source);
+-  if (isNodeCoreModule(source) || isBunModule.isBunModule(source, (_e = process.versions.bun) != null ? _e : "latest")) {
++  if (isNodeCoreModule(source)) {
+     log("matched core:", source);
+     return {
+       found: true,
+diff --git a/lib/index.es2020.mjs b/lib/index.es2020.mjs
+index 56c2ebdfa918297323cc0a95a44c798129d0ad2a..ef7561b0e040b165d4973f29eff8d0b049923fb8 100644
+--- a/lib/index.es2020.mjs
++++ b/lib/index.es2020.mjs
+@@ -6,7 +6,6 @@ import enhancedResolve from 'enhanced-resolve';
+ import { hashObject } from 'eslint-module-utils/hash.js';
+ import fg from 'fast-glob';
+ import { getTsconfig, createPathsMatcher } from 'get-tsconfig';
+-import { isBunModule } from 'is-bun-module';
+ import isGlob from 'is-glob';
+ 
+ const { globSync } = fg;
+@@ -93,7 +92,7 @@ function resolve(source, file, options) {
+   }
+   log("looking for:", source);
+   source = removeQuerystring(source);
+-  if (isNodeCoreModule(source) || isBunModule(source, process.versions.bun ?? "latest")) {
++  if (isNodeCoreModule(source)) {
+     log("matched core:", source);
+     return {
+       found: true,
+diff --git a/lib/index.js b/lib/index.js
+index cabb7f7731d201c303a80339f4354f3d22c513a8..593e6cb7e581d89eeb6d3248ac72787b3ec59caf 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -6,7 +6,6 @@ import enhancedResolve from 'enhanced-resolve';
+ import { hashObject } from 'eslint-module-utils/hash.js';
+ import fg from 'fast-glob';
+ import { createPathsMatcher, getTsconfig } from 'get-tsconfig';
+-import { isBunModule } from 'is-bun-module';
+ import isGlob from 'is-glob';
+ const { globSync } = fg;
+ const IMPORTER_NAME = 'eslint-import-resolver-typescript';
+@@ -87,8 +86,7 @@ export function resolve(source, file, options) {
+     }
+     log('looking for:', source);
+     source = removeQuerystring(source);
+-    if (isNodeCoreModule(source) ||
+-        isBunModule(source, (process.versions.bun ?? 'latest'))) {
++    if (isNodeCoreModule(source)) {
+         log('matched core:', source);
+         return {
+             found: true,

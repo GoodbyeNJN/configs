@@ -1,0 +1,52 @@
+diff --git a/lib/index.js b/lib/index.js
+index 6dbe5107bba1adb597400f58c6b753cbd83b64b7..4b8745734bb8584985ae3ac9ec36080cfc5c6e22 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -7,28 +7,6 @@
+ 
+ const plugin = {
+   meta: require('./meta'),
+-  configs: {
+-    // eslintrc configs
+-    base: require('./configs/base'),
+-    essential: require('./configs/vue2-essential'),
+-    'no-layout-rules': require('./configs/no-layout-rules'),
+-    recommended: require('./configs/vue2-recommended'),
+-    'strongly-recommended': require('./configs/vue2-strongly-recommended'),
+-    'vue3-essential': require('./configs/vue3-essential'),
+-    'vue3-recommended': require('./configs/vue3-recommended'),
+-    'vue3-strongly-recommended': require('./configs/vue3-strongly-recommended'),
+-
+-    // flat configs
+-    'flat/base': require('./configs/flat/base.js'),
+-    'flat/vue2-essential': require('./configs/flat/vue2-essential.js'),
+-    'flat/vue2-recommended': require('./configs/flat/vue2-recommended.js'),
+-    'flat/vue2-strongly-recommended': require('./configs/flat/vue2-strongly-recommended.js'),
+-
+-    // in flat configs, non-prefixed config is for Vue 3 (unlike eslintrc configs)
+-    'flat/essential': require('./configs/flat/vue3-essential.js'),
+-    'flat/recommended': require('./configs/flat/vue3-recommended.js'),
+-    'flat/strongly-recommended': require('./configs/flat/vue3-strongly-recommended.js')
+-  },
+   rules: {
+     'array-bracket-newline': require('./rules/array-bracket-newline'),
+     'array-bracket-spacing': require('./rules/array-bracket-spacing'),
+@@ -279,18 +257,6 @@ const plugin = {
+     '.vue': require('./processor'),
+     vue: require('./processor')
+   },
+-  environments: {
+-    // TODO Remove in the next major version
+-    /** @deprecated */
+-    'setup-compiler-macros': {
+-      globals: {
+-        defineProps: 'readonly',
+-        defineEmits: 'readonly',
+-        defineExpose: 'readonly',
+-        withDefaults: 'readonly'
+-      }
+-    }
+-  }
+ }
+ 
+ module.exports = plugin

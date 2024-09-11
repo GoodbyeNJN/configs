@@ -1,8 +1,4 @@
-import {
-    pluginImport,
-    pluginImportResolverNode,
-    pluginImportResolverTypescript,
-} from "bundled-modules";
+import { pluginImport, pluginImportResolverNode, pluginImportResolverTypescript } from "../modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 

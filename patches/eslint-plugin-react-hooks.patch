@@ -1,0 +1,39 @@
+diff --git a/cjs/eslint-plugin-react-hooks.development.js b/cjs/eslint-plugin-react-hooks.development.js
+index 441442f8535bcd534748c1664afd6677b10744c3..73626c4d0f65eee07ec0ccc1a546ba6972df845f 100644
+--- a/cjs/eslint-plugin-react-hooks.development.js
++++ b/cjs/eslint-plugin-react-hooks.development.js
+@@ -2438,21 +2438,11 @@ function isAncestorNodeOf(a, b) {
+   return a.range[0] <= b.range[0] && a.range[1] >= b.range[1];
+ }
+ 
+-var configs = {
+-  recommended: {
+-    plugins: ['react-hooks'],
+-    rules: {
+-      'react-hooks/rules-of-hooks': 'error',
+-      'react-hooks/exhaustive-deps': 'warn'
+-    }
+-  }
+-};
+ var rules = {
+   'rules-of-hooks': RulesOfHooks,
+   'exhaustive-deps': ExhaustiveDeps
+ };
+ 
+-exports.configs = configs;
+ exports.rules = rules;
+   })();
+ }
+diff --git a/cjs/eslint-plugin-react-hooks.production.min.js b/cjs/eslint-plugin-react-hooks.production.min.js
+index c9ee73a46a0bf5cc6c9a2e8f283153df0c19d612..831e223e5a7cfe17b9532a8c0d672d661bbade59 100644
+--- a/cjs/eslint-plugin-react-hooks.production.min.js
++++ b/cjs/eslint-plugin-react-hooks.production.min.js
+@@ -26,7 +26,7 @@ function X(a,c){if("Identifier"===a.type||"JSXIdentifier"===a.type)return a=a.na
+ X(a.object,c);d=X(a.property,null);b=b+"."+d;W(a,c,b);return b}function ta(a){return"MemberExpression"!==a.type||"Identifier"!==a.object.type||"React"!==a.object.name||"Identifier"!==a.property.type||a.computed?a:a.property}
+ function ua(a,c){var b=ta(a);if("Identifier"!==b.type)return-1;switch(b.name){case "useEffect":case "useLayoutEffect":case "useCallback":case "useMemo":return 0;case "useImperativeHandle":return 1;default:if(b===a&&c&&c.additionalHooks){try{var d=X(b,null)}catch(f){if(/Unsupported node type/.test(f.message))return 0;throw f;}return c.additionalHooks.test(d)?0:-1}return-1}}
+ function Y(a,c){for(var b=[a],d=null;b.length;){d=b.shift();if(("Identifier"===d.type||"JSXIdentifier"===d.type)&&d.type===c.type&&d.name===c.name&&d.range[0]===c.range[0]&&d.range[1]===c.range[1])return d;if(pa(d,c)){a=0;for(var f=Object.entries(d);a<f.length;a++){var p=f[a],g=p[1];"parent"!==p[0]&&(va(g)?(g.parent=d,b.push(g)):Array.isArray(g)&&g.forEach(function(a){va(a)&&(a.parent=d,b.push(a))}))}}}return null}
+-function wa(a){for(var c="",b=0;b<a.length;b++)c+=a[b],0===b&&2===a.length?c+=" and ":b===a.length-2&&2<a.length?c+=", and ":b<a.length-1&&(c+=", ");return c}function va(a){return"object"===typeof a&&null!==a&&!Array.isArray(a)&&"string"===typeof a.type}function pa(a,c){return a.range[0]<=c.range[0]&&a.range[1]>=c.range[1]}exports.configs={recommended:{plugins:["react-hooks"],rules:{"react-hooks/rules-of-hooks":"error","react-hooks/exhaustive-deps":"warn"}}};
++function wa(a){for(var c="",b=0;b<a.length;b++)c+=a[b],0===b&&2===a.length?c+=" and ":b===a.length-2&&2<a.length?c+=", and ":b<a.length-1&&(c+=", ");return c}function va(a){return"object"===typeof a&&null!==a&&!Array.isArray(a)&&"string"===typeof a.type}function pa(a,c){return a.range[0]<=c.range[0]&&a.range[1]>=c.range[1]};
+ exports.rules={"rules-of-hooks":{meta:{type:"problem",docs:{description:"enforces the Rules of Hooks",recommended:!0,url:"https://reactjs.org/docs/hooks-rules.html"}},create:function(a){var c=[],b=[];return{onCodePathSegmentStart:function(a){return b.push(a)},onCodePathSegmentEnd:function(){return b.pop()},onCodePathStart:function(){return c.push(new Map)},onCodePathEnd:function(b,f){function d(a,c){var e=d.cache,f=e.get(a.id);c=new Set(c);if(c.has(a.id)){e=[].concat(c);a=e.slice(e.indexOf(a.id)+
+ 1);a=D(a);var l;try{for(a.s();!(l=a.n()).done;)E.add(l.value)}catch(u){a.e(u)}finally{a.f()}return BigInt("0")}c.add(a.id);if(void 0!==f)return f;if(b.thrownSegments.includes(a))f=BigInt("0");else if(0===a.prevSegments.length)f=BigInt("1");else{f=BigInt("0");l=D(a.prevSegments);var r;try{for(l.s();!(r=l.n()).done;)f+=d(r.value,c)}catch(u){l.e(u)}finally{l.f()}}a.reachable&&f===BigInt("0")?e.delete(a.id):e.set(a.id,f);return f}function g(a,c){var d=g.cache,e=d.get(a.id);c=new Set(c);if(c.has(a.id)){d=
+ Array.from(c);a=d.slice(d.indexOf(a.id)+1);a=D(a);var f;try{for(a.s();!(f=a.n()).done;)E.add(f.value)}catch(u){a.e(u)}finally{a.f()}return BigInt("0")}c.add(a.id);if(void 0!==e)return e;if(b.thrownSegments.includes(a))e=BigInt("0");else if(0===a.nextSegments.length)e=BigInt("1");else{e=BigInt("0");f=D(a.nextSegments);var r;try{for(f.s();!(r=f.n()).done;)e+=g(r.value,c)}catch(u){f.e(u)}finally{f.f()}}d.set(a.id,e);return e}function w(a){var c=w.cache,b=c.get(a.id);if(null===b)return Infinity;if(void 0!==

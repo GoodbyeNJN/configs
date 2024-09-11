@@ -3,7 +3,7 @@ import { withGoodbyeNJNConfig } from "./dist/esm/index.js";
 
 export default [
     {
-        ignores: ["modules", "tests/fixtures/input"],
+        ignores: ["modules/dist", "tests/fixtures/input"],
     },
     ...withGoodbyeNJNConfig(),
 ];

@@ -1,0 +1,98 @@
+diff --git a/base.js b/base.js
+index 8e400b90c3f3dd2537deb66eef32ab57c3c07916..38fcde4ee70aff6e08792f56854abb6cab1cb4c8 100644
+--- a/base.js
++++ b/base.js
+@@ -30,31 +30,6 @@
+  * 此文件是由脚本 scripts/build.ts 自动生成
+  */
+ module.exports = {
+-  parser: '@babel/eslint-parser',
+-  parserOptions: {
+-    ecmaVersion: 2019,
+-    // ECMAScript modules 模式
+-    sourceType: 'module',
+-    ecmaFeatures: {
+-      // 不允许 return 语句出现在 global 环境下
+-      globalReturn: false,
+-      // 开启全局 script 模式
+-      impliedStrict: true,
+-      jsx: true,
+-    },
+-    // 即使没有 babelrc 配置文件，也使用 @babel/eslint-parser 来解析
+-    requireConfigFile: false,
+-    // 仅允许 import export 语句出现在模块的顶层
+-    allowImportExportEverywhere: false,
+-  },
+-  env: {
+-    browser: true,
+-    node: true,
+-    commonjs: true,
+-    es6: true,
+-  },
+-  // 以当前目录为根目录，不再向上查找 .eslintrc.js
+-  root: true,
+   rules: {
+     /**
+      * setter 必须有对应的 getter，getter 可以没有对应的 setter
+diff --git a/react.js b/react.js
+index 664deec8002b2c27c12bd125a12a7cd358898f2f..074f92b564cb68e87155c3c7b26901b46f8984b7 100644
+--- a/react.js
++++ b/react.js
+@@ -30,12 +30,6 @@
+  * 此文件是由脚本 scripts/build.ts 自动生成
+  */
+ module.exports = {
+-  parserOptions: {
+-    babelOptions: {
+-      presets: ['@babel/preset-react'],
+-    },
+-  },
+-  plugins: ['react'],
+   rules: {
+     /**
+      * 布尔值类型的 propTypes 的 name 必须为 is 或 has 开头
+diff --git a/typescript.js b/typescript.js
+index 5e49cf046bc2d4badb68e60d11b80afa951c20e8..545c5f6d4d4739b449aa5b62fa49ee8b2cf9b066 100644
+--- a/typescript.js
++++ b/typescript.js
+@@ -30,8 +30,6 @@
+  * 此文件是由脚本 scripts/build.ts 自动生成
+  */
+ module.exports = {
+-  parser: '@typescript-eslint/parser',
+-  plugins: ['@typescript-eslint'],
+   rules: {
+     // https://github.com/AlloyTeam/eslint-config-alloy/issues/241
+     'no-undef': 'off',
+diff --git a/vue.js b/vue.js
+index 808ec4a43b52016bbea87808ed7e61f0cb734d51..c4c1804d21c10c29e96b1b1acb0d38abd27ceb39 100644
+--- a/vue.js
++++ b/vue.js
+@@ -30,27 +30,6 @@
+  * 此文件是由脚本 scripts/build.ts 自动生成
+  */
+ module.exports = {
+-  parser: 'vue-eslint-parser',
+-  parserOptions: {
+-    // 设置 js 的解析器为 @babel/eslint-parser
+-    // https://github.com/mysticatea/vue-eslint-parser#-options
+-    parser: '@babel/eslint-parser',
+-    ecmaVersion: 2019,
+-    // ECMAScript modules 模式
+-    sourceType: 'module',
+-    ecmaFeatures: {
+-      // 不允许 return 语句出现在 global 环境下
+-      globalReturn: false,
+-      // 开启全局 script 模式
+-      impliedStrict: true,
+-      jsx: true,
+-    },
+-    // 即使没有 babelrc 配置文件，也使用 @babel/eslint-parser 来解析
+-    requireConfigFile: false,
+-    // 仅允许 import export 语句出现在模块的顶层
+-    allowImportExportEverywhere: false,
+-  },
+-  plugins: ['vue'],
+   rules: {
+     /**
+      * 限制自定义组件的属性风格

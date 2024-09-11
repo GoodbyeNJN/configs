@@ -11,8 +11,7 @@ const people: Person[] = [
     { name: "Charlie", age: 35 },
 ];
 
-// eslint-disable-next-line no-console
-var log = console.log;
+let log = console.log;
 
 // Use a for...of loop to iterate over the array
 for (const person of people) {
@@ -73,7 +72,7 @@ class Dog extends Animal {
 const dog = new Dog("Buddy");
 dog.bark();
 
-var fn = (): string => {
+let fn = (): string => {
     return "hello" + 1;
 };
 

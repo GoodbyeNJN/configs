@@ -1,6 +1,5 @@
-import { configAlloy, pluginReact, pluginReactHooks } from "bundled-modules";
-
 import { GLOB_JSX, GLOB_TSX } from "../globs";
+import { configAlloyReact, pluginReact, pluginReactHooks } from "../modules";
 
 import type { ESLintConfig, ReactConfig, ReactOverride } from "../types";
 
@@ -33,7 +32,7 @@ export const react = (
                 },
             },
             rules: {
-                ...configAlloy.react.rules,
+                ...configAlloyReact.rules,
                 ...(useTypescript ? { "react/jsx-no-undef": "off" } : {}),
                 ...override,
             },

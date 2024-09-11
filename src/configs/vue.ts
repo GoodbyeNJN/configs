@@ -1,6 +1,5 @@
-import { configAlloy, parserTypescript, parserVue, pluginVue } from "bundled-modules";
-
 import { GLOB_VUE } from "../globs";
+import { configAlloyVue, parserTypescript, parserVue, pluginVue } from "../modules";
 
 import type { ESLintConfig, VueConfig, VueOverride } from "../types";
 
@@ -30,7 +29,7 @@ export const vue = (config: VueConfig, override: VueOverride): ESLintConfig<VueO
                 },
             },
             rules: {
-                ...configAlloy.vue.rules,
+                ...configAlloyVue.rules,
 
                 // https://github.com/vuejs/eslint-plugin-vue/issues/2356
                 "vue/comment-directive": "off",

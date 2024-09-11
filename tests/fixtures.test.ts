@@ -1,71 +1,70 @@
-import fg from "fast-glob";
-import { afterAll, beforeAll, it } from "vitest";
-import "zx/globals";
+import path from "node:path";
 
-import { DIST_PATH } from "../scripts/constants";
-import { cp, readFile, resolve, resolveToRoot, rm, writeFile } from "../scripts/utils";
+import { ESLint } from "eslint";
+import fg from "fast-glob";
+import { format } from "prettier";
+import { it } from "vitest";
+
+import { safeReadFile } from "./fs";
 
 import type { ESLintConfig, Options } from "../src/types";
+import type { Config } from "prettier";
 
-const INPUT_PATH = resolveToRoot("tests/fixtures/input");
-const OUTPUT_PATH = resolveToRoot("tests/fixtures/output");
-const TEMP_PATH = resolveToRoot(".temp/fixtures");
-const TSCONFIG_PATH = resolveToRoot("tsconfig.test.json");
+const INPUT_PATH = "tests/fixtures/input";
+const OUTPUT_PATH = "tests/fixtures/output";
+const TSCONFIG_PATH = "tests/tsconfig.test.json";
 
-beforeAll(async () => {
-    await rm(TEMP_PATH);
-});
-afterAll(async () => {
-    await rm(TEMP_PATH);
-});
+const { withGoodbyeNJNConfig: withEslintConfig } = await import("../dist/esm/index.js");
+const prettierConfig = (await import("../dist/esm/prettier.js")).default as Config;
 
 const run = (name: string, options: Options, ...configs: ESLintConfig[]) => {
     it(name, async ({ expect }) => {
-        const output = resolve(OUTPUT_PATH, name);
-        const temp = resolve(TEMP_PATH, name);
-
-        await cp(INPUT_PATH, temp);
-        await writeFile(
-            resolve(temp, "eslint.config.js"),
-            `// @eslint-disable
-import { withGoodbyeNJNConfig } from "${DIST_PATH}/esm/index.js";
-
-export default [
-    ...withGoodbyeNJNConfig(${JSON.stringify(options)}),
-    ...${JSON.stringify(configs) ?? []},
-];`,
-        );
-        await writeFile(
-            resolve(temp, "prettier.config.js"),
-            `// @eslint-disable
-import config from "${DIST_PATH}/esm/prettier.js";
-
-export default config;`,
-        );
-
-        $.cwd = temp;
-        await $`npx eslint --fix .`;
-        await $`npx prettier --write --log-level silent .`;
-
-        const files = await fg("**/*", {
-            ignore: ["node_modules", "eslint.config.js", "prettier.config.js"],
-            cwd: temp,
+        const eslint = new ESLint({
+            overrideConfigFile: true,
+            overrideConfig: [...withEslintConfig(options), ...configs],
+            fix: true,
         });
 
-        sleep(1000);
+        const output = path.resolve(OUTPUT_PATH, name);
+        const files = await Promise.all(
+            (await fg.async("**/*", { cwd: INPUT_PATH })).map(async filepath => ({
+                input: {
+                    filepath: path.resolve(INPUT_PATH, filepath),
+                    content: await safeReadFile(path.resolve(INPUT_PATH, filepath)),
+                },
+                output: {
+                    filepath: path.resolve(output, filepath),
+                    content: "",
+                },
+            })),
+        );
+
+        const results = (
+            await Promise.all(
+                files.map(async ({ input, output }) => {
+                    const { filepath, content } = input;
+
+                    const [result] = await eslint.lintText(content, {
+                        filePath: filepath,
+                        warnIgnored: false,
+                    });
+                    if (!result) return null;
+
+                    const { output: linted = content } = result || {};
+                    const formatted = await format(linted, {
+                        ...prettierConfig,
+                        filepath,
+                    });
+
+                    return { input, output: { ...output, content: formatted } };
+                }),
+            )
+        ).filter(<T>(x: T): x is NonNullable<T> => Boolean(x));
 
         await Promise.all(
-            files.map(async file => {
-                const tempFile = await readFile(resolve(temp, file));
-                const inputFile = await readFile(resolve(INPUT_PATH, file));
-                const outputFile = resolve(output, file);
-                if (tempFile === inputFile) {
-                    await rm(outputFile);
-                    return;
-                }
-
-                await expect.soft(tempFile).toMatchFileSnapshot(outputFile);
-            }),
+            results.map(({ output: { filepath, content } }) =>
+                expect.soft(content).toMatchFileSnapshot(filepath),
+            ),
         );
     });
 };
@@ -76,9 +75,21 @@ run("js", {
     vue: false,
 });
 
-run("all", {
+run("ts", {
+    typescript: { tsconfigPath: TSCONFIG_PATH },
+    react: false,
+    vue: false,
+});
+
+run("react", {
     typescript: { tsconfigPath: TSCONFIG_PATH },
     react: { version: "18" },
+    vue: false,
+});
+
+run("vue", {
+    typescript: { tsconfigPath: TSCONFIG_PATH },
+    react: false,
     vue: true,
 });
 

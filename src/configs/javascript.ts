@@ -1,4 +1,4 @@
-import { configAlloy, globals } from "bundled-modules";
+import { configAlloyBase, globals } from "../modules";
 
 import type { ESLintConfig, JavaScriptConfig, JavaScriptOverride } from "../types";
 
@@ -15,7 +15,6 @@ export const javascript = (
                 globals: {
                     ...globals.browser,
                     ...globals.node,
-                    ...globals.commonjs,
                     ...globals.es2021,
                 },
                 parserOptions: {
@@ -28,7 +27,7 @@ export const javascript = (
                 },
             },
             rules: {
-                ...configAlloy.base.rules,
+                ...configAlloyBase.rules,
 
                 "sort-imports": ["warn", { ignoreCase: true, ignoreDeclarationSort: true }],
                 "no-unused-vars": ["warn", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
