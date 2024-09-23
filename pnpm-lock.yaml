@@ -17,6 +17,9 @@ patchedDependencies:
   eslint-import-resolver-typescript:
     hash: c52scw5fbvf6hwpyj5mbhls2wu
     path: patches/eslint-import-resolver-typescript.patch
+  eslint-plugin-import-x:
+    hash: hgqk7vqs5dfbl2gx6y37i3wtie
+    path: patches/eslint-plugin-import-x.patch
   eslint-plugin-react:
     hash: jc5xrw4njgrqzj6z7ous7w7l2e
     path: patches/eslint-plugin-react.patch
@@ -57,10 +60,10 @@ importers:
         version: 0.3.9
       eslint-import-resolver-typescript:
         specifier: 3.6.3
-        version: 3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@eslint-plugin-import-x)(eslint@9.10.0)
+        version: 3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0)
       eslint-plugin-import-x:
-        specifier: link:../eslint-plugin-import-x
-        version: link:../eslint-plugin-import-x
+        specifier: 4.3.0
+        version: 4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2)
       eslint-plugin-react:
         specifier: 7.35.2
         version: 7.35.2(patch_hash=jc5xrw4njgrqzj6z7ous7w7l2e)(eslint@9.10.0)
@@ -856,6 +859,10 @@ packages:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
     engines: {node: '>=0.10.0'}
 
+  doctrine@3.0.0:
+    resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
+    engines: {node: '>=6.0.0'}
+
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -985,6 +992,12 @@ packages:
         optional: true
       eslint-import-resolver-webpack:
         optional: true
+
+  eslint-plugin-import-x@4.3.0:
+    resolution: {integrity: sha512-PxGzP7gAjF2DLeRnQtbYkkgZDg1intFyYr/XS1LgTYXUDrSXMHGkXx8++6i2eDv2jMs0jfeO6G6ykyeWxiFX7w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   eslint-plugin-react-hooks@4.6.2:
     resolution: {integrity: sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==}
@@ -1754,6 +1767,9 @@ packages:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
 
+  stable-hash@0.0.4:
+    resolution: {integrity: sha512-LjdcbuBeLcdETCrPn9i8AYAZ1eCtu4ECAWtP7UleOiZ9LzVxRzzUZEoZ8zB24nhkQnDWyET0I+3sWokSDS3E7g==}
+
   stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
 
@@ -1867,6 +1883,9 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+
+  tslib@2.7.0:
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
 
   tsup@8.2.4:
     resolution: {integrity: sha512-akpCPePnBnC/CXgRrcy72ZSntgIEUa1jN0oJbbvpALWKNOz1B7aM+UVDWGRGIO/T/PZugAESWDJUAb5FD48o8Q==}
@@ -2684,6 +2703,10 @@ snapshots:
     dependencies:
       esutils: 2.0.3
 
+  doctrine@3.0.0:
+    dependencies:
+      esutils: 2.0.3
+
   eastasianwidth@0.2.0: {}
 
   emoji-regex@8.0.0: {}
@@ -2867,35 +2890,52 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@eslint-plugin-import-x)(eslint@9.10.0):
+  eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.3.7
       enhanced-resolve: 5.17.1
       eslint: 9.10.0
-      eslint-module-utils: 2.11.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@eslint-plugin-import-x)(eslint@9.10.0))(eslint@9.10.0)
+      eslint-module-utils: 2.11.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0))(eslint@9.10.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.8.0
       is-bun-module: 1.2.1
       is-glob: 4.0.3
     optionalDependencies:
-      eslint-plugin-import-x: link:../eslint-plugin-import-x
+      eslint-plugin-import-x: 4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2)
     transitivePeerDependencies:
       - '@typescript-eslint/parser'
       - eslint-import-resolver-node
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.11.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@eslint-plugin-import-x)(eslint@9.10.0))(eslint@9.10.0):
+  eslint-module-utils@2.11.0(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0))(eslint@9.10.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.5.0(eslint@9.10.0)(typescript@5.6.2)
       eslint: 9.10.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@eslint-plugin-import-x)(eslint@9.10.0)
+      eslint-import-resolver-typescript: 3.6.3(patch_hash=c52scw5fbvf6hwpyj5mbhls2wu)(@typescript-eslint/parser@8.5.0(eslint@9.10.0)(typescript@5.6.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2))(eslint@9.10.0)
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-import-x@4.3.0(patch_hash=hgqk7vqs5dfbl2gx6y37i3wtie)(eslint@9.10.0)(typescript@5.6.2):
+    dependencies:
+      '@typescript-eslint/utils': 8.5.0(eslint@9.10.0)(typescript@5.6.2)
+      debug: 4.3.7
+      doctrine: 3.0.0
+      eslint: 9.10.0
+      eslint-import-resolver-node: 0.3.9
+      get-tsconfig: 4.8.0
+      is-glob: 4.0.3
+      minimatch: 9.0.5
+      semver: 7.6.3
+      stable-hash: 0.0.4
+      tslib: 2.7.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-plugin-react-hooks@4.6.2(patch_hash=t2x5n554cqmor5h53lwqwzfdky)(eslint@9.10.0):
     dependencies:
@@ -3714,6 +3754,8 @@ snapshots:
     dependencies:
       whatwg-url: 7.1.0
 
+  stable-hash@0.0.4: {}
+
   stackback@0.0.2: {}
 
   std-env@3.7.0: {}
@@ -3834,6 +3876,8 @@ snapshots:
       typescript: 5.6.2
 
   ts-interface-checker@0.1.13: {}
+
+  tslib@2.7.0: {}
 
   tsup@8.2.4(postcss@8.4.45)(typescript@5.6.2):
     dependencies:

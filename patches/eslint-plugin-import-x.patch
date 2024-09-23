@@ -1,0 +1,13 @@
+diff --git a/lib/index.js b/lib/index.js
+index 64f68ff9d2584c063b9de7c60911d55d517da303..edb25ebe75cd3269a9f090708c974dd7f376f56c 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -141,8 +141,6 @@ const flatConfigs = {
+     typescript: typescript_1.default,
+ };
+ module.exports = {
+-    configs,
+-    flatConfigs,
+     rules,
+ };
+ //# sourceMappingURL=index.js.map

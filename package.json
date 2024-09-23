@@ -62,7 +62,7 @@
         "eslint-config-flat-gitignore": "0.3.0",
         "eslint-import-resolver-node": "0.3.9",
         "eslint-import-resolver-typescript": "3.6.3",
-        "eslint-plugin-import-x": "link:../eslint-plugin-import-x",
+        "eslint-plugin-import-x": "4.3.0",
         "eslint-plugin-react": "7.35.2",
         "eslint-plugin-react-hooks": "4.6.2",
         "eslint-plugin-vue": "9.28.0",
@@ -95,6 +95,7 @@
             "@typescript-eslint/eslint-plugin": "patches/@typescript-eslint__eslint-plugin.patch",
             "eslint-config-alloy": "patches/eslint-config-alloy.patch",
             "eslint-import-resolver-typescript": "patches/eslint-import-resolver-typescript.patch",
+            "eslint-plugin-import-x": "patches/eslint-plugin-import-x.patch",
             "eslint-plugin-react": "patches/eslint-plugin-react.patch",
             "eslint-plugin-react-hooks": "patches/eslint-plugin-react-hooks.patch",
             "eslint-plugin-vue": "patches/eslint-plugin-vue.patch"
