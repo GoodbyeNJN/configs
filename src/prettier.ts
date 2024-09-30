@@ -46,5 +46,3 @@ export const withGoodbyeNJNConfig = (config: Config = {}): Config => ({
     ...prettierConfig,
     ...config,
 });
-
-export default prettierConfig;

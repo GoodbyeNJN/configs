@@ -37,5 +37,3 @@ export const withGoodbyeNJNConfig = (options: Options = {}) => {
 
     return eslintConfigs.flat();
 };
-
-export default withGoodbyeNJNConfig;
