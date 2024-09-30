@@ -64,6 +64,7 @@
         "eslint": "^9.10.0",
         "eslint-config-alloy": "5.1.2",
         "eslint-config-flat-gitignore": "0.3.0",
+        "eslint-config-goodbyenjn": "file:",
         "eslint-import-resolver-node": "0.3.9",
         "eslint-import-resolver-typescript": "3.6.3",
         "eslint-plugin-import-x": "4.3.0",

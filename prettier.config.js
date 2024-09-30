@@ -1,4 +1,4 @@
 // @ts-check
-import { withGoodbyeNJNConfig } from "./dist/esm/prettier.js";
+import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn/prettier";
 
 export default withGoodbyeNJNConfig();

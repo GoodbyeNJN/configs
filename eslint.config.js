@@ -1,9 +1,9 @@
 // @ts-check
-import { withGoodbyeNJNConfig } from "./dist/esm/index.js";
+import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn";
 
 export default [
     {
-        ignores: ["modules/dist", "tests/fixtures/input"],
+        ignores: ["tests/fixtures/input"],
     },
     ...withGoodbyeNJNConfig(),
 ];
