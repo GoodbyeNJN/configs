@@ -3,22 +3,74 @@ import path from "node:path";
 import { ESLint } from "eslint";
 import fg from "fast-glob";
 import { format } from "prettier";
-import { it } from "vitest";
+
+import { withGoodbyeNJNConfig as withEslintConfig } from "eslint-config-goodbyenjn";
+import { withGoodbyeNJNConfig as withPrettierConfig } from "eslint-config-goodbyenjn/prettier";
 
 import { safeReadFile } from "./fs";
 
 import type { ESLintConfig, Options } from "../src/types";
-import type { Config } from "prettier";
 
 const INPUT_PATH = "tests/fixtures/input";
 const OUTPUT_PATH = "tests/fixtures/output";
-const TSCONFIG_PATH = "tests/tsconfig.test.json";
 
-const { withGoodbyeNJNConfig: withEslintConfig } = await import("../dist/esm/index.js");
-const prettierConfig = (await import("../dist/esm/prettier.js")).default as Config;
+const prettierConfig = withPrettierConfig();
 
-const run = (name: string, options: Options, ...configs: ESLintConfig[]) => {
-    it(name, async ({ expect }) => {
+interface Case {
+    name: string;
+    options: Options;
+    configs?: ESLintConfig[];
+}
+
+const cases: Case[] = [
+    {
+        name: "js",
+        options: {
+            typescript: false,
+            react: false,
+            vue: false,
+        },
+    },
+    {
+        name: "ts",
+        options: {
+            typescript: true,
+            react: false,
+            vue: false,
+        },
+    },
+    {
+        name: "react",
+        options: {
+            typescript: true,
+            react: { version: "18" },
+            vue: false,
+        },
+    },
+    {
+        name: "vue",
+        options: {
+            typescript: true,
+            react: false,
+            vue: true,
+        },
+    },
+    {
+        name: "ts-override",
+        options: {
+            typescript: true,
+            react: false,
+            vue: false,
+        },
+        configs: [
+            { rules: { "@typescript-eslint/consistent-type-definitions": ["error", "type"] } },
+        ],
+    },
+];
+
+test.concurrent.for(cases)(
+    "Test with: $name",
+    async ({ name, options, configs = [] }, { expect }) => {
         const eslint = new ESLint({
             overrideConfigFile: true,
             overrideConfig: [...withEslintConfig(options), ...configs],
@@ -66,43 +118,5 @@ const run = (name: string, options: Options, ...configs: ESLintConfig[]) => {
                 expect.soft(content).toMatchFileSnapshot(filepath),
             ),
         );
-    });
-};
-
-run("js", {
-    typescript: false,
-    react: false,
-    vue: false,
-});
-
-run("ts", {
-    typescript: { tsconfigPath: TSCONFIG_PATH },
-    react: false,
-    vue: false,
-});
-
-run("react", {
-    typescript: { tsconfigPath: TSCONFIG_PATH },
-    react: { version: "18" },
-    vue: false,
-});
-
-run("vue", {
-    typescript: { tsconfigPath: TSCONFIG_PATH },
-    react: false,
-    vue: true,
-});
-
-run(
-    "ts-override",
-    {
-        typescript: { tsconfigPath: TSCONFIG_PATH },
-        react: false,
-        vue: false,
-    },
-    {
-        rules: {
-            "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-        },
     },
 );
