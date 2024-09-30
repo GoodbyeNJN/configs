@@ -72,20 +72,6 @@ yarn add -D prettier
 在你的项目根目录下创建一个 `prettier.config.js` 文件，并将以下内容复制进去：
 
 ```js
-import config from "eslint-config-goodbyenjn/prettier";
-
-export default config;
-
-// or
-
-const config = require("eslint-config-goodbyenjn/prettier");
-
-module.exports = config;
-```
-
-如果你需要覆盖部分默认设置，你也可以按如下方式使用：
-
-```js
 import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn/prettier";
 
 export default withGoodbyeNJNConfig({
