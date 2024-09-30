@@ -23,19 +23,19 @@
         "url": "git+https://github.com/GoodbyeNJN/eslint-config-goodbyenjn.git"
     },
     "type": "module",
-    "module": "./dist/esm/index.js",
-    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.mjs",
+    "main": "./dist/cjs/index.cjs",
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/esm/index.js",
-            "require": "./dist/cjs/index.js"
+            "import": "./dist/esm/index.mjs",
+            "require": "./dist/cjs/index.cjs"
         },
         "./prettier": {
             "types": "./dist/prettier.d.ts",
-            "import": "./dist/esm/prettier.js",
-            "require": "./dist/cjs/prettier.js"
+            "import": "./dist/esm/prettier.mjs",
+            "require": "./dist/cjs/prettier.cjs"
         }
     },
     "typesVersions": {
@@ -49,12 +49,15 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsup",
+        "build": "rollup --config rollup.config.ts --configPlugin esbuild",
         "test": "vitest",
         "release": "vitest run && np --no-tests"
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
+        "@rollup/plugin-commonjs": "^28.0.0",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^15.3.0",
         "@types/node": "^22.5.4",
         "@typescript-eslint/eslint-plugin": "8.5.0",
         "@typescript-eslint/parser": "8.5.0",
@@ -72,7 +75,10 @@
         "local-pkg": "0.5.0",
         "np": "^10.0.7",
         "prettier": "^3.3.3",
-        "tsup": "^8.2.4",
+        "remeda": "^2.14.0",
+        "rollup": "^4.22.5",
+        "rollup-plugin-dts": "^6.1.1",
+        "rollup-plugin-esbuild": "^6.1.1",
         "typescript": "^5.6.2",
         "vitest": "^2.0.5",
         "vue-eslint-parser": "9.4.3"
@@ -98,6 +104,22 @@
             "eslint-plugin-react": "patches/eslint-plugin-react.patch",
             "eslint-plugin-react-hooks": "patches/eslint-plugin-react-hooks.patch",
             "eslint-plugin-vue": "patches/eslint-plugin-vue.patch"
+        },
+        "overrides": {
+            "array-includes": "npm:@nolyfill/array-includes@^1",
+            "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
+            "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",
+            "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@^1",
+            "array.prototype.tosorted": "npm:@nolyfill/array.prototype.tosorted@^1",
+            "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@^1",
+            "hasown": "npm:@nolyfill/hasown@^1",
+            "is-core-module": "npm:@nolyfill/is-core-module@^1",
+            "object.assign": "npm:@nolyfill/object.assign@^1",
+            "object.entries": "npm:@nolyfill/object.entries@^1",
+            "object.fromentries": "npm:@nolyfill/object.fromentries@^1",
+            "object.values": "npm:@nolyfill/object.values@^1",
+            "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1",
+            "string.prototype.repeat": "npm:@nolyfill/string.prototype.repeat@^1"
         }
     }
 }
