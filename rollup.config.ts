@@ -111,7 +111,17 @@ export default defineConfig([
 
         external,
 
-        plugins: [commonjs(), json(), esbuild({ minify: true }), node(), pluginClean(modules)],
+        plugins: [
+            commonjs({
+                // 相关错误：
+                // Could not dynamically require "<project>/node_modules/react/index.js". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.
+                ignoreDynamicRequires: true,
+            }),
+            json(),
+            esbuild({ minify: true }),
+            node(),
+            pluginClean(modules),
+        ],
 
         onLog,
     },
