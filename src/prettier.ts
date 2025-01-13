@@ -42,7 +42,22 @@ const prettierConfig: Config = {
     embeddedLanguageFormatting: "auto",
 };
 
-export const withGoodbyeNJNConfig = (config: Config = {}): Config => ({
-    ...prettierConfig,
-    ...config,
-});
+const overrideConfig: Config["overrides"] = [
+    {
+        files: ["*.yml", "*.yaml"],
+        options: {
+            tabWidth: 2,
+        },
+    },
+];
+
+export const withGoodbyeNJNConfig = (config: Config = {}): Config => {
+    const { overrides = [], ...options } = config;
+
+    return {
+        ...prettierConfig,
+        ...options,
+
+        overrides: [...overrideConfig, ...overrides],
+    };
+};
