@@ -75,13 +75,13 @@
         "globals": "15.9.0",
         "local-pkg": "0.5.0",
         "np": "^10.0.7",
-        "prettier": "^3.3.3",
+        "prettier": "^3.4.2",
         "remeda": "^2.14.0",
         "rollup": "^4.22.5",
         "rollup-plugin-dts": "^6.1.1",
         "rollup-plugin-esbuild": "^6.1.1",
         "typescript": "^5.6.2",
-        "vitest": "^2.1.1",
+        "vitest": "^3.0.2",
         "vue-eslint-parser": "9.4.3"
     },
     "peerDependencies": {
