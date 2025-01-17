@@ -1,4 +1,4 @@
-# eslint-config-goodbyenjn
+# @goodbyenjn/eslint-config
 
 个人使用的一套 ESLint 规则。基于 [eslint-config-alloy](https://github.com/alloyteam/eslint-config-alloy) 和 [@antfu/eslint-config](https://github.com/antfu/eslint-config)，并增加了 [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i)、[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) 插件。
 
@@ -7,23 +7,23 @@
 ## 使用方法
 
 ```bash
-npm install --save-dev eslint eslint-config-goodbyenjn
+npm install --save-dev eslint @goodbyenjn/eslint-config
 # or
-pnpm add -D eslint eslint-config-goodbyenjn
+pnpm add -D eslint @goodbyenjn/eslint-config
 # or
-yarn add -D eslint eslint-config-goodbyenjn
+yarn add -D eslint @goodbyenjn/eslint-config
 ```
 
 在你的项目根目录下创建一个 `eslint.config.js` 文件，并将以下内容复制进去：
 
 ```js
-import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn";
+import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
 
 export default [...withGoodbyeNJNConfig()];
 
 // or
 
-const { withGoodbyeNJNConfig } = require("eslint-config-goodbyenjn");
+const { withGoodbyeNJNConfig } = require("@goodbyenjn/eslint-config");
 
 module.exports = [...withGoodbyeNJNConfig()];
 ```
@@ -33,7 +33,7 @@ module.exports = [...withGoodbyeNJNConfig()];
 你也可以手动覆盖相关配置，例如：
 
 ```js
-import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn";
+import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
 
 export default [
     ...withGoodbyeNJNConfig({
@@ -72,7 +72,7 @@ yarn add -D prettier
 在你的项目根目录下创建一个 `prettier.config.js` 文件，并将以下内容复制进去：
 
 ```js
-import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn/prettier";
+import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
 
 export default withGoodbyeNJNConfig({
     // custom configs
@@ -80,7 +80,7 @@ export default withGoodbyeNJNConfig({
 
 // or
 
-const { withGoodbyeNJNConfig } = require("eslint-config-goodbyenjn/prettier");
+const { withGoodbyeNJNConfig } = require("@goodbyenjn/eslint-config/prettier");
 
 module.exports = withGoodbyeNJNConfig({
     // custom configs

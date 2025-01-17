@@ -5,8 +5,8 @@ import fg from "fast-glob";
 import { format } from "prettier";
 import { isNonNullish } from "remeda";
 
-import { withGoodbyeNJNConfig as withEslintConfig } from "eslint-config-goodbyenjn";
-import { withGoodbyeNJNConfig as withPrettierConfig } from "eslint-config-goodbyenjn/prettier";
+import { withGoodbyeNJNConfig as withEslintConfig } from "@goodbyenjn/eslint-config";
+import { withGoodbyeNJNConfig as withPrettierConfig } from "@goodbyenjn/eslint-config/prettier";
 
 import { safeReadFile } from "./fs";
 

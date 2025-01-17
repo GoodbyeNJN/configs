@@ -1,5 +1,5 @@
 // @ts-check
-import { withGoodbyeNJNConfig } from "eslint-config-goodbyenjn";
+import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
 
 export default [
     {

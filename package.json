@@ -1,7 +1,7 @@
 {
-    "name": "eslint-config-goodbyenjn",
+    "name": "@goodbyenjn/eslint-config",
     "version": "3.1.2",
-    "description": "GoodbyeNJN eslint config",
+    "description": "GoodbyeNJN's eslint config",
     "keywords": [
         "eslint",
         "eslintrc",
@@ -12,15 +12,15 @@
         "react",
         "typescript"
     ],
-    "homepage": "https://github.com/GoodbyeNJN/eslint-config-goodbyenjn",
+    "homepage": "https://github.com/GoodbyeNJN/eslint-config",
     "bugs": {
-        "url": "https://github.com/GoodbyeNJN/eslint-config-goodbyenjn/issues"
+        "url": "https://github.com/GoodbyeNJN/eslint-config/issues"
     },
     "license": "MIT",
     "author": "GoodbyeNJN <cc@fuckwall.cc>",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/GoodbyeNJN/eslint-config-goodbyenjn.git"
+        "url": "git+https://github.com/GoodbyeNJN/eslint-config.git"
     },
     "type": "module",
     "module": "./dist/esm/index.mjs",
@@ -52,10 +52,11 @@
         "build": "rollup --config rollup.config.ts --configPlugin esbuild",
         "test": "vitest",
         "test:ci": "vitest run",
-        "publish:ci": "npm publish"
+        "publish:ci": "npm publish --access public"
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
+        "@goodbyenjn/eslint-config": "file:",
         "@oxc-resolver/binding-wasm32-wasi": "3.0.3",
         "@rollup/plugin-commonjs": "^28.0.2",
         "@rollup/plugin-json": "^6.1.0",
@@ -66,7 +67,6 @@
         "eslint": "^9.18.0",
         "eslint-config-alloy": "5.1.2",
         "eslint-config-flat-gitignore": "1.0.0",
-        "eslint-config-goodbyenjn": "file:",
         "eslint-import-resolver-oxc": "0.8.0",
         "eslint-plugin-import-x": "4.6.1",
         "eslint-plugin-react": "7.37.4",

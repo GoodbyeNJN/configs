@@ -38,6 +38,9 @@ importers:
       '@antfu/eslint-define-config':
         specifier: 1.23.0-2
         version: 1.23.0-2(patch_hash=ks7zrtln2gcbtflltjjkksgnyq)
+      '@goodbyenjn/eslint-config':
+        specifier: 'file:'
+        version: file:(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)
       '@oxc-resolver/binding-wasm32-wasi':
         specifier: 3.0.3
         version: 3.0.3
@@ -68,9 +71,6 @@ importers:
       eslint-config-flat-gitignore:
         specifier: 1.0.0
         version: 1.0.0(eslint@9.18.0)
-      eslint-config-goodbyenjn:
-        specifier: 'file:'
-        version: file:(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)
       eslint-import-resolver-oxc:
         specifier: 0.8.0
         version: 0.8.0(eslint-plugin-import-x@4.6.1(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)
@@ -339,6 +339,14 @@ packages:
   '@eslint/plugin-kit@0.2.5':
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@goodbyenjn/eslint-config@file:':
+    resolution: {directory: '', type: directory}
+    engines: {node: '>=16'}
+    peerDependencies:
+      eslint: ^9.0.0 || ^8.0.0
+      prettier: ^3.0.0
+      typescript: ^5.0.0
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -900,14 +908,6 @@ packages:
     resolution: {integrity: sha512-EWpSLrAP80IdcYK5sIhq/qAY0pmUdBnbzqzpE3QAn6H6wLBN26cMRoMNU9Di8upTzUSL6TXeYRxWhTYuz8+UQA==}
     peerDependencies:
       eslint: ^9.5.0
-
-  'eslint-config-goodbyenjn@file:':
-    resolution: {directory: '', type: directory}
-    engines: {node: '>=16'}
-    peerDependencies:
-      eslint: ^9.0.0 || ^8.0.0
-      prettier: ^3.0.0
-      typescript: ^5.0.0
 
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
@@ -1722,6 +1722,12 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
+  '@goodbyenjn/eslint-config@file:(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)':
+    dependencies:
+      eslint: 9.18.0
+      prettier: 3.4.2
+      typescript: 5.7.3
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -2240,12 +2246,6 @@ snapshots:
       '@eslint/compat': 1.2.5(eslint@9.18.0)
       eslint: 9.18.0
       find-up-simple: 1.0.0
-
-  eslint-config-goodbyenjn@file:(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3):
-    dependencies:
-      eslint: 9.18.0
-      prettier: 3.4.2
-      typescript: 5.7.3
 
   eslint-import-resolver-node@0.3.9:
     dependencies:
