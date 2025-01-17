@@ -55,6 +55,7 @@
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
+        "@oxc-resolver/binding-wasm32-wasi": "3.0.3",
         "@rollup/plugin-commonjs": "^28.0.0",
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-node-resolve": "^15.3.0",
@@ -65,8 +66,7 @@
         "eslint-config-alloy": "5.1.2",
         "eslint-config-flat-gitignore": "0.3.0",
         "eslint-config-goodbyenjn": "file:",
-        "eslint-import-resolver-node": "0.3.9",
-        "eslint-import-resolver-typescript": "3.6.3",
+        "eslint-import-resolver-oxc": "0.8.0",
         "eslint-plugin-import-x": "4.3.1",
         "eslint-plugin-react": "7.37.0",
         "eslint-plugin-react-hooks": "4.6.2",
@@ -100,13 +100,13 @@
             "@antfu/eslint-define-config": "patches/@antfu__eslint-define-config.patch",
             "@typescript-eslint/eslint-plugin": "patches/@typescript-eslint__eslint-plugin.patch",
             "eslint-config-alloy": "patches/eslint-config-alloy.patch",
-            "eslint-import-resolver-typescript": "patches/eslint-import-resolver-typescript.patch",
             "eslint-plugin-import-x": "patches/eslint-plugin-import-x.patch",
             "eslint-plugin-react": "patches/eslint-plugin-react.patch",
             "eslint-plugin-react-hooks": "patches/eslint-plugin-react-hooks.patch",
             "eslint-plugin-vue": "patches/eslint-plugin-vue.patch"
         },
         "overrides": {
+            "oxc-resolver": "file:./modules/oxc-resolver",
             "array-includes": "npm:@nolyfill/array-includes@^1",
             "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
             "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import module from "node:module";
 import path from "node:path";
 
 import commonjs from "@rollup/plugin-commonjs";
@@ -11,16 +12,27 @@ import esbuild from "rollup-plugin-esbuild";
 
 import type { LogHandlerWithDefault, Plugin } from "rollup";
 
+const require = module.createRequire(import.meta.url);
+
 const input = {
     index: "src/index.ts",
     prettier: "src/prettier.ts",
-    modules: "src/modules.ts",
+    modules: "modules/index.cjs",
+    wasm: path.resolve(
+        path.dirname(require.resolve("@oxc-resolver/binding-wasm32-wasi")),
+        "resolver.wasm32-wasi.wasm",
+    ),
 };
 
-const dist = path.resolve(import.meta.dirname, "dist");
-const modules = path.resolve(dist, "modules.cjs");
-const cjs = path.resolve(dist, "cjs");
-const esm = path.resolve(dist, "esm");
+const output = (() => {
+    const dist = path.resolve(import.meta.dirname, "dist");
+    const modules = path.resolve(dist, "modules");
+    const cjs = path.resolve(dist, "cjs");
+    const esm = path.resolve(dist, "esm");
+    const wasm = path.resolve(modules, "resolver.wasm32-wasi.wasm");
+
+    return { dist, modules, cjs, esm, wasm };
+})();
 
 const external = [/^eslint$|^eslint\/.*/, "prettier", /^typescript$|^typescript\/.*/];
 
@@ -32,17 +44,16 @@ const onLog: LogHandlerWithDefault = (level, log, handler) => {
     handler(level, log);
 };
 
-const pluginClean = (...paths: string[]): Plugin => ({
+const pluginClean = (): Plugin => ({
     name: "plugin:clean",
-    async buildStart() {
-        await Promise.all(
-            paths.map(path =>
-                fs.promises.rm(path, {
-                    force: true,
-                    recursive: true,
-                }),
-            ),
-        );
+    async renderStart(options) {
+        const { dir } = options;
+        if (!dir || !fs.existsSync(dir)) return;
+
+        await fs.promises.rm(dir, {
+            force: true,
+            recursive: true,
+        });
     },
 });
 
@@ -51,13 +62,13 @@ export default defineConfig([
         input: pick(input, ["index", "prettier"]),
 
         output: {
-            dir: dist,
+            dir: output.dist,
             format: "esm",
         },
 
         external,
 
-        plugins: [dts({ respectExternal: true }), pluginClean(dist)],
+        plugins: [dts({ respectExternal: true }), pluginClean()],
 
         onLog,
     },
@@ -67,12 +78,12 @@ export default defineConfig([
 
         output: [
             {
-                dir: cjs,
+                dir: output.cjs,
                 format: "cjs",
                 entryFileNames: "[name].cjs",
             },
             {
-                dir: esm,
+                dir: output.esm,
                 format: "esm",
                 entryFileNames: "[name].mjs",
             },
@@ -85,15 +96,15 @@ export default defineConfig([
             json(),
             esbuild({ minify: false }),
             node(),
-            pluginClean(cjs, esm),
+            pluginClean(),
             {
-                name: "plugin:module",
+                name: "plugin:modules",
                 resolveId: {
                     order: "pre",
                     handler(source) {
-                        if (!source.endsWith("/modules")) return null;
+                        if (source !== "modules") return null;
 
-                        return { id: "../modules.cjs", external: true };
+                        return { id: "../modules/index.cjs", external: true };
                     },
                 },
             },
@@ -101,10 +112,10 @@ export default defineConfig([
     },
 
     {
-        input: pick(input, ["modules"]),
+        input: input.modules,
 
         output: {
-            dir: dist,
+            dir: output.modules,
             format: "cjs",
             entryFileNames: "[name].cjs",
         },
@@ -120,7 +131,13 @@ export default defineConfig([
             json(),
             esbuild({ minify: true }),
             node(),
-            pluginClean(modules),
+            pluginClean(),
+            {
+                name: "plugin:copy-wasm",
+                async writeBundle() {
+                    await fs.promises.cp(input.wasm, output.wasm, { force: true });
+                },
+            },
         ],
 
         onLog,

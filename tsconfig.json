@@ -33,6 +33,11 @@
         "noEmit": true,
         "resolveJsonModule": true,
 
+        "baseUrl": "./",
+        "paths": {
+            "modules": ["modules"]
+        },
+
         "types": ["vitest/globals"]
     },
     "exclude": ["node_modules", "tests/fixtures/output/**/*"]

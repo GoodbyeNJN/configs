@@ -1,0 +1,8 @@
+{
+    "name": "oxc-resolver",
+    "version": "3.0.3",
+    "main": "index.cjs",
+    "files": [
+        "index.cjs"
+    ]
+}

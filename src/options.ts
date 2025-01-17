@@ -1,4 +1,4 @@
-import { localPkg } from "./modules";
+import { localPkg } from "modules";
 
 import type { Configs, Enables, Option, Options, Overrides } from "./types";
 

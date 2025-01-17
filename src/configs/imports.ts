@@ -1,4 +1,4 @@
-import { pluginImport, pluginImportResolverNode, pluginImportResolverTypescript } from "../modules";
+import { pluginImport, pluginImportResolverOxc } from "modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 
@@ -15,16 +15,10 @@ export const imports = (
             settings: {
                 "import-x/resolver": [
                     {
-                        name: "typescript",
+                        name: "oxc",
                         enable: true,
                         options: {},
-                        resolver: pluginImportResolverTypescript,
-                    },
-                    {
-                        name: "node",
-                        enable: true,
-                        options: {},
-                        resolver: pluginImportResolverNode,
+                        resolver: pluginImportResolverOxc,
                     },
                 ],
             },
