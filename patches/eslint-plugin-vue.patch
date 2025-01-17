@@ -1,5 +1,5 @@
 diff --git a/lib/index.js b/lib/index.js
-index 6dbe5107bba1adb597400f58c6b753cbd83b64b7..4b8745734bb8584985ae3ac9ec36080cfc5c6e22 100644
+index ce562f458b40db234ef4dd2fe6778283bb7ea06d..776800201b21f7e884b3256f440bb6de64bd2fcf 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -7,28 +7,6 @@
@@ -31,22 +31,3 @@ index 6dbe5107bba1adb597400f58c6b753cbd83b64b7..4b8745734bb8584985ae3ac9ec36080c
    rules: {
      'array-bracket-newline': require('./rules/array-bracket-newline'),
      'array-bracket-spacing': require('./rules/array-bracket-spacing'),
-@@ -279,18 +257,6 @@ const plugin = {
-     '.vue': require('./processor'),
-     vue: require('./processor')
-   },
--  environments: {
--    // TODO Remove in the next major version
--    /** @deprecated */
--    'setup-compiler-macros': {
--      globals: {
--        defineProps: 'readonly',
--        defineEmits: 'readonly',
--        defineExpose: 'readonly',
--        withDefaults: 'readonly'
--      }
--    }
--  }
- }
- 
- module.exports = plugin
