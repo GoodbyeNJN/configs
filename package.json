@@ -51,7 +51,8 @@
     "scripts": {
         "build": "rollup --config rollup.config.ts --configPlugin esbuild",
         "test": "vitest",
-        "release": "vitest run && np --no-tests"
+        "test:ci": "vitest run",
+        "publish:ci": "npm publish"
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
@@ -74,7 +75,6 @@
         "fast-glob": "^3.3.3",
         "globals": "15.14.0",
         "local-pkg": "1.0.0",
-        "np": "^10.1.0",
         "prettier": "^3.4.2",
         "remeda": "^2.19.2",
         "rollup": "^4.30.1",
