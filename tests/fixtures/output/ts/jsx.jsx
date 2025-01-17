@@ -20,7 +20,7 @@ export function HelloWorld({
             onMouseOver={onMouseOver}
         >
             <strong>{greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase()}</strong>
-            {greeting.endsWith(",") ? " " : <span style={{ color: "grey" }}>&quot;, &quot;</span>}
+            {greeting.endsWith(",") ? " " : <span style={{ color: "\grey" }}>&quot;, &quot;</span>}
             <em>{greeted}</em>
             {silent ? "." : "!"}
         </div>

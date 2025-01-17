@@ -3,6 +3,7 @@ import path from "node:path";
 import { ESLint } from "eslint";
 import fg from "fast-glob";
 import { format } from "prettier";
+import { isNonNullish } from "remeda";
 
 import { withGoodbyeNJNConfig as withEslintConfig } from "eslint-config-goodbyenjn";
 import { withGoodbyeNJNConfig as withPrettierConfig } from "eslint-config-goodbyenjn/prettier";
@@ -20,6 +21,7 @@ interface Case {
     name: string;
     options: Options;
     configs?: ESLintConfig[];
+    output: string;
 }
 
 const cases: Case[] = [
@@ -56,7 +58,7 @@ const cases: Case[] = [
         },
     },
     {
-        name: "ts-override",
+        name: "override",
         options: {
             typescript: true,
             react: false,
@@ -66,57 +68,48 @@ const cases: Case[] = [
             { rules: { "@typescript-eslint/consistent-type-definitions": ["error", "type"] } },
         ],
     },
-];
+].map(item => ({ ...item, output: path.resolve(OUTPUT_PATH, item.name) }));
 
-test.concurrent.for(cases)(
-    "Test with: $name",
-    async ({ name, options, configs = [] }, { expect }) => {
-        const eslint = new ESLint({
-            overrideConfigFile: true,
-            overrideConfig: [...withEslintConfig(options), ...configs],
-            fix: true,
-        });
-
-        const output = path.resolve(OUTPUT_PATH, name);
-        const files = await Promise.all(
-            (await fg.async("**/*", { cwd: INPUT_PATH })).map(async filepath => ({
-                input: {
-                    filepath: path.resolve(INPUT_PATH, filepath),
-                    content: await safeReadFile(path.resolve(INPUT_PATH, filepath)),
-                },
-                output: {
-                    filepath: path.resolve(output, filepath),
-                    content: "",
-                },
-            })),
-        );
-
-        const results = (
-            await Promise.all(
-                files.map(async ({ input, output }) => {
-                    const { filepath, content } = input;
-
-                    const [result] = await eslint.lintText(content, {
-                        filePath: filepath,
-                        warnIgnored: false,
-                    });
-                    if (!result) return null;
-
-                    const { output: linted = content } = result || {};
-                    const formatted = await format(linted, {
-                        ...prettierConfig,
-                        filepath,
-                    });
-
-                    return { input, output: { ...output, content: formatted } };
-                }),
-            )
-        ).filter(<T>(x: T): x is NonNullable<T> => Boolean(x));
-
-        await Promise.all(
-            results.map(({ output: { filepath, content } }) =>
-                expect.soft(content).toMatchFileSnapshot(filepath),
-            ),
-        );
-    },
+const inputs = await Promise.all(
+    (await fg.async("**/*", { cwd: INPUT_PATH })).map(async filename => ({
+        filename,
+        filepath: path.resolve(INPUT_PATH, filename),
+        content: await safeReadFile(path.resolve(INPUT_PATH, filename)),
+    })),
 );
+
+describe.concurrent.each(cases)("Name: $name", async ({ options, configs = [], output }) => {
+    const eslint = new ESLint({
+        overrideConfigFile: true,
+        overrideConfig: [...withEslintConfig(options), ...configs],
+        fix: true,
+    });
+
+    const outputs = (
+        await Promise.all(
+            inputs.map(async ({ filename, filepath, content }) => {
+                const [result] = await eslint.lintText(content, {
+                    filePath: filepath,
+                    warnIgnored: false,
+                });
+                if (!result) return null;
+
+                const { output: linted = content } = result;
+                const formatted = await format(linted, {
+                    ...prettierConfig,
+                    filepath,
+                });
+
+                return {
+                    filename,
+                    filepath: path.resolve(output, filename),
+                    content: formatted,
+                };
+            }),
+        )
+    ).filter(isNonNullish);
+
+    test.concurrent.for(outputs)("File: $filename", async ({ filepath, content }, { expect }) => {
+        await expect.soft(content).toMatchFileSnapshot(filepath);
+    });
+});
