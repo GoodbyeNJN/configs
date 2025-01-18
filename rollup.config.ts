@@ -127,6 +127,10 @@ export default defineConfig([
                 // 相关错误：
                 // Could not dynamically require "<project>/node_modules/react/index.js". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.
                 ignoreDynamicRequires: true,
+                // 相关错误：
+                // 在 vue-eslint-parser 中
+                // X.default.parse is not a function
+                requireReturnsDefault: "namespace",
             }),
             json(),
             esbuild({ minify: true }),
