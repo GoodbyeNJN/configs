@@ -40,5 +40,5 @@
 
         "types": ["vitest/globals"]
     },
-    "exclude": ["node_modules", "tests/fixtures/output/**/*"]
+    "exclude": ["node_modules", "tests/*/*"]
 }

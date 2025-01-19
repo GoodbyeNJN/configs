@@ -1,0 +1,85 @@
+[
+  {
+    "filename": "jsx/no-children-prop.jsx",
+    "messages": [
+      {
+        "ruleId": "react/no-children-prop",
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags.",
+        "line": 1,
+        "column": 6,
+        "messageId": "nestChildren",
+        "endLine": 1,
+        "endColumn": 28
+      },
+      {
+        "ruleId": "react/jsx-no-undef",
+        "severity": 2,
+        "message": "'Foo' is not defined.",
+        "line": 2,
+        "column": 2,
+        "messageId": "undefined",
+        "endLine": 2,
+        "endColumn": 5
+      },
+      {
+        "ruleId": "react/no-children-prop",
+        "severity": 2,
+        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags.",
+        "line": 2,
+        "column": 6,
+        "messageId": "nestChildren",
+        "endLine": 2,
+        "endColumn": 24
+      },
+      {
+        "ruleId": "react/jsx-no-undef",
+        "severity": 2,
+        "message": "'Bar' is not defined.",
+        "line": 2,
+        "column": 17,
+        "messageId": "undefined",
+        "endLine": 2,
+        "endColumn": 20
+      }
+    ]
+  },
+  {
+    "filename": "jsx/no-string-refs.jsx",
+    "messages": [
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 1,
+        "message": "'Foo' is defined but never used. Allowed unused vars must match /^_/u.",
+        "line": 1,
+        "column": 7,
+        "messageId": "unusedVar",
+        "endLine": 1,
+        "endColumn": 10
+      },
+      {
+        "ruleId": "react/no-string-refs",
+        "severity": 2,
+        "message": "Using string literals in ref attributes is deprecated.",
+        "line": 6,
+        "column": 17,
+        "messageId": "stringInRefDeprecated",
+        "endLine": 6,
+        "endColumn": 26
+      }
+    ]
+  },
+  {
+    "filename": "jsx/no-unescaped-entities.jsx",
+    "messages": [
+      {
+        "ruleId": null,
+        "fatal": true,
+        "severity": 2,
+        "message": "Parsing error: Unexpected token `>`. Did you mean `&gt;` or `{\">\"}`?",
+        "line": 1,
+        "column": 9
+      }
+    ]
+  }
+]

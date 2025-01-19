@@ -1,0 +1,87 @@
+[
+  {
+    "filename": "vue/no-unused-components.vue",
+    "messages": [
+      {
+        "ruleId": "vue/no-unused-components",
+        "severity": 2,
+        "message": "The \"Foo\" component has been registered but not used.",
+        "line": 6,
+        "column": 5,
+        "messageId": "unused",
+        "endLine": 6,
+        "endColumn": 8
+      }
+    ]
+  },
+  {
+    "filename": "vue/no-useless-mustaches.vue",
+    "messages": [
+      {
+        "ruleId": "vue/no-useless-mustaches",
+        "severity": 2,
+        "message": "Unexpected mustache interpolation with a string literal value.",
+        "line": 2,
+        "column": 3,
+        "messageId": "unexpected",
+        "endLine": 2,
+        "endColumn": 22
+      },
+      {
+        "ruleId": "vue/no-useless-mustaches",
+        "severity": 2,
+        "message": "Unexpected mustache interpolation with a string literal value.",
+        "line": 3,
+        "column": 3,
+        "messageId": "unexpected",
+        "endLine": 3,
+        "endColumn": 22
+      },
+      {
+        "ruleId": "vue/no-useless-mustaches",
+        "severity": 2,
+        "message": "Unexpected mustache interpolation with a string literal value.",
+        "line": 4,
+        "column": 3,
+        "messageId": "unexpected",
+        "endLine": 4,
+        "endColumn": 22
+      }
+    ]
+  },
+  {
+    "filename": "vue/no-useless-v-bind.vue",
+    "messages": [
+      {
+        "ruleId": "vue/no-useless-v-bind",
+        "severity": 2,
+        "message": "Unexpected `v-bind` with a string literal value.",
+        "line": 2,
+        "column": 8,
+        "messageId": "unexpected",
+        "endLine": 2,
+        "endColumn": 26
+      },
+      {
+        "ruleId": "vue/v-bind-style",
+        "severity": 2,
+        "message": "Unexpected 'v-bind' before ':'.",
+        "line": 2,
+        "column": 8,
+        "messageId": "unexpectedLonghand",
+        "endLine": 2,
+        "endColumn": 26
+      },
+      {
+        "ruleId": "vue/no-useless-v-bind",
+        "severity": 2,
+        "message": "Unexpected `v-bind` with a string literal value.",
+        "line": 3,
+        "column": 8,
+        "messageId": "unexpected",
+        "endLine": 3,
+        "endColumn": 20
+      }
+    ]
+  }
+]

@@ -1,0 +1,151 @@
+[
+  {
+    "filename": "ts/no-unused-vars.ts",
+    "messages": [
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'foo' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 2,
+        "column": 1,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 4
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'bar' is defined but never used. Allowed unused vars must match /^_/u.",
+        "line": 4,
+        "column": 10,
+        "messageId": "unusedVar",
+        "endLine": 4,
+        "endColumn": 13
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'baz' is defined but never used. Allowed unused args must match /^_/u.",
+        "line": 4,
+        "column": 15,
+        "messageId": "unusedVar",
+        "endLine": 4,
+        "endColumn": 18
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'baz' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 6,
+        "column": 9,
+        "messageId": "unusedVar",
+        "endLine": 6,
+        "endColumn": 12
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'rest' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 6,
+        "column": 17,
+        "messageId": "unusedVar",
+        "endLine": 6,
+        "endColumn": 21
+      }
+    ]
+  },
+  {
+    "filename": "ts/no-useless-constructor.ts",
+    "messages": [
+      {
+        "ruleId": "@typescript-eslint/no-useless-constructor",
+        "severity": 2,
+        "message": "Useless constructor.",
+        "line": 2,
+        "column": 3,
+        "messageId": "noUselessConstructor",
+        "endLine": 2,
+        "endColumn": 19
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'Bar1' is defined but never used. Allowed unused vars must match /^_/u.",
+        "line": 5,
+        "column": 7,
+        "messageId": "unusedVar",
+        "endLine": 5,
+        "endColumn": 11
+      },
+      {
+        "ruleId": "@typescript-eslint/no-useless-constructor",
+        "severity": 2,
+        "message": "Useless constructor.",
+        "line": 6,
+        "column": 3,
+        "messageId": "noUselessConstructor",
+        "endLine": 8,
+        "endColumn": 4
+      }
+    ]
+  },
+  {
+    "filename": "js/no-undef.js",
+    "messages": []
+  },
+  {
+    "filename": "js/no-unused-vars.js",
+    "messages": [
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'foo' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 2,
+        "column": 1,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 4
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'bar' is defined but never used. Allowed unused vars must match /^_/u.",
+        "line": 4,
+        "column": 10,
+        "messageId": "unusedVar",
+        "endLine": 4,
+        "endColumn": 13
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'baz' is defined but never used. Allowed unused args must match /^_/u.",
+        "line": 4,
+        "column": 15,
+        "messageId": "unusedVar",
+        "endLine": 4,
+        "endColumn": 18
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'baz' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 6,
+        "column": 9,
+        "messageId": "unusedVar",
+        "endLine": 6,
+        "endColumn": 12
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'rest' is assigned a value but never used. Allowed unused vars must match /^_/u.",
+        "line": 6,
+        "column": 17,
+        "messageId": "unusedVar",
+        "endLine": 6,
+        "endColumn": 21
+      }
+    ]
+  }
+]
