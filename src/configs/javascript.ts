@@ -31,7 +31,6 @@ export const javascript = (
 
                 "sort-imports": ["warn", { ignoreCase: true, ignoreDeclarationSort: true }],
                 "no-unused-vars": ["warn", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
-                "no-void": "off",
 
                 ...override,
             },
