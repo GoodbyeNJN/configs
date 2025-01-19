@@ -52,11 +52,13 @@ export const typescript = (
 
                 "no-undef": "off",
                 "no-unused-vars": "off",
+                "@typescript-eslint/no-empty-interface": "off",
+                "@typescript-eslint/no-invalid-this": "off",
+                "@typescript-eslint/no-invalid-void-type": "off",
                 "@typescript-eslint/no-unused-vars": [
                     "warn",
                     { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
                 ],
-                "@typescript-eslint/no-empty-interface": "off",
                 "@typescript-eslint/explicit-member-accessibility": "off",
 
                 ...override,
