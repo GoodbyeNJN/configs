@@ -1,8 +1,6 @@
-import { localPkg } from "modules";
+import { isPackageExists } from "modules/eslint";
 
 import type { Configs, Enables, Option, Options, Overrides } from "./types";
-
-const { isPackageExists } = localPkg;
 
 export const defaultEnables: Enables = {
     typescript: isPackageExists("typescript"),

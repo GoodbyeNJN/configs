@@ -36,6 +36,10 @@
             "types": "./dist/prettier.d.ts",
             "import": "./dist/esm/prettier.mjs",
             "require": "./dist/cjs/prettier.cjs"
+        },
+        "./prettier-plugin-ignored": {
+            "import": "./dist/modules/prettier-plugin-ignored.cjs",
+            "require": "./dist/modules/prettier-plugin-ignored.cjs"
         }
     },
     "typesVersions": {
@@ -73,6 +77,7 @@
         "eslint-plugin-react-hooks": "5.1.0",
         "eslint-plugin-vue": "9.32.0",
         "fast-glob": "^3.3.3",
+        "find-up-simple": "^1.0.0",
         "globals": "15.14.0",
         "local-pkg": "1.0.0",
         "prettier": "^3.4.2",
@@ -80,6 +85,7 @@
         "rollup": "^4.30.1",
         "rollup-plugin-dts": "^6.1.1",
         "rollup-plugin-esbuild": "^6.1.1",
+        "rollup-plugin-tsconfig-paths": "^1.5.2",
         "typescript": "^5.7.3",
         "vitest": "^3.0.2",
         "vue-eslint-parser": "9.4.3",
@@ -117,6 +123,9 @@
             "object.fromentries": "npm:@nolyfill/object.fromentries@^1",
             "object.values": "npm:@nolyfill/object.values@^1",
             "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1"
-        }
+        },
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
     }
 }

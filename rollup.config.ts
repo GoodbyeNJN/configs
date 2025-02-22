@@ -9,15 +9,20 @@ import { pick } from "remeda";
 import { defineConfig } from "rollup";
 import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
+import tsconfig from "rollup-plugin-tsconfig-paths";
 
 import type { LogHandlerWithDefault, Plugin } from "rollup";
 
 const require = module.createRequire(import.meta.url);
 
 const input = {
-    index: "src/index.ts",
-    prettier: "src/prettier.ts",
-    modules: "modules/index.cjs",
+    index: "src/eslint/index.ts",
+    prettier: "src/prettier/index.ts",
+    modules: {
+        eslint: "modules/eslint.ts",
+        "find-up": "modules/find-up.ts",
+        "prettier-plugin-ignored": "modules/prettier-plugin-ignored.ts",
+    },
     wasm: path.resolve(
         path.dirname(require.resolve("@oxc-resolver/binding-wasm32-wasi")),
         "resolver.wasm32-wasi.wasm",
@@ -81,17 +86,20 @@ export default defineConfig([
                 dir: output.cjs,
                 format: "cjs",
                 entryFileNames: "[name].cjs",
+                chunkFileNames: "[name].cjs",
             },
             {
                 dir: output.esm,
                 format: "esm",
                 entryFileNames: "[name].mjs",
+                chunkFileNames: "[name].mjs",
             },
         ],
 
         external: [...external, /node_modules/],
 
         plugins: [
+            tsconfig(),
             commonjs(),
             json(),
             esbuild({ minify: false }),
@@ -102,9 +110,10 @@ export default defineConfig([
                 resolveId: {
                     order: "pre",
                     handler(source) {
-                        if (source !== "modules") return null;
+                        // expect: modules/eslint, modules/find-up, modules/prettier-plugin-ignored
+                        if (!source.startsWith("modules")) return null;
 
-                        return { id: "../modules/index.cjs", external: true };
+                        return { id: `../${source}.cjs`, external: true };
                     },
                 },
             },
@@ -118,6 +127,7 @@ export default defineConfig([
             dir: output.modules,
             format: "cjs",
             entryFileNames: "[name].cjs",
+            chunkFileNames: "[name].cjs",
         },
 
         external,

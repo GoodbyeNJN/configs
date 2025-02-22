@@ -1,6 +1,5 @@
-import { configAlloyVue, parserTypescript, parserVue, pluginVue } from "modules";
-
-import { GLOB_VUE } from "../globs";
+import { GLOB_VUE } from "@/globs";
+import { configAlloyVue, parserTypescript, parserVue, pluginVue } from "modules/eslint";
 
 import type { ESLintConfig, VueConfig, VueOverride } from "../types";
 

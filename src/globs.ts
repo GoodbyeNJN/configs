@@ -1,3 +1,6 @@
+export const GITIGNORE = ".gitignore";
+export const GITMODULES = ".gitmodules";
+
 export const GLOB_SRC_EXT = "?([cm])[jt]s?(x)";
 export const GLOB_SRC = "**/*.?([cm])[jt]s?(x)";
 
@@ -45,10 +48,6 @@ export const GLOB_EXCLUDE_LIST = [
     "**/.output",
     "**/.vite-inspect",
 
-    "**/CHANGELOG*.md",
     "**/*.min.*",
-    "**/LICENSE*",
     "**/__snapshots__",
-    "**/auto-import?(s).d.ts",
-    "**/components.d.ts",
 ];

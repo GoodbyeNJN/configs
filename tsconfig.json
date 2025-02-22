@@ -35,7 +35,8 @@
 
         "baseUrl": "./",
         "paths": {
-            "modules": ["modules"]
+            "@/*": ["./src/*"],
+            "modules/*": ["./modules/*"]
         },
 
         "types": ["vitest/globals"]

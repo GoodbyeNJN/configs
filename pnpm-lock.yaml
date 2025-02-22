@@ -22,13 +22,13 @@ overrides:
 
 patchedDependencies:
   '@antfu/eslint-define-config':
-    hash: ks7zrtln2gcbtflltjjkksgnyq
+    hash: ac86a36e33bdf05fd2ab95559b64f984c984e4178d17a5b154cd3210ef7c4d87
     path: patches/@antfu__eslint-define-config.patch
   eslint-config-alloy:
-    hash: qxnw6fb477uoeiyxfqzo2s7bem
+    hash: e4cb63ae8fd035adf562ad12a8ab9c7a921a9975fd69d8eb08631ed36b395d17
     path: patches/eslint-config-alloy.patch
   eslint-plugin-vue:
-    hash: fxndjzsiemtkxawi5ls6yhhe4y
+    hash: d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274
     path: patches/eslint-plugin-vue.patch
 
 importers:
@@ -37,7 +37,7 @@ importers:
     devDependencies:
       '@antfu/eslint-define-config':
         specifier: 1.23.0-2
-        version: 1.23.0-2(patch_hash=ks7zrtln2gcbtflltjjkksgnyq)
+        version: 1.23.0-2(patch_hash=ac86a36e33bdf05fd2ab95559b64f984c984e4178d17a5b154cd3210ef7c4d87)
       '@goodbyenjn/eslint-config':
         specifier: 'file:'
         version: file:(eslint@9.18.0)(prettier@3.4.2)(typescript@5.7.3)
@@ -67,7 +67,7 @@ importers:
         version: 9.18.0
       eslint-config-alloy:
         specifier: 5.1.2
-        version: 5.1.2(patch_hash=qxnw6fb477uoeiyxfqzo2s7bem)(@typescript-eslint/eslint-plugin@8.20.0(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3))(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint-plugin-react@7.37.4(eslint@9.18.0))(eslint-plugin-vue@9.32.0(patch_hash=fxndjzsiemtkxawi5ls6yhhe4y)(eslint@9.18.0))(eslint@9.18.0)(typescript@5.7.3)(vue-eslint-parser@9.4.3(eslint@9.18.0))
+        version: 5.1.2(patch_hash=e4cb63ae8fd035adf562ad12a8ab9c7a921a9975fd69d8eb08631ed36b395d17)(@typescript-eslint/eslint-plugin@8.20.0(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3))(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint-plugin-react@7.37.4(eslint@9.18.0))(eslint-plugin-vue@9.32.0(patch_hash=d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274)(eslint@9.18.0))(eslint@9.18.0)(typescript@5.7.3)(vue-eslint-parser@9.4.3(eslint@9.18.0))
       eslint-config-flat-gitignore:
         specifier: 1.0.0
         version: 1.0.0(eslint@9.18.0)
@@ -85,10 +85,13 @@ importers:
         version: 5.1.0(eslint@9.18.0)
       eslint-plugin-vue:
         specifier: 9.32.0
-        version: 9.32.0(patch_hash=fxndjzsiemtkxawi5ls6yhhe4y)(eslint@9.18.0)
+        version: 9.32.0(patch_hash=d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274)(eslint@9.18.0)
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
+      find-up-simple:
+        specifier: ^1.0.0
+        version: 1.0.0
       globals:
         specifier: 15.14.0
         version: 15.14.0
@@ -110,6 +113,9 @@ importers:
       rollup-plugin-esbuild:
         specifier: ^6.1.1
         version: 6.1.1(esbuild@0.24.2)(rollup@4.30.1)
+      rollup-plugin-tsconfig-paths:
+        specifier: ^1.5.2
+        version: 1.5.2(rollup@4.30.1)(typescript@5.7.3)
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -1354,6 +1360,11 @@ packages:
       esbuild: '>=0.18.0'
       rollup: ^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
 
+  rollup-plugin-tsconfig-paths@1.5.2:
+    resolution: {integrity: sha512-tyS7u2Md0eXKwbDfTuDDa1izciwqhOZsHzX7zYc5gKC1L7q5ozdSt+q1jjtD1dDqWyjrt8lZoiLtOQGhMHh1OQ==}
+    peerDependencies:
+      rollup: ^2 || ^3 || ^4
+
   rollup@4.30.1:
     resolution: {integrity: sha512-mlJ4glW020fPuLi7DkM/lN97mYEZGWeqBnrljzN0gs7GLctqX3lNWxKQ7Gl712UAX+6fog/L3jh4gb7R6aVi3w==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -1460,6 +1471,11 @@ packages:
   type-fest@4.32.0:
     resolution: {integrity: sha512-rfgpoi08xagF3JSdtJlCwMq9DGNDE0IMh3Mkpc1wUypg9vPi786AiqeBBKcqvIkq42azsBM85N490fyZjeUftw==}
     engines: {node: '>=16'}
+
+  typescript-paths@1.5.1:
+    resolution: {integrity: sha512-lYErSLCON2MSplVV5V/LBgD4UNjMgY3guATdFCZY2q1Nr6OZEu4q6zX/rYMsG1TaWqqQSszg6C9EU7AGWMDrIw==}
+    peerDependencies:
+      typescript: ^4.7.2 || ^5
 
   typescript@5.7.3:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
@@ -1583,7 +1599,7 @@ packages:
 
 snapshots:
 
-  '@antfu/eslint-define-config@1.23.0-2(patch_hash=ks7zrtln2gcbtflltjjkksgnyq)': {}
+  '@antfu/eslint-define-config@1.23.0-2(patch_hash=ac86a36e33bdf05fd2ab95559b64f984c984e4178d17a5b154cd3210ef7c4d87)': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:
@@ -2255,14 +2271,14 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-alloy@5.1.2(patch_hash=qxnw6fb477uoeiyxfqzo2s7bem)(@typescript-eslint/eslint-plugin@8.20.0(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3))(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint-plugin-react@7.37.4(eslint@9.18.0))(eslint-plugin-vue@9.32.0(patch_hash=fxndjzsiemtkxawi5ls6yhhe4y)(eslint@9.18.0))(eslint@9.18.0)(typescript@5.7.3)(vue-eslint-parser@9.4.3(eslint@9.18.0)):
+  eslint-config-alloy@5.1.2(patch_hash=e4cb63ae8fd035adf562ad12a8ab9c7a921a9975fd69d8eb08631ed36b395d17)(@typescript-eslint/eslint-plugin@8.20.0(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3))(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint-plugin-react@7.37.4(eslint@9.18.0))(eslint-plugin-vue@9.32.0(patch_hash=d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274)(eslint@9.18.0))(eslint@9.18.0)(typescript@5.7.3)(vue-eslint-parser@9.4.3(eslint@9.18.0)):
     dependencies:
       eslint: 9.18.0
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 8.20.0(@typescript-eslint/parser@8.20.0(eslint@9.18.0)(typescript@5.7.3))(eslint@9.18.0)(typescript@5.7.3)
       '@typescript-eslint/parser': 8.20.0(eslint@9.18.0)(typescript@5.7.3)
       eslint-plugin-react: 7.37.4(eslint@9.18.0)
-      eslint-plugin-vue: 9.32.0(patch_hash=fxndjzsiemtkxawi5ls6yhhe4y)(eslint@9.18.0)
+      eslint-plugin-vue: 9.32.0(patch_hash=d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274)(eslint@9.18.0)
       typescript: 5.7.3
       vue-eslint-parser: 9.4.3(eslint@9.18.0)
 
@@ -2333,7 +2349,7 @@ snapshots:
       string.prototype.matchall: '@nolyfill/string.prototype.matchall@1.0.28'
       string.prototype.repeat: '@nolyfill/string.prototype.repeat@1.0.28'
 
-  eslint-plugin-vue@9.32.0(patch_hash=fxndjzsiemtkxawi5ls6yhhe4y)(eslint@9.18.0):
+  eslint-plugin-vue@9.32.0(patch_hash=d62023a915b0b480ccff237e494aa3a9181675fb8691e61208549c6c9288d274)(eslint@9.18.0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.18.0)
       eslint: 9.18.0
@@ -2742,6 +2758,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  rollup-plugin-tsconfig-paths@1.5.2(rollup@4.30.1)(typescript@5.7.3):
+    dependencies:
+      rollup: 4.30.1
+      typescript-paths: 1.5.1(typescript@5.7.3)
+    transitivePeerDependencies:
+      - typescript
+
   rollup@4.30.1:
     dependencies:
       '@types/estree': 1.0.6
@@ -2835,6 +2858,10 @@ snapshots:
   type-fest@0.20.2: {}
 
   type-fest@4.32.0: {}
+
+  typescript-paths@1.5.1(typescript@5.7.3):
+    dependencies:
+      typescript: 5.7.3
 
   typescript@5.7.3: {}
 

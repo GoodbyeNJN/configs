@@ -1,6 +1,5 @@
-import { configAlloyReact, pluginReact, pluginReactHooks } from "modules";
-
-import { GLOB_JSX, GLOB_TSX } from "../globs";
+import { GLOB_JSX, GLOB_TSX } from "@/globs";
+import { configAlloyReact, pluginReact, pluginReactHooks } from "modules/eslint";
 
 import type { ESLintConfig, ReactConfig, ReactOverride } from "../types";
 

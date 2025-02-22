@@ -1,4 +1,4 @@
-import { GLOB_EXCLUDE_LIST } from "../globs";
+import { GLOB_EXCLUDE_LIST } from "@/globs";
 
 import type { ESLintConfig } from "../types";
 
