@@ -32,6 +32,8 @@ export const react = (
                 },
             },
             rules: {
+                "react-hooks/rules-of-hooks": "error",
+                "react-hooks/exhaustive-deps": "warn",
                 ...configAlloyReact.rules,
                 ...(useTypescript ? { "react/jsx-no-undef": "off" } : {}),
                 ...override,
