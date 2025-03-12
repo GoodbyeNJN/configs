@@ -31,9 +31,9 @@ const cases: Case[] = [
         },
     },
     {
-        name: "should lint jsx",
-        input: ["jsx/*"],
-        snapshot: "jsx.json",
+        name: "should lint react",
+        input: ["react/*"],
+        snapshot: "react.json",
         options: {
             typescript: false,
             react: { version: "18" },

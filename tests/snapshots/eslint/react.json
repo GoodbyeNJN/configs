@@ -1,6 +1,6 @@
 [
   {
-    "filename": "jsx/no-children-prop.jsx",
+    "filename": "react/no-children-prop.jsx",
     "messages": [
       {
         "ruleId": "react/no-children-prop",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "filename": "jsx/no-string-refs.jsx",
+    "filename": "react/no-string-refs.jsx",
     "messages": [
       {
         "ruleId": "no-unused-vars",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "filename": "jsx/no-unescaped-entities.jsx",
+    "filename": "react/no-unescaped-entities.jsx",
     "messages": [
       {
         "ruleId": null,
@@ -79,6 +79,40 @@
         "message": "Parsing error: Unexpected token `>`. Did you mean `&gt;` or `{\">\"}`?",
         "line": 1,
         "column": 9
+      }
+    ]
+  },
+  {
+    "filename": "react/rules-of-hooks.jsx",
+    "messages": [
+      {
+        "ruleId": "react-hooks/rules-of-hooks",
+        "severity": 2,
+        "message": "React Hook \"useContext\" is called conditionally. React Hooks must be called in the exact same order in every component render.",
+        "line": 3,
+        "column": 9,
+        "endLine": 3,
+        "endColumn": 19
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'useContext' is not defined.",
+        "line": 3,
+        "column": 9,
+        "messageId": "undef",
+        "endLine": 3,
+        "endColumn": 19
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'ThemeContext' is not defined.",
+        "line": 3,
+        "column": 20,
+        "messageId": "undef",
+        "endLine": 3,
+        "endColumn": 32
       }
     ]
   }

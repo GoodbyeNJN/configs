@@ -16,8 +16,8 @@ const cases = [
         snapshot: "snapshot.ts",
     },
     {
-        name: "should format jsx",
-        input: "jsx/no-string-refs.jsx",
+        name: "should format react",
+        input: "react/no-string-refs.jsx",
         snapshot: "snapshot.jsx",
     },
     {
@@ -34,7 +34,7 @@ const cases = [
 
 describe.concurrent("Prettier", () => {
     test.for(cases)("$name", async ({ input, snapshot }, { expect }) => {
-        const stdout = await $`npx prettier ${input}`;
+        const stdout = await $`pnpx prettier ${input}`;
         const output = stdout.text();
 
         await expect(output).toMatchFileSnapshot(path.join("snapshots/prettier", snapshot));
