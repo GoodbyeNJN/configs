@@ -1,4 +1,4 @@
-import { pluginImport, pluginImportResolverOxc } from "modules/eslint";
+import { pluginImport, pluginImportResolverOxc } from "modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 

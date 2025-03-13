@@ -1,4 +1,4 @@
-import { configAlloyBase, globals } from "modules/eslint";
+import { configAlloyBase, globals } from "modules";
 
 import type { ESLintConfig, JavaScriptConfig, JavaScriptOverride } from "../types";
 

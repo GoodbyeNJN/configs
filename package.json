@@ -23,23 +23,20 @@
         "url": "git+https://github.com/GoodbyeNJN/eslint-config.git"
     },
     "type": "module",
-    "module": "./dist/esm/index.mjs",
-    "main": "./dist/cjs/index.cjs",
-    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "types": "./dist/types/index.d.ts",
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/esm/index.mjs",
-            "require": "./dist/cjs/index.cjs"
+            "types": "./dist/types/index.d.ts",
+            "import": "./dist/index.js"
         },
         "./prettier": {
-            "types": "./dist/prettier.d.ts",
-            "import": "./dist/esm/prettier.mjs",
-            "require": "./dist/cjs/prettier.cjs"
+            "types": "./dist/types/prettier.d.ts",
+            "import": "./dist/prettier.js"
         },
         "./prettier-plugin-ignored": {
-            "import": "./dist/modules/prettier-plugin-ignored.cjs",
-            "require": "./dist/modules/prettier-plugin-ignored.cjs"
+            "import": "./dist/prettier-plugin-ignored.cjs",
+            "require": "./dist/prettier-plugin-ignored.cjs"
         }
     },
     "typesVersions": {
@@ -109,7 +106,7 @@
             "eslint-plugin-vue": "patches/eslint-plugin-vue.patch"
         },
         "overrides": {
-            "oxc-resolver": "file:./modules/oxc-resolver",
+            "oxc-resolver": "file:./src/oxc-resolver",
             "array-includes": "npm:@nolyfill/array-includes@^1",
             "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
             "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",

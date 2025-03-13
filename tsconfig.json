@@ -33,13 +33,14 @@
         "noEmit": true,
         "resolveJsonModule": true,
 
-        "baseUrl": "./",
+        "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"],
-            "modules/*": ["./modules/*"]
+            "@/*": ["src/*"],
+            "modules": ["src/modules"]
         },
 
         "types": ["vitest/globals"]
     },
+    "include": [".", "src"],
     "exclude": ["node_modules", "tests/*/*"]
 }
