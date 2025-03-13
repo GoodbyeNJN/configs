@@ -1,0 +1,8 @@
+{
+"should":{
+  "not": {
+    "be": ["formatted",
+      "linted"]
+  }
+}
+}
