@@ -1,8 +1,10 @@
 # @goodbyenjn/eslint-config
 
-个人使用的一套 ESLint 规则。基于 [eslint-config-alloy](https://github.com/alloyteam/eslint-config-alloy) 和 [@antfu/eslint-config](https://github.com/antfu/eslint-config)，并增加了 [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i)、[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) 插件。
+个人使用的一套 ESLint 规则。基于 [eslint-config-alloy](https://github.com/alloyteam/eslint-config-alloy) 和 [@antfu/eslint-config](https://github.com/antfu/eslint-config)，并增加了 [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)、[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) 插件。
 
 目前已适配 ESLint flat config。
+
+这是一个 ESM 模块，已弃用 CommonJS 支持。
 
 ## 使用方法
 
@@ -14,18 +16,12 @@ pnpm add -D eslint @goodbyenjn/eslint-config
 yarn add -D eslint @goodbyenjn/eslint-config
 ```
 
-在你的项目根目录下创建一个 `eslint.config.js` 文件，并将以下内容复制进去：
+在你的项目根目录下创建一个 `eslint.config.mjs` 文件，并将以下内容复制进去：
 
 ```js
 import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
 
-export default [...withGoodbyeNJNConfig()];
-
-// or
-
-const { withGoodbyeNJNConfig } = require("@goodbyenjn/eslint-config");
-
-module.exports = [...withGoodbyeNJNConfig()];
+export default withGoodbyeNJNConfig();
 ```
 
 本配置会根据 `package.json` 文件中是否存在 `react`、`vue` 和 `typescript` 依赖项来自动启用对应的规则。
@@ -69,20 +65,31 @@ pnpm add -D prettier
 yarn add -D prettier
 ```
 
-在你的项目根目录下创建一个 `prettier.config.js` 文件，并将以下内容复制进去：
+在你的项目根目录下创建一个 `prettier.config.mjs` 文件，并将以下内容复制进去：
+
+```js
+import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
+
+export default withGoodbyeNJNConfig();
+```
+
+本配置会自动忽略 `.gitignore` 中列出的文件，并且会忽略一些常见的文件，例如 `dist`、`.next`、`.nuxt`、`.output`、`.vercel`、`package-lock.json`、`yarn.lock`、`pnpm-lock.yaml` 等。详细列表请查看 [globs.ts](src/globs.ts) 文件。
+
+如果你需要忽略其他文件，可以在 `prettier.config.mjs` 中添加 `overrides` 选项，例如：
 
 ```js
 import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
 
 export default withGoodbyeNJNConfig({
-    // custom configs
-});
-
-// or
-
-const { withGoodbyeNJNConfig } = require("@goodbyenjn/eslint-config/prettier");
-
-module.exports = withGoodbyeNJNConfig({
-    // custom configs
+    overrides: [
+        {
+            // 忽略所有的 JSON 文件
+            files: ["*.json"],
+            options: {
+                // 指定名为 "ignored" 的解析器即可忽略匹配的文件
+                parser: "ignored",
+            },
+        },
+    ],
 });
 ```
