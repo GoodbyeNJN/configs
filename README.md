@@ -75,21 +75,15 @@ export default withGoodbyeNJNConfig();
 
 本配置会自动忽略 `.gitignore` 中列出的文件，并且会忽略一些常见的文件，例如 `dist`、`.next`、`.nuxt`、`.output`、`.vercel`、`package-lock.json`、`yarn.lock`、`pnpm-lock.yaml` 等。详细列表请查看 [globs.ts](src/globs.ts) 文件。
 
-如果你需要忽略其他文件，可以在 `prettier.config.mjs` 中添加 `overrides` 选项，例如：
+如果你需要忽略其他文件，可以在 `prettier.config.mjs` 中添加 `ignores` 选项，例如：
 
 ```js
 import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
 
 export default withGoodbyeNJNConfig({
-    overrides: [
-        {
-            // 忽略所有的 JSON 文件
-            files: ["*.json"],
-            options: {
-                // 指定名为 "ignored" 的解析器即可忽略匹配的文件
-                parser: "ignored",
-            },
-        },
-    ],
+    // 忽略所有的 JSON 文件
+    files: ["*.json"],
 });
 ```
+
+其中 `ignores` 选项的格式与 Prettier 配置中的 `overrides[].files` 选项相同。详情请参考 [Prettier 文档](https://prettier.io/docs/configuration#configuration-overrides)。
