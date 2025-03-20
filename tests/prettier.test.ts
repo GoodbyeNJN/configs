@@ -27,6 +27,12 @@ const cases = [
         snapshot: "formatted.vue",
     },
     {
+        name: "should format jsonc",
+        input: "json/no-trailing-comma.jsonc",
+        snapshot: "formatted.jsonc",
+        overrides: true,
+    },
+    {
         name: "should format yaml",
         input: "yaml/indent-4-space.yaml",
         snapshot: "formatted.yaml",

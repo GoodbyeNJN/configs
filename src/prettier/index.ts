@@ -1,4 +1,4 @@
-import { defaults, gitignore, ignores, plugins, yaml } from "./configs";
+import { defaults, gitignore, ignores, jsonc, plugins, yaml } from "./configs";
 
 import type { Options, PrettierConfig } from "./types";
 
@@ -12,6 +12,6 @@ export const withGoodbyeNJNConfig = (options: Options = {}): PrettierConfig => {
 
         ...plugins(options),
 
-        overrides: [gitignore(), ignores(options), yaml(), ...overrides],
+        overrides: [gitignore(), ignores(options), jsonc(), yaml(), ...overrides],
     };
 };

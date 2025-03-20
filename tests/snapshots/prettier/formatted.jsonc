@@ -1,0 +1,7 @@
+{
+    "should": {
+        "not": {
+            "has": ["trailing", "comma"]
+        }
+    }
+}
