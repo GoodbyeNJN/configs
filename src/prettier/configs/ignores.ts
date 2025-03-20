@@ -1,10 +1,12 @@
 import { GLOB_EXCLUDE_LIST } from "@/globs";
 
-import type { OverrideConfig } from "../types";
+import type { Options, Override } from "../types";
 
-export const ignores = (): OverrideConfig => {
+export const ignores = (options: Options = {}): Override => {
+    const { ignores = [] } = options;
+
     return {
-        files: GLOB_EXCLUDE_LIST,
+        files: [...GLOB_EXCLUDE_LIST, ...ignores],
         options: {
             parser: "ignored",
         },

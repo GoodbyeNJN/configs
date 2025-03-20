@@ -1,15 +1,17 @@
 import { defaults, gitignore, ignores, plugins, yaml } from "./configs";
 
-import type { PrettierConfig } from "./types";
+import type { Options, PrettierConfig } from "./types";
 
-export const withGoodbyeNJNConfig = (config: PrettierConfig = {}): PrettierConfig => {
-    const { overrides = [] } = config;
+export type { Options, Override } from "./types";
+
+export const withGoodbyeNJNConfig = (options: Options = {}): PrettierConfig => {
+    const { overrides = [] } = options;
 
     return {
-        ...defaults(config),
+        ...defaults(options),
 
-        ...plugins(config),
+        ...plugins(options),
 
-        overrides: [gitignore(), ignores(), yaml(), ...overrides],
+        overrides: [gitignore(), ignores(options), yaml(), ...overrides],
     };
 };

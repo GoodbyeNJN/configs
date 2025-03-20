@@ -9,33 +9,39 @@ const cases = [
     {
         name: "should format js",
         input: "js/no-unused-vars.js",
-        snapshot: "js.snap",
+        snapshot: "formatted.js",
     },
     {
         name: "should format ts",
         input: "ts/no-unused-vars.ts",
-        snapshot: "ts.snap",
+        snapshot: "formatted.ts",
     },
     {
         name: "should format react",
         input: "react/no-string-refs.jsx",
-        snapshot: "react.snap",
+        snapshot: "formatted.jsx",
     },
     {
         name: "should format vue",
         input: "vue/no-useless-v-bind.vue",
-        snapshot: "vue.snap",
+        snapshot: "formatted.vue",
     },
     {
-        name: "should format yaml with overrides",
+        name: "should format yaml",
         input: "yaml/indent-4-space.yaml",
-        snapshot: "yaml.snap",
+        snapshot: "formatted.yaml",
         overrides: true,
     },
     {
-        name: "should ignore with overrides",
+        name: "should ignore by default",
         input: "json/package-lock.json",
-        snapshot: "json.snap",
+        snapshot: "ignored-by-default.json",
+        overrides: true,
+    },
+    {
+        name: "should ignore by user config",
+        input: "json/should.ignored.json",
+        snapshot: "ignored-by-config.json",
         overrides: true,
     },
 ];

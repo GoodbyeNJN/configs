@@ -10,7 +10,7 @@
     "is": {
       "ignored": {
         "by": [
-        "default"
+        "file", "patterns"
         ]
       }
     }

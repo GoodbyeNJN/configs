@@ -4,7 +4,7 @@ import url from "node:url";
 
 import { GITIGNORE, GITMODULES } from "@/globs";
 
-import type { OverrideConfig } from "../types";
+import type { Override } from "../types";
 
 interface Options {
     cwd?: URL | string;
@@ -91,7 +91,7 @@ const toRelativePattern = (pattern: string, relativePath: string, cwd: string) =
     return null;
 };
 
-export const gitignore = (): OverrideConfig => {
+export const gitignore = (): Override => {
     const cwd = process.cwd();
 
     const ignores: string[] = [];
