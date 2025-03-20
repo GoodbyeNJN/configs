@@ -50,7 +50,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "rollup --config rollup.config.ts --configPlugin esbuild",
+        "build": "rolldown -c build/rolldown.config.ts && rollup -c build/rollup.config.ts --configPlugin esbuild",
         "test": "vitest",
         "test:ci": "vitest run",
         "publish:ci": "npm publish --access public"
@@ -59,9 +59,6 @@
         "@antfu/eslint-define-config": "1.23.0-2",
         "@goodbyenjn/eslint-config": "file:",
         "@oxc-resolver/binding-wasm32-wasi": "4.2.0",
-        "@rollup/plugin-commonjs": "^28.0.2",
-        "@rollup/plugin-json": "^6.1.0",
-        "@rollup/plugin-node-resolve": "^16.0.0",
         "@types/node": "^22.13.5",
         "@typescript-eslint/eslint-plugin": "8.24.1",
         "@typescript-eslint/parser": "8.24.1",
@@ -79,14 +76,13 @@
         "local-pkg": "1.0.0",
         "prettier": "^3.5.2",
         "remeda": "^2.20.2",
+        "rolldown": "1.0.0-beta.4",
         "rollup": "^4.34.8",
         "rollup-plugin-dts": "^6.1.1",
         "rollup-plugin-esbuild": "^6.2.0",
-        "rollup-plugin-tsconfig-paths": "^1.5.2",
         "typescript": "^5.7.3",
         "vitest": "^3.0.6",
-        "vue-eslint-parser": "9.4.3",
-        "zx": "^8.3.2"
+        "vue-eslint-parser": "9.4.3"
     },
     "peerDependencies": {
         "eslint": "^9.0.0 || ^8.0.0",
