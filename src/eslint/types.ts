@@ -19,7 +19,6 @@ export interface JavaScriptConfig {}
 
 export interface TypeScriptConfig {
     useVue?: boolean;
-    tsconfigPath?: string;
     parserOptions?: ParserOptions;
 }
 

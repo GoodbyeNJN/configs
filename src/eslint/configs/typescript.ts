@@ -1,6 +1,5 @@
-import { configAlloyTypescript, parserTypescript, pluginTypescript } from "modules";
-
 import { GLOB_JS, GLOB_JSX, GLOB_SRC, GLOB_VUE } from "@/globs";
+import { configAlloyTypescript, parserTypescript, pluginTypescript } from "modules";
 
 import type { ESLintConfig, TypeScriptConfig, TypeScriptOverride } from "../types";
 
@@ -8,7 +7,7 @@ export const typescript = (
     config: TypeScriptConfig,
     override: TypeScriptOverride,
 ): ESLintConfig<TypeScriptOverride>[] => {
-    const { useVue, tsconfigPath, parserOptions } = config;
+    const { useVue, parserOptions } = config;
     const extraFileExtensions: string[] = [];
     const files = [GLOB_SRC];
 
@@ -35,10 +34,8 @@ export const typescript = (
                         globalReturn: false,
                     },
                     extraFileExtensions,
-
-                    ...(tsconfigPath
-                        ? { project: tsconfigPath, tsconfigRootDir: process.cwd() }
-                        : { project: true }),
+                    project: false,
+                    projectService: false,
 
                     ...parserOptions,
                 },
