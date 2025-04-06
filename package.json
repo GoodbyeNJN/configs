@@ -52,8 +52,7 @@
     "scripts": {
         "build": "rolldown -c build/rolldown.config.ts && rollup -c build/rollup.config.ts --configPlugin esbuild",
         "test": "vitest",
-        "test:ci": "vitest run",
-        "publish:ci": "npm publish --access public"
+        "test:ci": "vitest run"
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
@@ -131,7 +130,8 @@
         "@unrs/resolver-binding-win32-x64-msvc": "1.3.3"
     },
     "publishConfig": {
-        "registry": "https://registry.npmjs.org"
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
     },
     "engines": {
         "node": ">=16"
