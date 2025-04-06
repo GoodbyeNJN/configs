@@ -12,8 +12,11 @@ export const pluginTypescript: ESLint.Plugin;
 export const pluginReact: ESLint.Plugin;
 export const pluginReactHooks: ESLint.Plugin;
 export const pluginVue: ESLint.Plugin;
-export const pluginImport: ESLint.Plugin;
-export const pluginImportResolverOxc: ESLint.Plugin;
+export const pluginImport: ESLint.Plugin &
+    Pick<
+        typeof import("eslint-plugin-import-x").default,
+        "createNodeResolver" | "importXResolverCompat"
+    >;
 
 export const parserTypescript: Linter.Parser;
 export const parserVue: Linter.Parser;

@@ -12,7 +12,6 @@ exports.pluginReact = require("eslint-plugin-react");
 exports.pluginReactHooks = require("eslint-plugin-react-hooks");
 exports.pluginVue = require("eslint-plugin-vue");
 exports.pluginImport = require("eslint-plugin-import-x");
-exports.pluginImportResolverOxc = require("eslint-import-resolver-oxc");
 
 exports.parserTypescript = require("@typescript-eslint/parser");
 exports.parserVue = require("vue-eslint-parser");

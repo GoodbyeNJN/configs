@@ -1,8 +1,0 @@
-{
-    "name": "oxc-resolver",
-    "version": "4.2.0",
-    "main": "index.cjs",
-    "files": [
-        "index.cjs"
-    ]
-}

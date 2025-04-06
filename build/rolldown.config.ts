@@ -71,16 +71,10 @@ export default defineConfig([
         },
 
         platform: "node",
-        external,
+        external: [...external, /^@unrs\/resolver-binding-.*/],
 
         plugins: [
             esbuild({ minify: true }) as Plugin,
-            {
-                name: "plugin:copy-wasm",
-                async writeBundle() {
-                    await fs.promises.cp(input.wasm, output.wasm, { force: true });
-                },
-            },
         ],
     },
 ]);

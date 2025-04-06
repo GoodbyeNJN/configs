@@ -1,4 +1,4 @@
-import { pluginImport, pluginImportResolverOxc } from "modules";
+import { pluginImport } from "modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 
@@ -13,14 +13,7 @@ export const imports = (
             name: "goodbyenjn:imports",
             plugins: { import: pluginImport },
             settings: {
-                "import-x/resolver": [
-                    {
-                        name: "oxc",
-                        enable: true,
-                        options: {},
-                        resolver: pluginImportResolverOxc,
-                    },
-                ],
+                "import-x/resolver-next": [pluginImport.createNodeResolver()],
             },
             rules: {
                 // import 强制排序
