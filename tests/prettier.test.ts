@@ -5,6 +5,8 @@ import { format } from "prettier";
 
 import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
 
+import { $ } from "./utils";
+
 const cases = [
     {
         name: "should format js",
@@ -52,20 +54,15 @@ const cases = [
     },
 ];
 
+const configPath = path.join(import.meta.dirname, "prettier.test.config.js");
 const options = withGoodbyeNJNConfig();
 
 describe.concurrent("Prettier", () => {
     test.for(cases)("$name", async ({ input, snapshot, overrides }, { expect }) => {
         let output;
         if (overrides) {
-            const { spawn } = await import("node:child_process");
             const filepath = path.join(import.meta.dirname, input);
-            const prettierProcess = spawn("pnpm", ["prettier", filepath]);
-
-            let stdout = "";
-            for await (const chunk of prettierProcess.stdout) {
-                stdout += chunk;
-            }
+            const { stdout } = await $("pnpm", ["prettier", "--config", configPath, filepath]);
 
             output = stdout;
         } else {
