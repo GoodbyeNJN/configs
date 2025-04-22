@@ -3,7 +3,7 @@ import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
 
 export default [
     {
-        ignores: ["tests/fixtures/input"],
+        ignores: ["tests/*/**/*"],
     },
     ...withGoodbyeNJNConfig(),
 ];
