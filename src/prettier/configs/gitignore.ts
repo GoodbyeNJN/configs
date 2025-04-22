@@ -134,7 +134,7 @@ export const gitignore = (): Override => {
     return {
         files: ignores,
         options: {
-            parser: "ignored",
+            parser: "ignore-parser",
         },
     };
 };

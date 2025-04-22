@@ -1,7 +1,6 @@
 export const input = {
     index: "src/eslint/index.ts",
     prettier: "src/prettier/index.ts",
-    "prettier-plugin-ignored": "src/prettier-plugin-ignored/index.ts",
     modules: "src/modules/index.cts",
 };
 
@@ -12,3 +11,10 @@ export const output = {
 };
 
 export const external = [/^eslint$|^eslint\/.*/, "prettier", /^typescript$|^typescript\/.*/];
+
+export const plugins = [
+    {
+        input: "src/prettier/plugins/ignore.ts",
+        output: "dist/plugins/prettier-plugin-ignore.js",
+    },
+];

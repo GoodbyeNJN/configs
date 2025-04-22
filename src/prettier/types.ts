@@ -1,3 +1,4 @@
+import type { PARSER_NAME } from "./plugins/ignore";
 import type {
     BuiltInParserName,
     Config as PrettierConfig,
@@ -6,7 +7,7 @@ import type {
 
 export type { Config as PrettierConfig } from "prettier";
 
-export type ParserName = BuiltInParserName | "ignored";
+export type ParserName = BuiltInParserName | typeof PARSER_NAME;
 export type PrettierOverride = Required<NonNullable<PrettierConfig["overrides"]>>[number];
 
 export interface OverrideOptions extends PrettierOptions {

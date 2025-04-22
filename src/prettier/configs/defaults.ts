@@ -1,7 +1,9 @@
+import { parseDefaultOptions } from "../options";
+
 import type { Options, PrettierConfig } from "../types";
 
 export const defaults = (options: Options = {}): PrettierConfig => {
-    const { plugins: _1, overrides: _2, ...rest } = options;
+    const defaults = parseDefaultOptions(options);
 
     return {
         // 一行最多 100 字符
@@ -44,6 +46,6 @@ export const defaults = (options: Options = {}): PrettierConfig => {
         // 格式化内嵌代码
         embeddedLanguageFormatting: "auto",
 
-        ...rest,
+        ...defaults,
     };
 };

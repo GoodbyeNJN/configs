@@ -1,9 +1,15 @@
+import { parsePluginOptions } from "../options";
+
 import type { Options, PrettierConfig } from "../types";
 
+const BUILT_IN_PLUGINS = import.meta.env.PLUGIN_LIST.map(
+    plugin => new URL(plugin, import.meta.url).pathname,
+);
+
 export const plugins = (options: Options = {}): PrettierConfig => {
-    const { plugins = [] } = options;
+    const plugins = parsePluginOptions(options);
 
     return {
-        plugins: ["@goodbyenjn/eslint-config/prettier-plugin-ignored", ...plugins],
+        plugins: [...BUILT_IN_PLUGINS, ...plugins],
     };
 };

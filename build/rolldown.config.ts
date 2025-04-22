@@ -1,10 +1,11 @@
 import fs from "node:fs";
+import path from "node:path";
 
 import { pick } from "remeda";
 import { defineConfig } from "rolldown";
 import esbuild from "rollup-plugin-esbuild";
 
-import { external, input, output } from "./common";
+import { external, input, output, plugins } from "./common";
 
 import type { Plugin } from "rolldown";
 
@@ -35,6 +36,12 @@ export default defineConfig([
         resolve: { tsconfigFilename: "tsconfig.json" },
         external: [...external, /node_modules/],
 
+        define: {
+            "import.meta.env.PLUGIN_LIST": JSON.stringify(
+                plugins.map(plugin => path.relative(output.dist, plugin.output)),
+            ),
+        },
+
         plugins: [
             pluginClean(),
             {
@@ -50,15 +57,13 @@ export default defineConfig([
         ],
     },
 
-    {
-        input: pick(input, ["prettier-plugin-ignored"]),
+    ...plugins.map(({ input, output }) => ({
+        input,
 
         output: {
-            dir: output.dist,
-            format: "cjs",
-            entryFileNames: "[name].cjs",
+            file: output,
         },
-    },
+    })),
 
     {
         input: input.modules,
@@ -73,8 +78,6 @@ export default defineConfig([
         platform: "node",
         external: [...external, /^@unrs\/resolver-binding-.*/],
 
-        plugins: [
-            esbuild({ minify: true }) as Plugin,
-        ],
+        plugins: [esbuild({ minify: true }) as Plugin],
     },
 ]);

@@ -33,10 +33,6 @@
         "./prettier": {
             "types": "./dist/types/prettier.d.ts",
             "import": "./dist/prettier.js"
-        },
-        "./prettier-plugin-ignored": {
-            "import": "./dist/prettier-plugin-ignored.cjs",
-            "require": "./dist/prettier-plugin-ignored.cjs"
         }
     },
     "typesVersions": {
