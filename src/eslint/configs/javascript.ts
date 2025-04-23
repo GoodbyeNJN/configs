@@ -5,7 +5,7 @@ import type { ESLintConfig, JavaScriptConfig, JavaScriptOverride } from "../type
 export const javascript = (
     config: JavaScriptConfig,
     override: JavaScriptOverride,
-): ESLintConfig[] => {
+): ESLintConfig<JavaScriptOverride>[] => {
     return [
         {
             name: "goodbyenjn:javascript",
@@ -31,6 +31,7 @@ export const javascript = (
 
                 "sort-imports": ["warn", { ignoreCase: true, ignoreDeclarationSort: true }],
                 "no-unused-vars": ["warn", { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }],
+                radix: ["error", "as-needed"],
 
                 ...override,
             },

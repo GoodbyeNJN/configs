@@ -12,8 +12,7 @@ import type { Linter } from "eslint";
 
 export type { EslintRules };
 
-export type ESLintConfig<Rules extends Linter.RulesRecord = Linter.RulesRecord> =
-    Linter.Config<Rules>;
+export type ESLintConfig<Rules = {}> = Linter.Config<Rules & Linter.RulesRecord>;
 
 export interface JavaScriptConfig {}
 
