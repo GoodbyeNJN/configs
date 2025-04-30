@@ -1,35 +1,27 @@
 diff --git a/lib/index.cjs b/lib/index.cjs
-index c6f90b8c85ab23175166e5a7f3aa0a28674c3fad..e1c5771c8989f681fe89cdfa51f2f57a18e1dca0 100644
+index 1649e447b29cd9df3717eaace7dd010e982e2114..ab49459392a3b5c12c2ead5bad534d312503432c 100644
 --- a/lib/index.cjs
 +++ b/lib/index.cjs
-@@ -247,14 +247,8 @@ var warnings = {
-   }
- };
+@@ -251,9 +251,8 @@ const cjsRequire = importMetaUrl$1 ? Module.createRequire(importMetaUrl$1) : (
+   require
+ );
  
--const import_meta$1 = {};
--const cjsRequire = typeof require === "undefined" ? Module.createRequire(import_meta$1.url) : (
--  /* istanbul ignore next */
--  require
--);
 -const { name, version } = cjsRequire(
 -  "../package.json"
 -);
 +const name = "eslint-plugin-import-x";
-+const version = "4.10.1";
++const version = "4.11.0";
  const meta = { name, version };
  
  var __defProp$e = Object.defineProperty;
 diff --git a/lib/meta.js b/lib/meta.js
-index 29f12ee14a1348cc927610c859b42d65aa11f9cd..7918212168cf878ff91f3d641a0e57922b02f885 100644
+index 079bdb09192305267ea1b45b835f5138ffef3d19..1e8788be4bbf98e20f8ffcf2c44e993deea1b9f0 100644
 --- a/lib/meta.js
 +++ b/lib/meta.js
-@@ -1,7 +1,4 @@
--import { createRequire } from 'node:module';
--const cjsRequire = typeof require === 'undefined'
--    ? createRequire(import.meta.url)
--    : require;
+@@ -1,4 +1,4 @@
+-import { cjsRequire } from './require.js';
 -export const { name, version } = cjsRequire('../package.json');
 +export const name = "eslint-plugin-import-x";
-+export const version = "4.10.1";
++export const version = "4.11.0";
  export const meta = { name, version };
  //# sourceMappingURL=meta.js.map
