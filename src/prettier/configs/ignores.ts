@@ -1,10 +1,10 @@
-import { GLOB_EXCLUDE_LIST } from "@/globs";
+import { GLOB_EXCLUDE_LIST } from "@/shared/globs";
 
 import { parseIgnoreOptions } from "../options";
 
-import type { Options, Override } from "../types";
+import type { Options, Overrides } from "../types";
 
-export const ignores = (options: Options = {}): Override => {
+export const ignores = (options: Options = {}): Overrides => {
     const ignores = parseIgnoreOptions(options);
 
     return {

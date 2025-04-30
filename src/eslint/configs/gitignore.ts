@@ -1,4 +1,4 @@
-import { configGitignore } from "modules";
+import { configGitignore } from "@/shared/modules";
 
 import type { ESLintConfig } from "../types";
 

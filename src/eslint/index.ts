@@ -5,7 +5,7 @@ import type { ESLintConfig, Options } from "./types";
 
 export type { Configs, Options, Overrides } from "./types";
 
-export const withGoodbyeNJNConfig = (options: Options = {}) => {
+export const withConfig = (options: Options = {}) => {
     const { configs, overrides, enables } = parseOptions(options);
 
     const eslintConfigs: ESLintConfig[][] = [

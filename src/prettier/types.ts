@@ -14,7 +14,7 @@ export interface OverrideOptions extends PrettierOptions {
     parser?: ParserName;
 }
 
-export interface Override extends PrettierOverride {
+export interface Overrides extends PrettierOverride {
     options?: OverrideOptions;
 }
 
@@ -24,5 +24,5 @@ export interface Options extends PrettierConfig {
      * object should not apply to.
      */
     ignores?: string[];
-    overrides?: Override[];
+    overrides?: Overrides[];
 }

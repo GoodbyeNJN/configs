@@ -1,4 +1,4 @@
-import { isPackageExists } from "modules";
+import { isPackageExists } from "@/shared/modules";
 
 import type { Configs, Enables, Option, Options, Overrides } from "./types";
 

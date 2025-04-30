@@ -1,4 +1,4 @@
-import { pluginImport } from "modules";
+import { pluginImport } from "@/shared/modules";
 
 import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
 

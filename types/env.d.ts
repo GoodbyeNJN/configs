@@ -1,5 +1,5 @@
 interface ImportMetaEnv {
-    readonly PLUGIN_LIST: string[];
+    readonly PRETTIER_PLUGINS: string[];
 }
 
 interface ImportMeta {

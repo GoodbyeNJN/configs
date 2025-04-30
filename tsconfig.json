@@ -1,46 +1,12 @@
 {
+    "extends": "./tsconfigs/base.json",
     "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
-        "lib": ["ESNext", "DOM", "DOM.Iterable"],
-
-        "isolatedModules": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-
-        "strict": true,
-        "alwaysStrict": true,
-        "strictFunctionTypes": true,
-        "strictNullChecks": true,
-        "strictPropertyInitialization": true,
-
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUncheckedIndexedAccess": true,
-
-        // "emitDecoratorMetadata": true,
-        // "experimentalDecorators": true,
-        // "downlevelIteration": true,
-
-        "pretty": true,
-
-        "allowJs": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-
-        "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"],
-            "modules": ["src/modules"]
+            "@/*": ["./src/*"]
         },
 
         "types": ["vitest/globals"]
     },
-    "include": [".", "src", "build"],
-    "exclude": ["node_modules", "tests/*/*"]
+    "include": [".", "src", "types", "build"],
+    "exclude": ["dist", "tests/*/*"]
 }

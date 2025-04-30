@@ -2,7 +2,7 @@ import { parsePluginOptions } from "../options";
 
 import type { Options, PrettierConfig } from "../types";
 
-const BUILT_IN_PLUGINS = import.meta.env.PLUGIN_LIST.map(
+const BUILT_IN_PLUGINS = import.meta.env.PRETTIER_PLUGINS.map(
     plugin => new URL(plugin, import.meta.url).pathname,
 );
 

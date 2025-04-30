@@ -1,6 +1,6 @@
 // @ts-check
-import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
+import { withConfig } from "@goodbyenjn/configs/prettier";
 
-export default withGoodbyeNJNConfig({
+export default withConfig({
     ignores: ["*/*.ignored.*", "snapshots/**/*"],
 });

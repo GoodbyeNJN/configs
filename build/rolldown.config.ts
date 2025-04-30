@@ -1,35 +1,29 @@
-import fs from "node:fs";
-import path from "node:path";
+import fsp from "node:fs/promises";
 
-import { pick } from "remeda";
 import { defineConfig } from "rolldown";
 import esbuild from "rollup-plugin-esbuild";
 
-import { external, input, output, plugins } from "./common";
+import { entryFilesToEntries, external, input, onwarn, output, prettierPlugins } from "./common";
 
 import type { Plugin } from "rolldown";
 
-const pluginClean = (): Plugin => ({
-    name: "plugin:clean",
-    async renderStart(options) {
-        const { dir } = options;
-        if (!dir || !fs.existsSync(dir)) return;
-
-        await fs.promises.rm(dir, {
-            force: true,
-            recursive: true,
-        });
-    },
+await fsp.rm(output, {
+    force: true,
+    recursive: true,
 });
 
 export default defineConfig([
     {
-        input: pick(input, ["index", "prettier"]),
+        input: entryFilesToEntries([
+            input.eslint,
+            input.prettier,
+            ...prettierPlugins.map(plugin => plugin.input),
+        ]),
 
         output: {
-            dir: output.dist,
+            dir: output,
             format: "esm",
-            chunkFileNames: "chunks/[name].js",
+            chunkFileNames: "shared/[name].js",
         },
 
         platform: "node",
@@ -37,47 +31,40 @@ export default defineConfig([
         external: [...external, /node_modules/],
 
         define: {
-            "import.meta.env.PLUGIN_LIST": JSON.stringify(
-                plugins.map(plugin => path.relative(output.dist, plugin.output)),
+            "import.meta.env.PRETTIER_PLUGINS": JSON.stringify(
+                prettierPlugins.map(plugin => plugin.output),
             ),
         },
 
         plugins: [
-            pluginClean(),
             {
-                name: "plugin:modules",
+                name: "plugin:external",
                 resolveId: {
                     order: "pre",
-                    filter: { id: /^modules$/ },
-                    handler(id) {
-                        return { id: `./chunks/${id}.cjs`, external: true };
+                    filter: { id: /^@\/shared\/modules$/ },
+                    handler() {
+                        return { id: `../shared/modules.cjs`, external: true };
                     },
                 },
             },
         ],
     },
 
-    ...plugins.map(({ input, output }) => ({
-        input,
-
-        output: {
-            file: output,
-        },
-    })),
-
     {
-        input: input.modules,
+        input: entryFilesToEntries([input.modules]),
 
         output: {
-            dir: output.chunks,
+            dir: output,
             format: "cjs",
-            entryFileNames: "modules.cjs",
+            entryFileNames: "[name].cjs",
             // minify: true,
         },
 
         platform: "node",
         external: [...external, /^@unrs\/resolver-binding-.*/],
 
-        plugins: [esbuild({ minify: true }) as Plugin],
+        plugins: [esbuild({ minify: true }) as unknown as Plugin],
+
+        onwarn,
     },
 ]);

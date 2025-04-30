@@ -2,9 +2,9 @@ import path from "node:path";
 
 import { ESLint } from "eslint";
 
-import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
+import { withConfig } from "@goodbyenjn/configs/eslint";
 
-import type { Options } from "@goodbyenjn/eslint-config";
+import type { Options } from "@goodbyenjn/configs/eslint";
 
 interface Case {
     name: string;
@@ -76,7 +76,7 @@ describe.concurrent("Eslint", () => {
         const eslint = new ESLint({
             cwd: import.meta.dirname,
             overrideConfigFile: true,
-            overrideConfig: withGoodbyeNJNConfig(options),
+            overrideConfig: withConfig(options),
         });
         const results = await eslint.lintFiles(input);
         const output = results.map(({ filePath, messages }) => ({

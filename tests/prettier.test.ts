@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { format } from "prettier";
 
-import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config/prettier";
+import { withConfig } from "@goodbyenjn/configs/prettier";
 
 import { $ } from "./utils";
 
@@ -55,7 +55,7 @@ const cases = [
 ];
 
 const configPath = path.join(import.meta.dirname, "prettier.test.config.js");
-const options = withGoodbyeNJNConfig();
+const options = withConfig();
 
 describe.concurrent("Prettier", () => {
     test.for(cases)("$name", async ({ input, snapshot, overrides }, { expect }) => {

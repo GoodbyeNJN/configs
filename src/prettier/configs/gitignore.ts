@@ -1,50 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
-import url from "node:url";
 
-import { GITIGNORE, GITMODULES } from "@/globs";
+import { GITIGNORE, GITMODULES } from "@/shared/globs";
+import { findUpSync } from "@/shared/modules";
 
-import type { Override } from "../types";
-
-interface Options {
-    cwd?: URL | string;
-    type?: "file" | "directory";
-    stopAt?: URL | string;
-}
-
-const findUpSync = (name: string, options?: Options) => {
-    const { cwd = process.cwd(), type = "file", stopAt } = options || {};
-
-    let directory = path.resolve(toPath(cwd) ?? "");
-    const { root } = path.parse(directory);
-    const stop = path.resolve(directory, toPath(stopAt) ?? root);
-    const isAbsoluteName = path.isAbsolute(name);
-
-    while (directory) {
-        const filePath = isAbsoluteName ? name : path.join(directory, name);
-
-        try {
-            const stats = fs.statSync(filePath, { throwIfNoEntry: false });
-            if (
-                (type === "file" && stats?.isFile()) ||
-                (type === "directory" && stats?.isDirectory())
-            ) {
-                return filePath;
-            }
-        } catch {}
-
-        if (directory === stop || directory === root) {
-            break;
-        }
-
-        directory = path.dirname(directory);
-    }
-
-    return;
-};
-
-const toPath = (urlOrPath?: URL | string) =>
-    urlOrPath instanceof URL ? url.fileURLToPath(urlOrPath) : urlOrPath;
+import type { Overrides } from "../types";
 
 const toRelativePattern = (pattern: string, relativePath: string, cwd: string) => {
     const negated = pattern.startsWith("!") ? "!" : "";
@@ -91,7 +51,7 @@ const toRelativePattern = (pattern: string, relativePath: string, cwd: string) =
     return null;
 };
 
-export const gitignore = (): Override => {
+export const gitignore = (): Overrides => {
     const cwd = process.cwd();
 
     const ignores: string[] = [];

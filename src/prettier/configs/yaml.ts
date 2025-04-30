@@ -1,6 +1,6 @@
-import type { Override } from "../types";
+import type { Overrides } from "../types";
 
-export const yaml = (): Override => {
+export const yaml = (): Overrides => {
     return {
         files: ["*.yml", "*.yaml"],
         options: {

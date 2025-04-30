@@ -3,9 +3,9 @@ import { parseOverrideOptions } from "./options";
 
 import type { Options, PrettierConfig } from "./types";
 
-export type { Options, Override } from "./types";
+export type { Options, Overrides } from "./types";
 
-export const withGoodbyeNJNConfig = (options: Options = {}): PrettierConfig => {
+export const withConfig = (options: Options = {}): PrettierConfig => {
     const overrides = parseOverrideOptions(options);
 
     return {

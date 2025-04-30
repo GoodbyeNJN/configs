@@ -1,9 +1,9 @@
 // @ts-check
-import { withGoodbyeNJNConfig } from "@goodbyenjn/eslint-config";
+import { withConfig } from "@goodbyenjn/configs/eslint";
 
 export default [
     {
         ignores: ["tests/*/**/*"],
     },
-    ...withGoodbyeNJNConfig(),
+    ...withConfig(),
 ];

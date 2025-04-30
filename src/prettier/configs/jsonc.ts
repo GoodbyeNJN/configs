@@ -1,6 +1,6 @@
-import type { Override } from "../types";
+import type { Overrides } from "../types";
 
-export const jsonc = (): Override => {
+export const jsonc = (): Overrides => {
     return {
         files: ["*.jsonc", "*.cjson"],
         options: {
