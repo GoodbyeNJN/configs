@@ -15,13 +15,13 @@ index 1649e447b29cd9df3717eaace7dd010e982e2114..ab49459392a3b5c12c2ead5bad534d31
  
  var __defProp$e = Object.defineProperty;
 diff --git a/lib/meta.js b/lib/meta.js
-index 079bdb09192305267ea1b45b835f5138ffef3d19..1e8788be4bbf98e20f8ffcf2c44e993deea1b9f0 100644
+index 079bdb09192305267ea1b45b835f5138ffef3d19..d954486c8869ad173aa8feab72efa76725ea34a5 100644
 --- a/lib/meta.js
 +++ b/lib/meta.js
-@@ -1,4 +1,4 @@
--import { cjsRequire } from './require.js';
+@@ -1,4 +1,5 @@
+ import { cjsRequire } from './require.js';
 -export const { name, version } = cjsRequire('../package.json');
-+export const name = "eslint-plugin-import-x";
-+export const version = "4.11.0";
++const name = "eslint-plugin-import-x";
++const version = "4.11.0";
  export const meta = { name, version };
  //# sourceMappingURL=meta.js.map

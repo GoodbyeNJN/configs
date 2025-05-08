@@ -22,16 +22,16 @@ overrides:
 patchedDependencies:
   '@antfu/eslint-define-config':
     hash: ac86a36e33bdf05fd2ab95559b64f984c984e4178d17a5b154cd3210ef7c4d87
-    path: patches/@antfu__eslint-define-config.patch
+    path: scripts/patches/@antfu__eslint-define-config.patch
   eslint-config-alloy:
     hash: e4cb63ae8fd035adf562ad12a8ab9c7a921a9975fd69d8eb08631ed36b395d17
-    path: patches/eslint-config-alloy.patch
+    path: scripts/patches/eslint-config-alloy.patch
   eslint-plugin-import-x:
-    hash: d0df108e7da4de43dd447dab76d4164eb4b68a8d245af7cd8bfbd5c86905a786
-    path: patches/eslint-plugin-import-x.patch
+    hash: 3ff255c31170589fcab8563c4b972c582401497982c23276f0d626c6ce920c5b
+    path: scripts/patches/eslint-plugin-import-x.patch
   eslint-plugin-vue:
     hash: f091915c21d0af41c7bb8a578362768cc5f0e326ca2f8084bd7e8da63dd59f0f
-    path: patches/eslint-plugin-vue.patch
+    path: scripts/patches/eslint-plugin-vue.patch
 
 importers:
 
@@ -63,7 +63,7 @@ importers:
         version: 2.1.0(eslint@9.26.0)
       eslint-plugin-import-x:
         specifier: ^4.11.0
-        version: 4.11.0(patch_hash=d0df108e7da4de43dd447dab76d4164eb4b68a8d245af7cd8bfbd5c86905a786)(eslint@9.26.0)(typescript@5.8.3)
+        version: 4.11.0(patch_hash=3ff255c31170589fcab8563c4b972c582401497982c23276f0d626c6ce920c5b)(eslint@9.26.0)(typescript@5.8.3)
       eslint-plugin-react:
         specifier: 7.37.5
         version: 7.37.5(eslint@9.26.0)
@@ -2965,7 +2965,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import-x@4.11.0(patch_hash=d0df108e7da4de43dd447dab76d4164eb4b68a8d245af7cd8bfbd5c86905a786)(eslint@9.26.0)(typescript@5.8.3):
+  eslint-plugin-import-x@4.11.0(patch_hash=3ff255c31170589fcab8563c4b972c582401497982c23276f0d626c6ce920c5b)(eslint@9.26.0)(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/utils': 8.31.1(eslint@9.26.0)(typescript@5.8.3)
       comment-parser: 1.4.1
