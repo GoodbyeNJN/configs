@@ -1,0 +1,296 @@
+[
+  {
+    "parse": 16.452535,
+    "rules": 47.238288,
+    "total": 63.690823,
+    "parsePercent": 25.83,
+    "rulesPercent": 74.17
+  },
+  {
+    "parse": 3.643917,
+    "rules": 12.202572,
+    "total": 15.846489,
+    "parsePercent": 23,
+    "rulesPercent": 77
+  },
+  {
+    "parse": 2.091066,
+    "rules": 10.657232,
+    "total": 12.748298,
+    "parsePercent": 16.4,
+    "rulesPercent": 83.6
+  },
+  {
+    "parse": 1.362052,
+    "rules": 9.956776,
+    "total": 11.318828,
+    "parsePercent": 12.03,
+    "rulesPercent": 87.97
+  },
+  {
+    "parse": 2.285545,
+    "rules": 11.150749999999999,
+    "total": 13.436295,
+    "parsePercent": 17.01,
+    "rulesPercent": 82.99
+  },
+  {
+    "parse": 19.029428,
+    "rules": 31.741908,
+    "total": 50.771336,
+    "parsePercent": 37.48,
+    "rulesPercent": 62.52
+  },
+  {
+    "parse": 12.746399,
+    "rules": 9.482828999999999,
+    "total": 22.229228,
+    "parsePercent": 57.34,
+    "rulesPercent": 42.66
+  },
+  {
+    "parse": 11.955224,
+    "rules": 15.424802000000001,
+    "total": 27.380026,
+    "parsePercent": 43.66,
+    "rulesPercent": 56.34
+  },
+  {
+    "parse": 2.363744,
+    "rules": 7.542211999999999,
+    "total": 9.905956,
+    "parsePercent": 23.86,
+    "rulesPercent": 76.14
+  },
+  {
+    "parse": 1.53707,
+    "rules": 5.158857,
+    "total": 6.695927,
+    "parsePercent": 22.96,
+    "rulesPercent": 77.04
+  },
+  {
+    "parse": 4.141783,
+    "rules": 8.515566,
+    "total": 12.657349,
+    "parsePercent": 32.72,
+    "rulesPercent": 67.28
+  },
+  {
+    "parse": 1.68016,
+    "rules": 9.461528,
+    "total": 11.141688,
+    "parsePercent": 15.08,
+    "rulesPercent": 84.92
+  },
+  {
+    "parse": 3.438898,
+    "rules": 9.992976,
+    "total": 13.431874,
+    "parsePercent": 25.6,
+    "rulesPercent": 74.4
+  },
+  {
+    "parse": 3.627436,
+    "rules": 11.938824,
+    "total": 15.56626,
+    "parsePercent": 23.3,
+    "rulesPercent": 76.7
+  },
+  {
+    "parse": 4.756819,
+    "rules": 11.824445999999998,
+    "total": 16.581265,
+    "parsePercent": 28.69,
+    "rulesPercent": 71.31
+  },
+  {
+    "parse": 3.737166,
+    "rules": 10.741831,
+    "total": 14.478997,
+    "parsePercent": 25.81,
+    "rulesPercent": 74.19
+  },
+  {
+    "parse": 4.68016,
+    "rules": 20.611085,
+    "total": 25.291245,
+    "parsePercent": 18.51,
+    "rulesPercent": 81.49
+  },
+  {
+    "parse": 8.273262,
+    "rules": 10.388703999999999,
+    "total": 18.661966,
+    "parsePercent": 44.33,
+    "rulesPercent": 55.67
+  },
+  {
+    "parse": 3.10677,
+    "rules": 5.773343,
+    "total": 8.880113,
+    "parsePercent": 34.99,
+    "rulesPercent": 65.01
+  },
+  {
+    "parse": 6.067531,
+    "rules": 8.077639000000001,
+    "total": 14.14517,
+    "parsePercent": 42.89,
+    "rulesPercent": 57.11
+  },
+  {
+    "parse": 2.707043,
+    "rules": 5.294775,
+    "total": 8.001818,
+    "parsePercent": 33.83,
+    "rulesPercent": 66.17
+  },
+  {
+    "parse": 9.615088,
+    "rules": 12.980287,
+    "total": 22.595375,
+    "parsePercent": 42.55,
+    "rulesPercent": 57.45
+  },
+  {
+    "parse": 1.53322,
+    "rules": 5.568599,
+    "total": 7.101819,
+    "parsePercent": 21.59,
+    "rulesPercent": 78.41
+  },
+  {
+    "parse": 1.163753,
+    "rules": 4.803189000000001,
+    "total": 5.966942,
+    "parsePercent": 19.5,
+    "rulesPercent": 80.5
+  },
+  {
+    "parse": 1.009533,
+    "rules": 4.017905,
+    "total": 5.027438,
+    "parsePercent": 20.08,
+    "rulesPercent": 79.92
+  },
+  {
+    "parse": 1.046844,
+    "rules": 3.658736,
+    "total": 4.70558,
+    "parsePercent": 22.25,
+    "rulesPercent": 77.75
+  },
+  {
+    "parse": 2.020337,
+    "rules": 4.179112999999999,
+    "total": 6.19945,
+    "parsePercent": 32.59,
+    "rulesPercent": 67.41
+  },
+  {
+    "parse": 1.192662,
+    "rules": 17.273030000000002,
+    "total": 18.465692,
+    "parsePercent": 6.46,
+    "rulesPercent": 93.54
+  },
+  {
+    "parse": 1.137433,
+    "rules": 4.930794000000001,
+    "total": 6.068227,
+    "parsePercent": 18.74,
+    "rulesPercent": 81.26
+  },
+  {
+    "parse": 2.595214,
+    "rules": 6.509639,
+    "total": 9.104853,
+    "parsePercent": 28.5,
+    "rulesPercent": 71.5
+  },
+  {
+    "parse": 2.334965,
+    "rules": 5.697690999999999,
+    "total": 8.032656,
+    "parsePercent": 29.07,
+    "rulesPercent": 70.93
+  },
+  {
+    "parse": 3.09279,
+    "rules": 4.8835690000000005,
+    "total": 7.976359,
+    "parsePercent": 38.77,
+    "rulesPercent": 61.23
+  },
+  {
+    "parse": 2.537264,
+    "rules": 5.194367,
+    "total": 7.731631,
+    "parsePercent": 32.82,
+    "rulesPercent": 67.18
+  },
+  {
+    "parse": 4.063384,
+    "rules": 7.177921,
+    "total": 11.241305,
+    "parsePercent": 36.15,
+    "rulesPercent": 63.85
+  },
+  {
+    "parse": 7.284263,
+    "rules": 13.442423999999999,
+    "total": 20.726687,
+    "parsePercent": 35.14,
+    "rulesPercent": 64.86
+  },
+  {
+    "parse": 0.735786,
+    "rules": 4.114363,
+    "total": 4.850149,
+    "parsePercent": 15.17,
+    "rulesPercent": 84.83
+  },
+  {
+    "parse": 4.024554,
+    "rules": 7.605902,
+    "total": 11.630456,
+    "parsePercent": 34.6,
+    "rulesPercent": 65.4
+  },
+  {
+    "parse": 1.187403,
+    "rules": 4.838419,
+    "total": 6.025822,
+    "parsePercent": 19.71,
+    "rulesPercent": 80.29
+  },
+  {
+    "parse": 3.673837,
+    "rules": 18.782262,
+    "total": 22.456099,
+    "parsePercent": 16.36,
+    "rulesPercent": 83.64
+  },
+  {
+    "parse": 1.626519,
+    "rules": 4.925639,
+    "total": 6.552158,
+    "parsePercent": 24.82,
+    "rulesPercent": 75.18
+  },
+  {
+    "parse": 0.821575,
+    "rules": 4.121594,
+    "total": 4.943169,
+    "parsePercent": 16.62,
+    "rulesPercent": 83.38
+  },
+  {
+    "parse": 0.713076,
+    "rules": 5.218077,
+    "total": 5.931153,
+    "parsePercent": 12.02,
+    "rulesPercent": 87.98
+  }
+]
