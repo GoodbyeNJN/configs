@@ -44,6 +44,7 @@
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
         "@goodbyenjn/configs": "file:",
+        "@goodbyenjn/utils": "^1.1.0",
         "@types/node": "^22.15.16",
         "@typescript-eslint/eslint-plugin": "8.32.0",
         "@typescript-eslint/parser": "8.32.0",

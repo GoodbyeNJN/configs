@@ -1,24 +1,14 @@
 #!/usr/bin/env -S node --disable-warning=ExperimentalWarning
 
-import { exec } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
+
+import { $ } from "@goodbyenjn/utils";
 
 interface Patch {
     filepath: string;
     handler: (content: string) => string;
 }
-
-const $ = async (cmd: string) =>
-    new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
-        exec(cmd, (error, stdout, stderr) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve({ stdout, stderr });
-            }
-        });
-    });
 
 const main = async (pkg: string, patches: Patch[]) => {
     const temp = path.resolve(import.meta.dirname, "../node_modules/.temp", pkg);

@@ -1,11 +1,10 @@
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { $ } from "@goodbyenjn/utils";
 import { format } from "prettier";
 
 import { withConfig } from "@goodbyenjn/configs/prettier";
-
-import { $ } from "./utils";
 
 const cases = [
     {
@@ -62,9 +61,9 @@ describe.concurrent("Prettier", () => {
         let output;
         if (overrides) {
             const filepath = path.join(import.meta.dirname, input);
-            const { stdout } = await $("pnpm", ["prettier", "--config", configPath, filepath]);
+            const { value } = await $(`pnpm prettier --config ${configPath} ${filepath}`);
 
-            output = stdout;
+            output = value.stdout;
         } else {
             const filepath = path.join("tests", input);
             const text = await fsp.readFile(filepath, "utf-8");
