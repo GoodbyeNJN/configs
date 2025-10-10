@@ -1,10 +1,10 @@
 import fsp from "node:fs/promises";
 import path from "node:path";
 
-import fg from "fast-glob";
-import * as R from "remeda";
+import * as R from "@goodbyenjn/utils/remeda";
 import { defineConfig } from "rolldown";
 import { dts } from "rolldown-plugin-dts";
+import { glob } from "tinyglobby";
 
 const src = "src";
 const dist = "dist";
@@ -25,7 +25,7 @@ const entryFiles = {
     },
 };
 const prettierPluginFiles = R.pipe(
-    await fg.async(`${src}/prettier/plugins/*.ts`),
+    await glob(`${src}/prettier/plugins/*.ts`, { expandDirectories: false }),
     R.map(file => ({
         filepath: file,
         filename: path.basename(file, ".ts"),
