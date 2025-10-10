@@ -50,7 +50,7 @@ const patches = [
                 /const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/,
                 `
 const name = "eslint-plugin-import-x";
-const version = "4.11.0";
+const version = "4.16.1";
 `.trim(),
             ),
     },
@@ -60,8 +60,8 @@ const version = "4.11.0";
             content.replace(
                 /export const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/,
                 `
-const name = "eslint-plugin-import-x";
-const version = "4.11.0";
+export const name = "eslint-plugin-import-x";
+export const version = "4.16.1";
 `.trim(),
             ),
     },
