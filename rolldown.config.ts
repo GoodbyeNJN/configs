@@ -56,7 +56,7 @@ export default defineConfig([
         },
 
         platform: "node",
-        resolve: { tsconfigFilename: "tsconfig.json" },
+        tsconfig: "./tsconfig.json",
         external,
 
         define: {
@@ -102,7 +102,7 @@ export default defineConfig([
         },
 
         platform: "node",
-        external: [...external, /^@unrs\/resolver-binding-.*/],
+        external: [...external, /^@unrs\/resolver-binding-.*$/, /^\.\/resolver\..*\.node$/],
 
         checks: {
             commonJsVariableInEsm: false,
