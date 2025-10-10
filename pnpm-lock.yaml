@@ -44,8 +44,8 @@ importers:
         specifier: 'file:'
         version: file:(eslint@9.26.0)(prettier@3.5.3)(typescript@5.8.3)
       '@goodbyenjn/utils':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.3.1
+        version: 1.3.1
       '@types/node':
         specifier: ^22.15.16
         version: 22.15.16
@@ -415,8 +415,8 @@ packages:
       prettier: ^3.0.0
       typescript: ^5.0.0
 
-  '@goodbyenjn/utils@1.1.0':
-    resolution: {integrity: sha512-n0aoS5svQ2V9abk8WF7Bqvx2SseIsZ3OE5+XNcYMuzSSHSSO+njJLknw10/7WqMrllLhYaFHNF9WL752PQ34Dg==}
+  '@goodbyenjn/utils@1.3.1':
+    resolution: {integrity: sha512-/d0UQ5NPlH4Z2vr44MsY/5LBClEmkLvhcrzgPihn+IFeQ81SKwKGdSSvAGUt53HB3c4gF51tOKHOjx4cX3l0ig==}
     engines: {node: '>=20'}
 
   '@humanfs/core@0.19.1':
@@ -2316,7 +2316,7 @@ snapshots:
       '@unrs/resolver-binding-win32-ia32-msvc': 1.7.2
       '@unrs/resolver-binding-win32-x64-msvc': 1.7.2
 
-  '@goodbyenjn/utils@1.1.0': {}
+  '@goodbyenjn/utils@1.3.1': {}
 
   '@humanfs/core@0.19.1': {}
 

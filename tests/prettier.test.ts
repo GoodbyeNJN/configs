@@ -63,7 +63,7 @@ describe.concurrent("Prettier", () => {
             const filepath = path.join(import.meta.dirname, input);
             const { value } = await $(`pnpm prettier --config ${configPath} ${filepath}`);
 
-            output = value.stdout;
+            output = value.stdout + "\n";
         } else {
             const filepath = path.join("tests", input);
             const text = await fsp.readFile(filepath, "utf-8");
