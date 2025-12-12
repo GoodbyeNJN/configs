@@ -16,3 +16,5 @@ export const withConfig = (options: Options = {}): PrettierConfig => {
         overrides: [gitignore(), ignores(options), jsonc(), yaml(), ...overrides],
     };
 };
+
+export default withConfig();
