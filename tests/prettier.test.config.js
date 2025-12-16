@@ -2,5 +2,5 @@
 import { withConfig } from "@goodbyenjn/configs/prettier";
 
 export default withConfig({
-    ignores: ["*/*.ignored.*", "snapshots/**/*"],
+    ignores: ["*/*.ignored.*", "!*/*.not.ignored.*", "snapshots/**/*"],
 });

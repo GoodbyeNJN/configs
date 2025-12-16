@@ -1,0 +1,19 @@
+{
+"should":{
+    "be": ["formatted",
+      "linted"]
+},
+"because": {
+  "filename": {
+    "is": {
+      "not": {
+      "ignored": {
+        "by": [
+        "file", "patterns"
+        ]
+      }
+      }
+    }
+  }
+}
+}

@@ -51,8 +51,15 @@ const cases = [
         snapshot: "ignored-by-config.json",
         overrides: true,
     },
+    {
+        name: "should not ignore by user config",
+        input: "json/should.not.ignored.json",
+        snapshot: "not-ignored-by-config.json",
+        overrides: true,
+    },
 ];
 
+const prettierPath = path.resolve(import.meta.dirname, "../node_modules/.bin/prettier");
 const configPath = path.join(import.meta.dirname, "prettier.test.config.js");
 const options = withConfig();
 
@@ -61,7 +68,7 @@ describe.concurrent("Prettier", () => {
         let output;
         if (overrides) {
             const filepath = path.join(import.meta.dirname, input);
-            const { value } = await $(`pnpm prettier --config ${configPath} ${filepath}`);
+            const { value } = await $(`${prettierPath} --config ${configPath} ${filepath}`);
 
             output = value.stdout + "\n";
         } else {

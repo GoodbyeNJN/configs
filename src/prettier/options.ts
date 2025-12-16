@@ -1,5 +1,12 @@
 import type { Options } from "./types";
 
+export const parseIgnorePattern = (pattern: string) => {
+    const isNegated = pattern.startsWith("!");
+    const cleanPattern = isNegated ? pattern.slice(1) : pattern;
+
+    return { isNegated, pattern: cleanPattern };
+};
+
 export const parseDefaultOptions = (options: Options) => {
     const { ignores: _, plugins: __, overrides: ___, ...rest } = options;
 

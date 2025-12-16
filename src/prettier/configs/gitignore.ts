@@ -4,6 +4,8 @@ import path from "node:path";
 import { GITIGNORE, GITMODULES } from "@/shared/globs";
 import { findUpSync } from "@/shared/modules";
 
+import { parseIgnorePattern } from "../options";
+
 import type { Overrides } from "../types";
 
 const toRelativePattern = (pattern: string, relativePath: string, cwd: string) => {
@@ -54,7 +56,8 @@ const toRelativePattern = (pattern: string, relativePath: string, cwd: string) =
 export const gitignore = (): Overrides => {
     const cwd = process.cwd();
 
-    const ignores: string[] = [];
+    const includes: string[] = [];
+    const excludes: string[] = [];
 
     const gitignore = findUpSync(GITIGNORE, { cwd });
     const gitmodules = findUpSync(GITMODULES, { cwd });
@@ -66,13 +69,19 @@ export const gitignore = (): Overrides => {
         } catch {}
 
         const relativePath = path.relative(cwd, path.dirname(gitignore)).replaceAll("\\", "/");
-        const patterns = content
-            .split(/\r?\n/u)
-            .filter(line => line && !line.startsWith("#"))
-            .map(pattern => toRelativePattern(pattern, relativePath, cwd))
-            .filter(x => x !== null);
+        for (const line of content.split(/\r?\n/u)) {
+            if (!line || line.startsWith("#")) continue;
 
-        ignores.push(...patterns);
+            const { isNegated, pattern } = parseIgnorePattern(line);
+            const relativePattern = toRelativePattern(pattern, relativePath, cwd);
+            if (!relativePattern) continue;
+
+            if (isNegated) {
+                excludes.push(relativePattern);
+            } else {
+                includes.push(relativePattern);
+            }
+        }
     }
 
     if (gitmodules) {
@@ -81,18 +90,18 @@ export const gitignore = (): Overrides => {
             content = fs.readFileSync(gitmodules, "utf8");
         } catch {}
 
-        const patterns = content
-            .split(/\r?\n/u)
-            .map(line => line.match(/path\s*=\s*(.+)/u))
-            .filter(match => match !== null)
-            .map(match => match![1]!.trim())
-            .map(dir => `${dir}/**`);
+        for (const line of content.split(/\r?\n/u)) {
+            const match = line.match(/path\s*=\s*(.+)/u);
+            if (!match) continue;
 
-        ignores.push(...patterns);
+            const dir = match[1]!.trim();
+            includes.push(`${dir}/**`);
+        }
     }
 
     return {
-        files: ignores,
+        files: includes,
+        excludeFiles: excludes,
         options: {
             parser: "ignore-parser",
         },
