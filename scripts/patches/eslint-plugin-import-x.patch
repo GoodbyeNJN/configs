@@ -1,5 +1,5 @@
 diff --git a/lib/index.cjs b/lib/index.cjs
-index 3a4efbb093a55d93eb35c954822ee8c618f632ca..483f69efc399cea3d8ea28e2401f9f5e9fee1fc0 100644
+index 167f6fb46bc7cb5ee9492a0f2276c08a54759695..14eba9ea73daed39cc15cb89bb55b5cb01c73c8c 100644
 --- a/lib/index.cjs
 +++ b/lib/index.cjs
 @@ -279,7 +279,8 @@ const cjsRequire = importMetaUrl$1 ? (0, node_module.createRequire)(importMetaUr

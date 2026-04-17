@@ -1,10 +1,9 @@
-import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { glob } from "@goodbyenjn/utils/fs";
 import * as R from "@goodbyenjn/utils/remeda";
 import { defineConfig } from "rolldown";
 import { dts } from "rolldown-plugin-dts";
-import { glob } from "tinyglobby";
 
 const src = "src";
 const dist = "dist";
@@ -37,11 +36,6 @@ const prettierPluginFiles = R.pipe(
     })),
 );
 
-await fsp.rm(dist, {
-    force: true,
-    recursive: true,
-});
-
 const filesToEntries = (...files: { filepath: string; entrypoint: string }[]) =>
     R.mapToObj(files, ({ filepath, entrypoint }) => [entrypoint, filepath]);
 
@@ -51,6 +45,7 @@ export default defineConfig([
 
         output: {
             dir: dist,
+            cleanDir: true,
             format: "esm",
             chunkFileNames: "shared/[name].js",
         },
@@ -59,16 +54,16 @@ export default defineConfig([
         tsconfig: "./tsconfig.json",
         external,
 
-        define: {
-            "import.meta.env.PRETTIER_PLUGINS": JSON.stringify(
-                R.map(prettierPluginFiles, R.prop("pluginEntry")),
-            ),
+        transform: {
+            define: {
+                "import.meta.env.PRETTIER_PLUGINS": JSON.stringify(
+                    R.map(prettierPluginFiles, R.prop("pluginEntry")),
+                ),
+            },
         },
 
         plugins: [
-            dts({
-                resolve: true,
-            }),
+            dts(),
             {
                 name: "plugin:external",
                 resolveId: {

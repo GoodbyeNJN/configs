@@ -3,7 +3,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-import { $ } from "@goodbyenjn/utils";
+import { exec as $ } from "@goodbyenjn/utils/exec";
 
 interface Patch {
     filepath: string;

@@ -37,39 +37,38 @@
         "tsconfigs"
     ],
     "scripts": {
-        "build": "rolldown -c rolldown.config.ts",
+        "build": "rolldown -c",
         "test": "vitest",
         "test:ci": "vitest run"
     },
     "devDependencies": {
         "@antfu/eslint-define-config": "1.23.0-2",
         "@goodbyenjn/configs": "file:",
-        "@goodbyenjn/utils": "^1.3.1",
-        "@types/node": "^24.7.1",
-        "@typescript-eslint/eslint-plugin": "8.46.0",
-        "@typescript-eslint/parser": "8.46.0",
-        "eslint": "^9.37.0",
+        "@goodbyenjn/utils": "^26.4.4",
+        "@types/node": "^25.6.0",
+        "@typescript-eslint/eslint-plugin": "8.58.2",
+        "@typescript-eslint/parser": "8.58.2",
+        "eslint": "^10.2.0",
         "eslint-config-alloy": "5.1.2",
-        "eslint-config-flat-gitignore": "2.1.0",
-        "eslint-plugin-import-x": "^4.16.1",
+        "eslint-config-flat-gitignore": "2.3.0",
+        "eslint-plugin-import-x": "^4.16.2",
         "eslint-plugin-react": "7.37.5",
         "eslint-plugin-react-hooks": "5.2.0",
-        "eslint-plugin-vue": "10.5.0",
+        "eslint-plugin-vue": "^10.8.0",
         "find-up-simple": "^1.0.1",
-        "globals": "16.4.0",
+        "globals": "17.5.0",
         "local-pkg": "1.1.2",
-        "prettier": "^3.6.2",
-        "rolldown": "1.0.0-beta.42",
-        "rolldown-plugin-dts": "^0.16.11",
-        "tinyglobby": "^0.2.15",
-        "typescript": "^5.9.3",
-        "vitest": "^3.2.4",
-        "vue-eslint-parser": "10.2.0"
+        "prettier": "^3.8.3",
+        "rolldown": "1.0.0-rc.16",
+        "rolldown-plugin-dts": "^0.23.2",
+        "typescript": "^6.0.3",
+        "vitest": "^4.1.4",
+        "vue-eslint-parser": "^10.4.0"
     },
     "peerDependencies": {
-        "eslint": "^9.0.0",
-        "prettier": "^3.0.0",
-        "typescript": "^5.0.0"
+        "eslint": "^10.2.0",
+        "prettier": "^3.8.3",
+        "typescript": "^6.0.3"
     },
     "napi": {
         "binaryName": "resolver",
@@ -124,33 +123,5 @@
     },
     "engines": {
         "node": ">=16"
-    },
-    "pnpm": {
-        "patchedDependencies": {
-            "@antfu/eslint-define-config": "scripts/patches/@antfu__eslint-define-config.patch",
-            "eslint-config-alloy": "scripts/patches/eslint-config-alloy.patch",
-            "eslint-plugin-vue": "scripts/patches/eslint-plugin-vue.patch",
-            "eslint-plugin-import-x": "scripts/patches/eslint-plugin-import-x.patch"
-        },
-        "overrides": {
-            "array-includes": "npm:@nolyfill/array-includes@^1",
-            "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@^1",
-            "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@^1",
-            "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@^1",
-            "array.prototype.tosorted": "npm:@nolyfill/array.prototype.tosorted@^1",
-            "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@^1",
-            "hasown": "npm:@nolyfill/hasown@^1",
-            "is-core-module": "npm:@nolyfill/is-core-module@^1",
-            "object.assign": "npm:@nolyfill/object.assign@^1",
-            "object.entries": "npm:@nolyfill/object.entries@^1",
-            "object.fromentries": "npm:@nolyfill/object.fromentries@^1",
-            "object.values": "npm:@nolyfill/object.values@^1",
-            "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@^1"
-        },
-        "onlyBuiltDependencies": [
-            "esbuild",
-            "rolldown",
-            "unrs-resolver"
-        ]
     }
 }

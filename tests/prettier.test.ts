@@ -1,7 +1,7 @@
 import fsp from "node:fs/promises";
 import path from "node:path";
 
-import { $ } from "@goodbyenjn/utils";
+import { exec as $ } from "@goodbyenjn/utils/exec";
 import { format } from "prettier";
 
 import { withConfig } from "@goodbyenjn/configs/prettier";
@@ -68,9 +68,7 @@ describe.concurrent("Prettier", () => {
         let output;
         if (overrides) {
             const filepath = path.join(import.meta.dirname, input);
-            const { value } = await $(`${prettierPath} --config ${configPath} ${filepath}`);
-
-            output = value.stdout + "\n";
+            ({ stdout: output } = await $(`${prettierPath} --config ${configPath} ${filepath}`));
         } else {
             const filepath = path.join("tests", input);
             const text = await fsp.readFile(filepath, "utf-8");
