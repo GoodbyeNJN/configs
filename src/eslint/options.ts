@@ -5,7 +5,6 @@ import type { Configs, Enables, Option, Options, Overrides } from "./types";
 export const defaultEnables: Enables = {
     typescript: isPackageExists("typescript"),
     react: isPackageExists("react") || isPackageExists("preact"),
-    vue: isPackageExists("vue") || isPackageExists("nuxt") || isPackageExists("vitepress"),
     imports: true,
 };
 
@@ -59,20 +58,17 @@ export const parseOptions = (options: Options) => {
         javascript: getConfigsByKey(options, "javascript"),
         typescript: getConfigsByKey(options, "typescript"),
         react: getConfigsByKey(options, "react"),
-        vue: getConfigsByKey(options, "vue"),
         imports: getConfigsByKey(options, "imports"),
     };
     const overrides: Overrides = {
         javascript: getOverridesByKey(options, "javascript"),
         typescript: getOverridesByKey(options, "typescript"),
         react: getOverridesByKey(options, "react"),
-        vue: getOverridesByKey(options, "vue"),
         imports: getOverridesByKey(options, "imports"),
     };
     const enables: Enables = {
         typescript: getEnablesByKey(options, "typescript"),
         react: getEnablesByKey(options, "react"),
-        vue: getEnablesByKey(options, "vue"),
         imports: getEnablesByKey(options, "imports"),
     };
 

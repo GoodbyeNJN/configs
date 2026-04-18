@@ -23,11 +23,6 @@ const cases = [
         snapshot: "formatted.jsx",
     },
     {
-        name: "should format vue",
-        input: "vue/no-useless-v-bind.vue",
-        snapshot: "formatted.vue",
-    },
-    {
         name: "should format jsonc",
         input: "json/no-trailing-comma.jsonc",
         snapshot: "formatted.jsonc",

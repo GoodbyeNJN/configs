@@ -1,4 +1,4 @@
-import { GLOB_JS, GLOB_JSX, GLOB_SRC, GLOB_VUE } from "@/shared/globs";
+import { GLOB_JS, GLOB_JSX, GLOB_SRC } from "@/shared/globs";
 import { configAlloyTypescript, parserTypescript, pluginTypescript } from "@/shared/modules";
 
 import type { ESLintConfig, TypeScriptConfig, TypeScriptOverride } from "../types";
@@ -7,14 +7,9 @@ export const typescript = (
     config: TypeScriptConfig,
     override: TypeScriptOverride,
 ): ESLintConfig<TypeScriptOverride>[] => {
-    const { useVue, parserOptions } = config;
+    const { parserOptions } = config;
     const extraFileExtensions: string[] = [];
     const files = [GLOB_SRC];
-
-    if (useVue) {
-        extraFileExtensions.push(".vue");
-        files.push(GLOB_VUE);
-    }
 
     return [
         {

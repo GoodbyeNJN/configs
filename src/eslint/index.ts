@@ -1,4 +1,4 @@
-import { gitignore, ignores, imports, javascript, react, typescript, vue } from "./configs";
+import { gitignore, ignores, imports, javascript, react, typescript } from "./configs";
 import { parseOptions } from "./options";
 
 import type { ESLintConfig, Options } from "./types";
@@ -15,14 +15,8 @@ export const withConfig = (options: Options = {}) => {
         imports(configs.imports, overrides.imports),
     ];
 
-    const fileExtensions: string[] = [];
     if (enables.typescript) {
         configs.react.useTypescript = true;
-        configs.vue.useTypescript = true;
-    }
-    if (enables.vue) {
-        fileExtensions.push("vue");
-        configs.typescript.useVue = true;
     }
 
     if (enables.typescript) {
@@ -31,10 +25,6 @@ export const withConfig = (options: Options = {}) => {
 
     if (enables.react) {
         eslintConfigs.push(react(configs.react, overrides.react));
-    }
-
-    if (enables.vue) {
-        eslintConfigs.push(vue(configs.vue, overrides.vue));
     }
 
     return eslintConfigs.flat();

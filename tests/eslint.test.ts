@@ -40,15 +40,6 @@ const cases: Case[] = [
         },
     },
     {
-        name: "should lint vue",
-        input: ["vue/*"],
-        snapshot: "vue.json",
-        options: {
-            typescript: false,
-            vue: true,
-        },
-    },
-    {
         name: "should lint ts+js",
         input: ["ts/*", "js/*"],
         snapshot: "ts+js.json",

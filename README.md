@@ -34,7 +34,7 @@ import { withConfig } from "@goodbyenjn/configs/eslint";
 export default withConfig();
 ```
 
-本配置会根据 `package.json` 文件中是否存在 `react`、`vue` 和 `typescript` 依赖项来自动启用对应的规则。
+本配置会根据 `package.json` 文件中是否存在 `react` 和 `typescript` 依赖项来自动启用对应的规则。
 
 你也可以手动覆盖相关配置，例如：
 
@@ -56,9 +56,6 @@ export default [
                 "react/react-in-jsx-scope": "off",
             },
         },
-
-        // 启用 Vue 相关规则
-        vue: true,
     }),
 ];
 ```
