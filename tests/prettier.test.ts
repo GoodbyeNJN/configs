@@ -3,6 +3,7 @@ import path from "node:path";
 
 import { exec as $ } from "@goodbyenjn/utils/exec";
 import { format } from "prettier";
+import { describe, test } from "vitest";
 
 import { withConfig } from "@goodbyenjn/configs/prettier";
 
@@ -54,7 +55,6 @@ const cases = [
     },
 ];
 
-const prettierPath = path.resolve(import.meta.dirname, "../node_modules/.bin/prettier");
 const configPath = path.join(import.meta.dirname, "prettier.test.config.js");
 const options = withConfig();
 
@@ -63,7 +63,7 @@ describe.concurrent("Prettier", () => {
         let output;
         if (overrides) {
             const filepath = path.join(import.meta.dirname, input);
-            ({ stdout: output } = await $(`${prettierPath} --config ${configPath} ${filepath}`));
+            ({ stdout: output } = await $`prettier --config ${configPath} ${filepath}`);
         } else {
             const filepath = path.join("tests", input);
             const text = await fsp.readFile(filepath, "utf-8");

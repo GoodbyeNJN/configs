@@ -2,6 +2,7 @@ import path from "node:path";
 
 import * as R from "@goodbyenjn/utils/remeda";
 import { ESLint } from "eslint";
+import { describe, test } from "vitest";
 
 import { withConfig } from "@goodbyenjn/configs/eslint";
 
