@@ -2,7 +2,6 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "compilerOptions": {
         // Type Checking
-        "strict": true,
         "noFallthroughCasesInSwitch": true,
         "noImplicitOverride": true,
         "noImplicitReturns": true,
@@ -11,10 +10,9 @@
         "noUnusedParameters": false,
 
         // Modules
-        "module": "ESNext",
         "moduleResolution": "bundler",
+        "types": ["node"],
         "allowArbitraryExtensions": true,
-        "noUncheckedSideEffectImports": true,
         "resolveJsonModule": true,
         "rewriteRelativeImportExtensions": true,
 
