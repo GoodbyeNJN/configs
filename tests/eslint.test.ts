@@ -1,5 +1,6 @@
 import path from "node:path";
 
+import * as R from "@goodbyenjn/utils/remeda";
 import { ESLint } from "eslint";
 
 import { withConfig } from "@goodbyenjn/configs/eslint";
@@ -72,8 +73,11 @@ describe.concurrent("Eslint", () => {
         const results = await eslint.lintFiles(input);
         const output = results.map(({ filePath, messages }) => ({
             filename: path.relative(import.meta.dirname, filePath),
-            // eslint-disable-next-line max-nested-callbacks
-            messages: messages.map(({ nodeType: _, fix: __, suggestions: ___, ...rest }) => rest),
+            messages: R.pipe(
+                messages,
+                R.map(R.pick(["ruleId", "message"])),
+                R.sortBy(R.prop("message")),
+            ),
         }));
 
         await expect(JSON.stringify(output, null, 2)).toMatchFileSnapshot(

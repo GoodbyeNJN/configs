@@ -4,23 +4,11 @@
     "messages": [
       {
         "ruleId": "no-undef",
-        "severity": 2,
-        "message": "'foo' is not defined.",
-        "line": 1,
-        "column": 1,
-        "messageId": "undef",
-        "endLine": 1,
-        "endColumn": 4
+        "message": "'bar' is not defined."
       },
       {
         "ruleId": "no-undef",
-        "severity": 2,
-        "message": "'bar' is not defined.",
-        "line": 1,
-        "column": 5,
-        "messageId": "undef",
-        "endLine": 1,
-        "endColumn": 8
+        "message": "'foo' is not defined."
       }
     ]
   },
@@ -29,63 +17,27 @@
     "messages": [
       {
         "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'foo' is assigned a value but never used. Allowed unused vars must match /^_/u.",
-        "line": 2,
-        "column": 1,
-        "messageId": "unusedVar",
-        "endLine": 2,
-        "endColumn": 4
+        "message": "'bar' is defined but never used. Allowed unused vars must match /^_/u."
       },
       {
         "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'bar' is defined but never used. Allowed unused vars must match /^_/u.",
-        "line": 4,
-        "column": 10,
-        "messageId": "unusedVar",
-        "endLine": 4,
-        "endColumn": 13
+        "message": "'baz' is assigned a value but never used. Allowed unused vars must match /^_/u."
       },
       {
         "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'baz' is defined but never used. Allowed unused args must match /^_/u.",
-        "line": 4,
-        "column": 15,
-        "messageId": "unusedVar",
-        "endLine": 4,
-        "endColumn": 18
-      },
-      {
-        "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'baz' is assigned a value but never used. Allowed unused vars must match /^_/u.",
-        "line": 6,
-        "column": 9,
-        "messageId": "unusedVar",
-        "endLine": 6,
-        "endColumn": 12
-      },
-      {
-        "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'rest' is assigned a value but never used. Allowed unused vars must match /^_/u.",
-        "line": 6,
-        "column": 17,
-        "messageId": "unusedVar",
-        "endLine": 6,
-        "endColumn": 21
+        "message": "'baz' is defined but never used. Allowed unused args must match /^_/u."
       },
       {
         "ruleId": "no-undef",
-        "severity": 2,
-        "message": "'data' is not defined.",
-        "line": 6,
-        "column": 26,
-        "messageId": "undef",
-        "endLine": 6,
-        "endColumn": 30
+        "message": "'data' is not defined."
+      },
+      {
+        "ruleId": "no-unused-vars",
+        "message": "'foo' is assigned a value but never used. Allowed unused vars must match /^_/u."
+      },
+      {
+        "ruleId": "no-unused-vars",
+        "message": "'rest' is assigned a value but never used. Allowed unused vars must match /^_/u."
       }
     ]
   }

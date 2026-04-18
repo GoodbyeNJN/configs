@@ -3,44 +3,28 @@
     "filename": "react/no-children-prop.jsx",
     "messages": [
       {
-        "ruleId": "react/no-children-prop",
-        "severity": 2,
-        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags.",
-        "line": 1,
-        "column": 6,
-        "messageId": "nestChildren",
-        "endLine": 1,
-        "endColumn": 28
+        "ruleId": "react/jsx-no-undef",
+        "message": "'Bar' is not defined."
+      },
+      {
+        "ruleId": "no-undef",
+        "message": "'Bar' is not defined."
       },
       {
         "ruleId": "react/jsx-no-undef",
-        "severity": 2,
-        "message": "'Foo' is not defined.",
-        "line": 2,
-        "column": 2,
-        "messageId": "undefined",
-        "endLine": 2,
-        "endColumn": 5
+        "message": "'Foo' is not defined."
+      },
+      {
+        "ruleId": "no-undef",
+        "message": "'Foo' is not defined."
       },
       {
         "ruleId": "react/no-children-prop",
-        "severity": 2,
-        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags.",
-        "line": 2,
-        "column": 6,
-        "messageId": "nestChildren",
-        "endLine": 2,
-        "endColumn": 24
+        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags."
       },
       {
-        "ruleId": "react/jsx-no-undef",
-        "severity": 2,
-        "message": "'Bar' is not defined.",
-        "line": 2,
-        "column": 17,
-        "messageId": "undefined",
-        "endLine": 2,
-        "endColumn": 20
+        "ruleId": "react/no-children-prop",
+        "message": "Do not pass children as props. Instead, nest children between the opening and closing tags."
       }
     ]
   },
@@ -49,23 +33,11 @@
     "messages": [
       {
         "ruleId": "no-unused-vars",
-        "severity": 1,
-        "message": "'Foo' is defined but never used. Allowed unused vars must match /^_/u.",
-        "line": 1,
-        "column": 7,
-        "messageId": "unusedVar",
-        "endLine": 1,
-        "endColumn": 10
+        "message": "'Foo' is defined but never used. Allowed unused vars must match /^_/u."
       },
       {
         "ruleId": "react/no-string-refs",
-        "severity": 2,
-        "message": "Using string literals in ref attributes is deprecated.",
-        "line": 6,
-        "column": 17,
-        "messageId": "stringInRefDeprecated",
-        "endLine": 6,
-        "endColumn": 26
+        "message": "Using string literals in ref attributes is deprecated."
       }
     ]
   },
@@ -74,11 +46,7 @@
     "messages": [
       {
         "ruleId": null,
-        "fatal": true,
-        "severity": 2,
-        "message": "Parsing error: Unexpected token `>`. Did you mean `&gt;` or `{\">\"}`?",
-        "line": 1,
-        "column": 9
+        "message": "Parsing error: Unexpected token `>`. Did you mean `&gt;` or `{\">\"}`?"
       }
     ]
   },
@@ -86,33 +54,16 @@
     "filename": "react/rules-of-hooks.jsx",
     "messages": [
       {
+        "ruleId": "no-undef",
+        "message": "'ThemeContext' is not defined."
+      },
+      {
+        "ruleId": "no-undef",
+        "message": "'useContext' is not defined."
+      },
+      {
         "ruleId": "react-hooks/rules-of-hooks",
-        "severity": 2,
-        "message": "React Hook \"useContext\" is called conditionally. React Hooks must be called in the exact same order in every component render.",
-        "line": 3,
-        "column": 9,
-        "endLine": 3,
-        "endColumn": 19
-      },
-      {
-        "ruleId": "no-undef",
-        "severity": 2,
-        "message": "'useContext' is not defined.",
-        "line": 3,
-        "column": 9,
-        "messageId": "undef",
-        "endLine": 3,
-        "endColumn": 19
-      },
-      {
-        "ruleId": "no-undef",
-        "severity": 2,
-        "message": "'ThemeContext' is not defined.",
-        "line": 3,
-        "column": 20,
-        "messageId": "undef",
-        "endLine": 3,
-        "endColumn": 32
+        "message": "React Hook \"useContext\" is called conditionally. React Hooks must be called in the exact same order in every component render."
       }
     ]
   }
