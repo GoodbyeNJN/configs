@@ -1,6 +1,6 @@
 {
     "name": "@goodbyenjn/configs",
-    "version": "6.1.4",
+    "version": "6.2.0",
     "description": "GoodbyeNJN's configs, including eslint, prettier, and more.",
     "keywords": [
         "eslint",
