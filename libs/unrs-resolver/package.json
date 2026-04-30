@@ -1,0 +1,8 @@
+{
+    "name": "unrs-resolver",
+    "version": "1.11.1",
+    "type": "module",
+    "exports": {
+        ".": "./index.js"
+    }
+}

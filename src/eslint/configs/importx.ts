@@ -1,19 +1,22 @@
-import { pluginImport } from "@/shared/modules";
+import { loadImportX } from "@/shared/modules";
 
-import type { ESLintConfig, ImportsConfig, ImportsOverride } from "../types";
+import { getConfigsByKey, getOverridesByKey } from "../options";
 
-export const imports = (
-    config: ImportsConfig,
-    override: ImportsOverride,
-): ESLintConfig<ImportsOverride>[] => {
-    const { order = {} } = config;
+import type { ESLintConfig, Overrides, Options } from "../types";
+
+export const importx = (options: Options): ESLintConfig<Overrides["import"]>[] => {
+    const { order = {} } = getConfigsByKey(options, "import");
+    const override = getOverridesByKey(options, "import");
+    const { plugin, createNodeResolver } = loadImportX();
 
     return [
         {
-            name: "goodbyenjn:imports",
-            plugins: { import: pluginImport },
+            name: "goodbyenjn/import",
+            plugins: {
+                import: plugin,
+            },
             settings: {
-                "import-x/resolver-next": [pluginImport.createNodeResolver()],
+                "import/resolver-next": [createNodeResolver()],
             },
             rules: {
                 // import 强制排序

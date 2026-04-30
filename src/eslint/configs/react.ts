@@ -1,43 +1,43 @@
-import { GLOB_JSX, GLOB_TSX } from "@/shared/globs";
-import { configAlloyReact, pluginReact, pluginReactHooks } from "@/shared/modules";
+import { GLOBS_JS, GLOBS_JSX, GLOBS_TS, GLOBS_TSX } from "@/shared/globs";
+import { getPatternsFromGlobs } from "@/shared/ignore";
+import { loadReact } from "@/shared/modules";
 
-import type { ESLintConfig, ReactConfig, ReactOverride } from "../types";
+import { getConfigsByKey } from "../options";
+import { mapRuleNamespace } from "../utils";
 
-export const react = (
-    config: ReactConfig,
-    override: ReactOverride,
-): ESLintConfig<ReactOverride>[] => {
-    const { useTypescript, version = "detect" } = config;
-    const files = [GLOB_JSX, GLOB_TSX];
+import type { ESLintConfig, Options, Overrides } from "../types";
 
-    return [
+export const react = async (options: Options, useTypescript?: boolean) => {
+    const { version, useTypescript: _useTypescript } = getConfigsByKey(options, "react");
+    const { plugin, settings, rules } = await loadReact();
+
+    const configs: ESLintConfig<Overrides["react"]>[] = [
         {
-            name: "goodbyenjn:react:common",
+            name: "goodbyenjn/react/parser",
             plugins: {
-                react: pluginReact,
-                "react-hooks": pluginReactHooks,
+                react: plugin,
             },
             settings: {
-                react: { version },
+                react: { ...settings, ...(version ? { version } : {}) },
             },
         },
         {
-            name: "goodbyenjn:react:rules",
-            files,
-            languageOptions: {
-                parserOptions: {
-                    ecmaFeatures: {
-                        jsx: true,
-                    },
-                },
-            },
+            name: "goodbyenjn/react/js",
+            files: getPatternsFromGlobs([...GLOBS_JS, ...GLOBS_JSX]),
             rules: {
-                "react-hooks/rules-of-hooks": "error",
-                "react-hooks/exhaustive-deps": "warn",
-                ...configAlloyReact.rules,
-                ...(useTypescript ? { "react/jsx-no-undef": "off" } : {}),
-                ...override,
+                ...mapRuleNamespace(rules.recommend, "@eslint-react", "react"),
             },
         },
     ];
+    if (useTypescript || _useTypescript) {
+        configs.push({
+            name: "goodbyenjn/react/ts",
+            files: getPatternsFromGlobs([...GLOBS_TS, ...GLOBS_TSX]),
+            rules: {
+                ...mapRuleNamespace(rules.recommend, "@eslint-react", "react"),
+            },
+        });
+    }
+
+    return configs;
 };

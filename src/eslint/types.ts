@@ -1,66 +1,39 @@
-import type {
-    EslintRules,
-    ImportRules,
-    OrderOption,
-    ParserOptions,
-    ReactHooksRules,
-    ReactRules,
-    TypeScriptRules,
-} from "@antfu/eslint-define-config";
+import type { EslintRules } from "@/types/eslint-rules";
+import type { ImportOrder, ImportRules as ImportXRules } from "@/types/import-rules";
+import type { ReactRules } from "@/types/react-rules";
+import type { TypeScriptRules } from "@/types/typescript-rules";
 import type { Linter } from "eslint";
 
-export type { EslintRules };
+type OrderOption = ImportOrder extends [] | [infer Item] ? Item : never;
 
-export type ESLintConfig<Rules = {}> = Linter.Config<Rules & Linter.RulesRecord>;
-
-export interface JavaScriptConfig {}
-
-export interface TypeScriptConfig {
-    parserOptions?: ParserOptions;
-}
-
-export interface ReactConfig {
-    useTypescript?: boolean;
-    version?: string;
-}
-
-export interface ImportsConfig {
-    order?: OrderOption;
-}
+export type ESLintConfig<Rules = Linter.RulesRecord> = Linter.Config<Rules & Linter.RulesRecord>;
 
 export interface Configs {
-    javascript: JavaScriptConfig;
-    typescript: TypeScriptConfig;
-    react: ReactConfig;
-    imports: ImportsConfig;
+    // eslint-disable-next-line typescript/no-empty-object-type
+    javascript: {};
+    typescript: { useTypeLinting?: boolean; tsconfigRootDir?: string };
+    react: { useTypescript?: boolean; version?: string };
+    import: { order?: OrderOption };
 }
-
-export type JavaScriptOverride = Partial<EslintRules>;
-
-export type TypeScriptOverride = Partial<EslintRules & TypeScriptRules>;
-
-export type ReactOverride = Partial<EslintRules & TypeScriptRules & ReactRules & ReactHooksRules>;
-
-export type ImportsOverride = Partial<ImportRules>;
 
 export interface Overrides {
-    javascript: JavaScriptOverride;
-    typescript: TypeScriptOverride;
-    react: ReactOverride;
-    imports: ImportsOverride;
+    javascript: Partial<EslintRules>;
+    typescript: Partial<EslintRules & TypeScriptRules>;
+    react: Partial<EslintRules & TypeScriptRules & ReactRules>;
+    import: Partial<ImportXRules>;
 }
 
-export interface Enables {
-    typescript: boolean;
-    react: boolean;
-    imports: boolean;
-}
-
-export type Option<T extends keyof Options> = Configs[T] & { overrides?: Overrides[T] };
+export type Option<T extends keyof Options> = Configs[T] & {
+    overrides?: Overrides[T];
+};
 
 export interface Options {
-    javascript?: Option<"javascript">;
-    typescript?: Enables["typescript"] | Option<"typescript">;
-    react?: Enables["react"] | Option<"react">;
-    imports?: Option<"imports">;
+    javascript?: boolean | Option<"javascript">;
+    typescript?: boolean | Option<"typescript">;
+    react?: boolean | Option<"react">;
+    import?: boolean | Option<"import">;
+}
+
+export interface FullOptions extends Options {
+    ignores?: string[];
 }

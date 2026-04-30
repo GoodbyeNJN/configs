@@ -1,9 +1,7 @@
-import { parseDefaultOptions } from "../options";
-
 import type { Options, PrettierConfig } from "../types";
 
-export const defaults = (options: Options = {}): PrettierConfig => {
-    const defaults = parseDefaultOptions(options);
+export const defaults = (options: Options): PrettierConfig => {
+    const { ignores, plugins, overrides, ...defaults } = options;
 
     return {
         // 一行最多 100 字符

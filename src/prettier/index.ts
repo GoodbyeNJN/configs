@@ -1,19 +1,22 @@
-import { defaults, gitignore, ignores, jsonc, plugins, yaml } from "./configs";
-import { parseOverrideOptions } from "./options";
+import { defaults } from "./configs/defaults";
+import { ignores } from "./configs/ignores";
+import { jsonc } from "./configs/jsonc";
+import { plugins } from "./configs/plugins";
+import { yaml } from "./configs/yaml";
 
 import type { Options, PrettierConfig } from "./types";
 
 export type { Options, Overrides } from "./types";
 
 export const withConfig = (options: Options = {}): PrettierConfig => {
-    const overrides = parseOverrideOptions(options);
+    const overrides = options.overrides ?? [];
 
     return {
         ...defaults(options),
 
         ...plugins(options),
 
-        overrides: [gitignore(), ignores(options), jsonc(), yaml(), ...overrides],
+        overrides: [ignores(options), jsonc(), yaml(), ...overrides],
     };
 };
 

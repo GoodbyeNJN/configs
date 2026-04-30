@@ -1,7 +1,6 @@
 allowBuilds:
   esbuild: true
-  unrs-resolver: true
+overrides:
+  unrs-resolver: link:libs/unrs-resolver
 patchedDependencies:
-  "@antfu/eslint-define-config": scripts/patches/@antfu__eslint-define-config.patch
-  eslint-config-alloy: scripts/patches/eslint-config-alloy.patch
   eslint-plugin-import-x: scripts/patches/eslint-plugin-import-x.patch

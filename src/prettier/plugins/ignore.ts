@@ -15,13 +15,13 @@ const plugin: Plugin = {
         [PARSER_NAME]: {
             parse: source => source,
             astFormat: AST_NAME,
-            locStart: _ => 0,
+            locStart: () => 0,
             locEnd: node => node.length,
         },
     },
     printers: {
         [AST_NAME]: {
-            print: path => path.getNode() || "",
+            print: path => path.getNode() ?? "",
         },
     },
 };

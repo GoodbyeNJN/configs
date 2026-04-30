@@ -1,5 +1,5 @@
 diff --git a/lib/index.cjs b/lib/index.cjs
-index 167f6fb46bc7cb5ee9492a0f2276c08a54759695..14eba9ea73daed39cc15cb89bb55b5cb01c73c8c 100644
+index 167f6fb46bc7cb5ee9492a0f2276c08a54759695..f0f5a0cef82a721d76681977a2178350f317dfe4 100644
 --- a/lib/index.cjs
 +++ b/lib/index.cjs
 @@ -279,7 +279,8 @@ const cjsRequire = importMetaUrl$1 ? (0, node_module.createRequire)(importMetaUr
@@ -8,18 +8,18 @@ index 167f6fb46bc7cb5ee9492a0f2276c08a54759695..14eba9ea73daed39cc15cb89bb55b5cb
  //#region src/meta.ts
 -const { name, version } = cjsRequire("../package.json");
 +const name = "eslint-plugin-import-x";
-+const version = "4.16.1";
++const version = "4.16.2";
  const meta = {
  	name,
  	version
 diff --git a/lib/meta.js b/lib/meta.js
-index 079bdb09192305267ea1b45b835f5138ffef3d19..51d7480496eaaadc1f19f94251bdc35afd666bed 100644
+index 079bdb09192305267ea1b45b835f5138ffef3d19..672667ee737844a551bd0427ede36d7d46168ea1 100644
 --- a/lib/meta.js
 +++ b/lib/meta.js
 @@ -1,4 +1,5 @@
  import { cjsRequire } from './require.js';
 -export const { name, version } = cjsRequire('../package.json');
 +export const name = "eslint-plugin-import-x";
-+export const version = "4.16.1";
++export const version = "4.16.2";
  export const meta = { name, version };
  //# sourceMappingURL=meta.js.map

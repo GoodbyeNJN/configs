@@ -1,53 +1,36 @@
-export const GITIGNORE = ".gitignore";
-export const GITMODULES = ".gitmodules";
+export const GLOBS_JSONC = ["*.jsonc", "*.cjson"];
 
-export const GLOB_SRC_EXT = "?([cm])[jt]s?(x)";
-export const GLOB_SRC = "**/*.?([cm])[jt]s?(x)";
+export const GLOBS_YAML = ["*.yaml", "*.yml"];
 
-export const GLOB_JS = "**/*.?([cm])js";
-export const GLOB_JSX = "**/*.?([cm])jsx";
+export const GLOBS_JS = ["*.js", "*.[cm]js"];
+export const GLOBS_JSX = ["*.jsx", "*.[cm]jsx"];
 
-export const GLOB_TS = "**/*.?([cm])ts";
-export const GLOB_TSX = "**/*.?([cm])tsx";
+export const GLOBS_TS = ["*.ts", "*.[cm]ts"];
+export const GLOBS_TSX = ["*.tsx", "*.[cm]tsx"];
 
-export const GLOB_SVELTE = "**/*.svelte";
-export const GLOB_VUE = "**/*.vue";
+export const GLOBS_LOCK_FILES = ["package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb"];
 
-export const GLOB_TESTS_LIST = [
-    `**/__tests__/**/*.${GLOB_SRC_EXT}`,
-    `**/*.spec.${GLOB_SRC_EXT}`,
-    `**/*.test.${GLOB_SRC_EXT}`,
-    `**/*.bench.${GLOB_SRC_EXT}`,
-    `**/*.benchmark.${GLOB_SRC_EXT}`,
-];
+export const GLOBS_EXCLUDE = [
+    "node_modules/",
+    "dist/",
 
-export const GLOB_SRC_LIST = [GLOB_SRC, GLOB_SVELTE, GLOB_VUE];
+    "output/",
+    "coverage/",
+    "temp/",
+    ".temp/",
+    "tmp/",
+    ".tmp/",
+    ".history/",
+    ".vitepress/cache/",
+    ".nuxt/",
+    ".next/",
+    ".vercel/",
+    ".changeset/",
+    ".idea/",
+    ".cache/",
+    ".output/",
+    ".vite-inspect/",
 
-export const GLOB_EXCLUDE_LIST = [
-    "**/node_modules",
-    "**/dist",
-    "**/package-lock.json",
-    "**/yarn.lock",
-    "**/pnpm-lock.yaml",
-    "**/bun.lockb",
-
-    "**/output",
-    "**/coverage",
-    "**/temp",
-    "**/.temp",
-    "**/tmp",
-    "**/.tmp",
-    "**/.history",
-    "**/.vitepress/cache",
-    "**/.nuxt",
-    "**/.next",
-    "**/.vercel",
-    "**/.changeset",
-    "**/.idea",
-    "**/.cache",
-    "**/.output",
-    "**/.vite-inspect",
-
-    "**/*.min.*",
-    "**/__snapshots__",
+    "*.min.*",
+    "__snapshots__/",
 ];

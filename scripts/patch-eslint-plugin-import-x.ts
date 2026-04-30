@@ -1,70 +1,41 @@
-#!/usr/bin/env -S node --disable-warning=ExperimentalWarning
+#!/usr/bin/env -S tsx
 
-import fs from "node:fs/promises";
-import path from "node:path";
+import { unindent } from "@goodbyenjn/utils";
 
-import { exec as $ } from "@goodbyenjn/utils/exec";
+import { devDependencies } from "../package.json";
 
-interface Patch {
-    filepath: string;
-    handler: (content: string) => string;
-}
+import { patch } from "./utils";
 
-const main = async (pkg: string, patches: Patch[]) => {
-    const temp = path.resolve(import.meta.dirname, "../node_modules/.temp", pkg);
+import type { Patch } from "./utils";
 
-    await $(`rm -rf ${temp}`);
-    await $(`pnpm patch ${pkg} --edit-dir ${temp}`);
+const version = devDependencies["eslint-plugin-import-x"].replace("^", "");
 
-    try {
-        for (const patch of patches) {
-            const filepath = path.resolve(temp, patch.filepath);
-            const content = await fs.readFile(filepath, "utf-8");
-            if (!content) {
-                throw new Error(`File not exits or empty: ${filepath}`);
-            }
-
-            const patched = patch.handler(content);
-            await fs.writeFile(filepath, patched);
-        }
-    } catch (error) {
-        console.log("❌ Failed to patch files");
-        console.log((error as Error)?.message || error);
-        await $(`rm -rf ${temp}`);
-
-        process.exit(1);
-    }
-
-    await $(`pnpm patch-commit --patches-dir ./scripts/patches ${temp}`);
-    await $(`rm -rf ${temp}`);
-
-    console.log("✅ Patched files successfully");
-    process.exit(0);
-};
-
-const patches = [
+const patches: Patch[] = [
     {
-        filepath: "lib/index.cjs",
-        handler: (content: string) =>
-            content.replace(
-                /const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/,
-                `
-const name = "eslint-plugin-import-x";
-const version = "4.16.1";
-`.trim(),
-            ),
+        pattern: "lib/index.cjs",
+        handler: (filepath, content) => {
+            const regexp = /const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/;
+            const replace = unindent`
+                const name = "eslint-plugin-import-x";
+                const version = "${version}";
+            `;
+
+            return content.replace(regexp, replace);
+        },
     },
     {
-        filepath: "lib/meta.js",
-        handler: (content: string) =>
-            content.replace(
-                /export const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/,
-                `
-export const name = "eslint-plugin-import-x";
-export const version = "4.16.1";
-`.trim(),
-            ),
+        pattern: "lib/meta.js",
+        handler: (filepath, content) => {
+            const regexp =
+                /export const \{ name, version \} = .*\(\s*["']\.\.\/package\.json["']\s*\);/;
+            const replace = unindent`
+                export const name = "eslint-plugin-import-x";
+                export const version = "${version}";
+            `;
+
+            return content.replace(regexp, replace);
+        },
     },
 ];
 
-main("eslint-plugin-import-x", patches);
+await patch("eslint-plugin-import-x", patches);

@@ -1,42 +1,36 @@
-import { isPackageExists } from "@/shared/modules";
+import { isPackageExists } from "@/shared/pkg";
 
-import type { Configs, Enables, Option, Options, Overrides } from "./types";
+import type { Configs, Option, Options, Overrides } from "./types";
 
-export const defaultEnables: Enables = {
+const defaultEnables: Options = {
+    javascript: true,
     typescript: isPackageExists("typescript"),
     react: isPackageExists("react") || isPackageExists("preact"),
-    imports: true,
+    import: true,
 };
 
-export const getOptionByKey = <T extends keyof Options>(
-    options: Options,
-    key: T,
-): false | Option<T> => {
+const getOptionByKey = <T extends keyof Options>(options: Options, key: T): false | Option<T> => {
     const option = options[key];
 
     if (typeof option === "undefined") {
-        if (key === "javascript") {
-            return {};
-        }
+        if (key === "javascript") return {};
 
-        const nonJavascriptKey = key as Exclude<T, "javascript">;
-        return defaultEnables[nonJavascriptKey] && {};
+        return defaultEnables[key as Exclude<T, "javascript">] && {};
     }
 
     if (typeof option === "boolean") {
         return option && {};
     }
 
-    return option as Option<T>;
+    return option;
 };
 
 export const getConfigsByKey = <T extends keyof Options>(options: Options, key: T): Configs[T] => {
     const option = getOptionByKey(options, key);
-    if (!option) {
-        return {};
-    }
+    if (!option) return {};
 
-    const { overrides: _, ...configs } = option;
+    const { overrides, ...configs } = option;
+
     return configs;
 };
 
@@ -45,32 +39,12 @@ export const getOverridesByKey = <T extends keyof Options>(
     key: T,
 ): Overrides[T] => {
     const option = getOptionByKey(options, key);
-    return option ? option.overrides || {} : {};
+
+    return option ? (option.overrides ?? {}) : {};
 };
 
-export const getEnablesByKey = <T extends keyof Enables>(options: Options, key: T): Enables[T] => {
+export const getEnablesByKey = <T extends keyof Options>(options: Options, key: T): boolean => {
     const option = getOptionByKey(options, key);
+
     return Boolean(option);
-};
-
-export const parseOptions = (options: Options) => {
-    const configs: Configs = {
-        javascript: getConfigsByKey(options, "javascript"),
-        typescript: getConfigsByKey(options, "typescript"),
-        react: getConfigsByKey(options, "react"),
-        imports: getConfigsByKey(options, "imports"),
-    };
-    const overrides: Overrides = {
-        javascript: getOverridesByKey(options, "javascript"),
-        typescript: getOverridesByKey(options, "typescript"),
-        react: getOverridesByKey(options, "react"),
-        imports: getOverridesByKey(options, "imports"),
-    };
-    const enables: Enables = {
-        typescript: getEnablesByKey(options, "typescript"),
-        react: getEnablesByKey(options, "react"),
-        imports: getEnablesByKey(options, "imports"),
-    };
-
-    return { configs, overrides, enables };
 };

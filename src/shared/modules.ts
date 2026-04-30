@@ -1,37 +1,62 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/consistent-type-imports */
+import { configs as eslintConfigs } from "@eslint/js";
+import {
+    createNodeResolver,
+    meta as importXMeta,
+    rules as importXRules,
+} from "eslint-plugin-import-x";
 
-import type { EslintRules, ReactRules, TypeScriptRules } from "@antfu/eslint-define-config";
 import type { ESLint, Linter } from "eslint";
 
-export declare const configGitignore: typeof import("eslint-config-flat-gitignore").default;
-exports.configGitignore = require("eslint-config-flat-gitignore").default;
+export const loadEslint = () => {
+    const rules: Linter.RulesRecord = eslintConfigs.recommended.rules;
 
-export declare const configAlloyBase: { rules: EslintRules };
-export declare const configAlloyReact: { rules: ReactRules };
-export declare const configAlloyTypescript: { rules: TypeScriptRules };
-exports.configAlloyBase = require("eslint-config-alloy/base");
-exports.configAlloyReact = require("eslint-config-alloy/react");
-exports.configAlloyTypescript = require("eslint-config-alloy/typescript");
+    return { rules };
+};
 
-export declare const pluginTypescript: ESLint.Plugin;
-export declare const pluginReact: ESLint.Plugin;
-export declare const pluginReactHooks: ESLint.Plugin;
-export declare const pluginImport: ESLint.Plugin &
-    Pick<typeof import("eslint-plugin-import-x"), "createNodeResolver" | "importXResolverCompat">;
-exports.pluginTypescript = require("@typescript-eslint/eslint-plugin");
-exports.pluginReact = require("eslint-plugin-react");
-exports.pluginReactHooks = require("eslint-plugin-react-hooks");
-exports.pluginImport = require("eslint-plugin-import-x");
+export const loadImportX = () => {
+    const plugin: ESLint.Plugin = {
+        meta: importXMeta,
+        rules: importXRules as unknown as ESLint.Plugin["rules"],
+    };
 
-export declare const parserTypescript: Linter.Parser;
-exports.parserTypescript = require("@typescript-eslint/parser");
+    return { plugin, createNodeResolver };
+};
 
-export declare const globals: typeof import("globals");
-exports.globals = require("globals");
+export const loadTypescript = async () => {
+    const [{ meta, rules: _rules }, { flatConfigs, parser: _parser }] = await Promise.all([
+        import("@typescript-eslint/eslint-plugin"),
+        import("@typescript-eslint/eslint-plugin/use-at-your-own-risk/raw-plugin"),
+    ]);
 
-export declare const isPackageExists: typeof import("local-pkg").isPackageExists;
-exports.isPackageExists = require("local-pkg").isPackageExists;
+    const plugin: ESLint.Plugin = {
+        meta,
+        rules: _rules as unknown as ESLint.Plugin["rules"],
+    };
+    const rules = {
+        recommendEslint: flatConfigs["flat/eslint-recommended"].rules as Linter.RulesRecord,
+        recommend: flatConfigs["flat/recommended"][2]!.rules as Linter.RulesRecord,
+        recommendTyped: flatConfigs["flat/recommended-type-checked-only"][2]!
+            .rules as Linter.RulesRecord,
+    };
+    const parser = _parser as unknown as Linter.Parser;
 
-export declare const findUpSync: typeof import("find-up-simple").findUpSync;
-exports.findUpSync = require("find-up-simple").findUpSync;
+    return { plugin, rules, parser };
+};
+
+export const loadReact = async () => {
+    const {
+        default: { meta, rules: _rules, configs },
+    } = await import("@eslint-react/eslint-plugin");
+
+    const plugin: ESLint.Plugin = {
+        meta,
+        rules: _rules as unknown as ESLint.Plugin["rules"],
+    };
+    const rules = {
+        recommend: configs.recommended.rules as Linter.RulesRecord,
+        recommendTyped: configs["recommended-type-checked"].rules as Linter.RulesRecord,
+    };
+    const { settings } = configs.recommended;
+
+    return { plugin, rules, settings };
+};
