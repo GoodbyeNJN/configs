@@ -2,9 +2,10 @@
     "extends": "./tsconfigs/base.json",
     "compilerOptions": {
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@/types/*": ["./types/generated/*"]
         }
     },
-    "include": [".", "src", "types", "build"],
-    "exclude": ["dist", "tests/*/*"]
+    "include": ["./*", "src", "types", "tests", "scripts"],
+    "exclude": ["tests/__fixtures__", "tests/__snapshots__"]
 }
