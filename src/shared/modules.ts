@@ -50,7 +50,7 @@ export const loadReact = async () => {
 
     const plugin: ESLint.Plugin = {
         meta,
-        rules: _rules as unknown as ESLint.Plugin["rules"],
+        rules: _rules,
     };
     const rules = {
         recommend: configs.recommended.rules as Linter.RulesRecord,
