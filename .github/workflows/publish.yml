@@ -22,7 +22,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: next-11
+          version: latest-11
 
       - name: Setup Nodejs
         uses: actions/setup-node@v6
