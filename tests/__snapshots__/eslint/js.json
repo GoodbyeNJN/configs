@@ -1,6 +1,6 @@
 [
   {
-    "filename": "js/no-undef.js",
+    "filename": "__fixtures__/js/no-undef.js",
     "messages": [
       {
         "ruleId": "no-undef",
@@ -13,19 +13,11 @@
     ]
   },
   {
-    "filename": "js/no-unused-vars.js",
+    "filename": "__fixtures__/js/no-unused-vars.js",
     "messages": [
       {
         "ruleId": "no-unused-vars",
         "message": "'bar' is defined but never used. Allowed unused vars must match /^_/u."
-      },
-      {
-        "ruleId": "no-unused-vars",
-        "message": "'baz' is assigned a value but never used. Allowed unused vars must match /^_/u."
-      },
-      {
-        "ruleId": "no-unused-vars",
-        "message": "'baz' is defined but never used. Allowed unused args must match /^_/u."
       },
       {
         "ruleId": "no-undef",

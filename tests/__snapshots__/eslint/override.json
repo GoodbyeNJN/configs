@@ -1,6 +1,6 @@
 [
   {
-    "filename": "js/no-undef.js",
+    "filename": "__fixtures__/js/no-undef.js",
     "messages": [
       {
         "ruleId": "no-undef",
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "filename": "js/no-unused-vars.js",
+    "filename": "__fixtures__/js/no-unused-vars.js",
     "messages": [
       {
         "ruleId": "no-undef",

@@ -1,8 +1,8 @@
 import path from "node:path";
 
-import * as R from "@goodbyenjn/utils/remeda";
+import * as R from "@goodbyenjn/utils/fp";
 import { ESLint } from "eslint";
-import { describe, test } from "vitest";
+import { test } from "vitest";
 
 import { withConfig } from "@goodbyenjn/configs/eslint";
 
@@ -17,15 +17,15 @@ interface Case {
 
 const cases: Case[] = [
     {
-        name: "should lint js",
-        input: ["js/"],
+        name: "lint js",
+        input: ["js/*"],
         snapshot: "js.json",
         options: {
             typescript: false,
         },
     },
     {
-        name: "should lint ts",
+        name: "lint ts",
         input: ["ts/*"],
         snapshot: "ts.json",
         options: {
@@ -33,7 +33,7 @@ const cases: Case[] = [
         },
     },
     {
-        name: "should lint react",
+        name: "lint react",
         input: ["react/*"],
         snapshot: "react.json",
         options: {
@@ -42,7 +42,7 @@ const cases: Case[] = [
         },
     },
     {
-        name: "should lint ts+js",
+        name: "lint ts+js",
         input: ["ts/*", "js/*"],
         snapshot: "ts+js.json",
         options: {
@@ -50,7 +50,7 @@ const cases: Case[] = [
         },
     },
     {
-        name: "should lint override",
+        name: "lint override",
         input: ["js/*"],
         snapshot: "override.json",
         options: {
@@ -64,25 +64,32 @@ const cases: Case[] = [
     },
 ];
 
-describe.concurrent("Eslint", () => {
-    test.for(cases)("$name", async ({ input, snapshot, options }, { expect }) => {
-        const eslint = new ESLint({
-            cwd: import.meta.dirname,
-            overrideConfigFile: true,
-            overrideConfig: withConfig(options),
-        });
-        const results = await eslint.lintFiles(input);
-        const output = results.map(({ filePath, messages }) => ({
-            filename: path.relative(import.meta.dirname, filePath),
-            messages: R.pipe(
-                messages,
-                R.map(R.pick(["ruleId", "message"])),
-                R.sortBy(R.prop("message")),
-            ),
-        }));
-
-        await expect(JSON.stringify(output, null, 2)).toMatchFileSnapshot(
-            path.join("snapshots/eslint", snapshot),
-        );
+test.for(cases)("$name", async ({ input, snapshot, options }, { expect }) => {
+    const eslint = new ESLint({
+        cwd: import.meta.dirname,
+        overrideConfigFile: true,
+        overrideConfig: await withConfig({
+            ignores: [
+                "__fixtures__/**/*.ignored.*",
+                "!__fixtures__/**/*.not.ignored.*",
+                "__snapshots__/",
+            ],
+            ...options,
+        }),
     });
+    const results = await eslint.lintFiles(
+        input.map(pattern => path.join("__fixtures__", pattern)),
+    );
+    const output = results.map(({ filePath, messages }) => ({
+        filename: path.relative(import.meta.dirname, filePath),
+        messages: R.pipe(
+            messages,
+            R.map(R.pick(["ruleId", "message"])),
+            R.sortBy(R.prop("message")),
+        ),
+    }));
+
+    await expect(JSON.stringify(output, null, 2)).toMatchFileSnapshot(
+        path.join("__snapshots__/eslint", snapshot),
+    );
 });
