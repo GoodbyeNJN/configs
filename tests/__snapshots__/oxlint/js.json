@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "__fixtures__/js/no-undef.js",
+    "code": "eslint(no-undef)",
+    "message": "'bar' is not defined."
+  },
+  {
+    "filename": "__fixtures__/js/no-undef.js",
+    "code": "eslint(no-undef)",
+    "message": "'foo' is not defined."
+  },
+  {
+    "filename": "__fixtures__/js/no-unused-vars.js",
+    "code": "eslint(no-undef)",
+    "message": "'data' is not defined."
+  },
+  {
+    "filename": "__fixtures__/js/no-unused-vars.js",
+    "code": "eslint(no-unused-vars)",
+    "message": "Variable 'foo' is assigned a value but never used. Unused variables should start with a '_'."
+  },
+  {
+    "filename": "__fixtures__/js/no-unused-vars.js",
+    "code": "eslint(no-unused-vars)",
+    "message": "Function 'bar' is declared but never used."
+  },
+  {
+    "filename": "__fixtures__/js/no-unused-vars.js",
+    "code": "eslint(no-unused-vars)",
+    "message": "Variable 'rest' is declared but never used. Unused variables should start with a '_'."
+  }
+]

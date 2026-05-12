@@ -1,13 +1,10 @@
 {
     "name": "@goodbyenjn/configs",
     "version": "6.3.0",
-    "description": "GoodbyeNJN's configs, including eslint, prettier, and more.",
+    "description": "GoodbyeNJN's configs, including oxlint, oxfmt, and tsconfig.",
     "keywords": [
-        "eslint",
-        "eslintconfig",
-        "prettier",
-        "prettierconfig",
-        "typescript",
+        "oxfmt",
+        "oxlint",
         "tsconfig"
     ],
     "homepage": "https://github.com/GoodbyeNJN/configs",
@@ -20,52 +17,44 @@
         "type": "git",
         "url": "git+https://github.com/GoodbyeNJN/configs.git"
     },
-    "type": "module",
-    "exports": {
-        "./eslint": {
-            "types": "./dist/eslint/index.d.ts",
-            "import": "./dist/eslint/index.js"
-        },
-        "./prettier": {
-            "types": "./dist/prettier/index.d.ts",
-            "import": "./dist/prettier/index.js"
-        },
-        "./tsconfigs/*": "./tsconfigs/*.json"
-    },
     "files": [
         "dist",
         "tsconfigs"
     ],
+    "type": "module",
+    "exports": {
+        "./oxlint": {
+            "types": "./dist/oxlint/index.d.ts",
+            "import": "./dist/oxlint/index.js"
+        },
+        "./oxfmt": {
+            "types": "./dist/oxfmt/index.d.ts",
+            "import": "./dist/oxfmt/index.js"
+        },
+        "./tsconfigs/*": "./tsconfigs/*.json"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org"
+    },
     "scripts": {
         "dev": "rolldown -w -c",
         "build": "rolldown -c",
-        "check": "tsc && eslint && prettier --check .",
+        "check": "tsc && oxlint && oxfmt --check .",
         "typecheck": "tsc",
-        "lint": "eslint",
-        "lint:fix": "eslint --fix",
-        "format": "prettier --write .",
+        "lint": "oxlint",
+        "lint:fix": "oxlint --fix",
+        "format": "oxfmt --write .",
         "test": "vitest",
         "test:ci": "vitest --run"
     },
     "devDependencies": {
-        "@eslint-react/eslint-plugin": "5.7.5",
-        "@eslint/js": "10.0.1",
         "@goodbyenjn/utils": "^26.4.7",
-        "@types/micromatch": "^4.0.10",
         "@types/node": "^25.6.2",
-        "@typescript-eslint/eslint-plugin": "8.59.2",
-        "@typescript-eslint/parser": "8.59.2",
-        "eslint": "^10.3.0",
-        "eslint-plugin-import-x": "4.16.2",
-        "eslint-typegen": "^2.3.1",
         "find-up-simple": "1.0.1",
-        "globals": "17.6.0",
-        "ignore": "^7.0.5",
-        "memfs": "^4.57.2",
-        "micromatch": "^4.0.8",
-        "minimatch": "10.2.5",
-        "mlly": "1.8.2",
-        "prettier": "^3.8.3",
+        "oxfmt": "^0.49.0",
+        "oxlint": "^1.64.0",
+        "oxlint-tsgolint": "^0.22.1",
         "rolldown": "^1.0.0",
         "rolldown-plugin-dts": "^0.25.0",
         "typescript": "^6.0.3",
@@ -73,22 +62,9 @@
         "vitest": "^4.1.5"
     },
     "peerDependencies": {
-        "eslint": "^10.0.0",
-        "prettier": "^3.0.0",
+        "oxfmt": "^0.40.0",
+        "oxlint": "^1.60.0",
         "typescript": "^6.0.0"
-    },
-    "optionalDependencies": {
-        "@unrs/resolver-binding-win32-x64-msvc": "1.11.1",
-        "@unrs/resolver-binding-win32-arm64-msvc": "1.11.1",
-        "@unrs/resolver-binding-linux-x64-gnu": "1.11.1",
-        "@unrs/resolver-binding-linux-arm64-gnu": "1.11.1",
-        "@unrs/resolver-binding-darwin-x64": "1.11.1",
-        "@unrs/resolver-binding-darwin-arm64": "1.11.1",
-        "@unrs/resolver-binding-wasm32-wasi": "1.11.1"
-    },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org",
-        "access": "public"
     },
     "engines": {
         "node": ">=16"

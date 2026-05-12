@@ -1,0 +1,61 @@
+[
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "eslint(no-undef)",
+    "message": "'Bar' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "eslint(no-undef)",
+    "message": "'Foo' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "react(jsx-no-undef)",
+    "message": "'Foo' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "react(jsx-no-undef)",
+    "message": "'Bar' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "react(no-children-prop)",
+    "message": "Avoid passing children using a prop."
+  },
+  {
+    "filename": "__fixtures__/react/no-children-prop.jsx",
+    "code": "react(no-children-prop)",
+    "message": "Avoid passing children using a prop."
+  },
+  {
+    "filename": "__fixtures__/react/no-string-refs.jsx",
+    "code": "eslint(no-unused-vars)",
+    "message": "Class 'Foo' is declared but never used."
+  },
+  {
+    "filename": "__fixtures__/react/no-string-refs.jsx",
+    "code": "react(no-string-refs)",
+    "message": "Using string literals in ref attributes is deprecated."
+  },
+  {
+    "filename": "__fixtures__/react/no-unescaped-entities.jsx",
+    "message": "Unexpected token. Did you mean `{'>'}` or `&gt;`?"
+  },
+  {
+    "filename": "__fixtures__/react/rules-of-hooks.jsx",
+    "code": "eslint(no-undef)",
+    "message": "'ThemeContext' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/rules-of-hooks.jsx",
+    "code": "eslint(no-undef)",
+    "message": "'useContext' is not defined."
+  },
+  {
+    "filename": "__fixtures__/react/rules-of-hooks.jsx",
+    "code": "react-hooks(rules-of-hooks)",
+    "message": "React Hook \"useContext\" is called conditionally. React Hooks must be called in the exact same order in every component render."
+  }
+]

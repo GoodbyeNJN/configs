@@ -1,0 +1,17 @@
+[
+  {
+    "filename": "__fixtures__/js/no-undef.js",
+    "code": "eslint(no-undef)",
+    "message": "'bar' is not defined."
+  },
+  {
+    "filename": "__fixtures__/js/no-undef.js",
+    "code": "eslint(no-undef)",
+    "message": "'foo' is not defined."
+  },
+  {
+    "filename": "__fixtures__/js/no-unused-vars.js",
+    "code": "eslint(no-undef)",
+    "message": "'data' is not defined."
+  }
+]

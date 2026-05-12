@@ -9,10 +9,5 @@ export default defineConfig({
     ],
     test: {
         testTimeout: 10000,
-        server: {
-            deps: {
-                inline: ["@goodbyenjn/utils"],
-            },
-        },
     },
 });
