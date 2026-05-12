@@ -1,10 +1,10 @@
 # @goodbyenjn/configs
 
-个人使用的一套配置，包含 ESLint、Prettier、TypeScript 等配置。
+A personal configuration set that includes Oxlint, Oxfmt, TypeScript, and other configurations.
 
-## 使用方法
+## Usage
 
-### 安装
+### Installation
 
 ```bash
 npm install --save-dev @goodbyenjn/configs
@@ -14,86 +14,92 @@ pnpm add -D @goodbyenjn/configs
 yarn add -D @goodbyenjn/configs
 ```
 
-### ESLint
+### Oxlint
 
-本配置基于 [eslint-config-alloy](https://github.com/alloyteam/eslint-config-alloy) 和 [@antfu/eslint-config](https://github.com/antfu/eslint-config)，并增加了 [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)、[eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) 等插件。
+This configuration provides a set of linting rules for [Oxlint](https://oxc.rs/), supporting JavaScript, TypeScript, React, and import configurations.
 
 ```bash
-npm install --save-dev eslint
+npm install --save-dev oxlint
 # or
-pnpm add -D eslint
+pnpm add -D oxlint
 # or
-yarn add -D eslint
+yarn add -D oxlint
 ```
 
-在你的项目根目录下创建一个 `eslint.config.mjs` 文件，并将以下内容复制进去：
+Create an `oxlint.config.ts` file in your project root and copy the following content into it:
 
-```js
-import { withConfig } from "@goodbyenjn/configs/eslint";
+```ts
+import { withConfig } from "@goodbyenjn/configs/oxlint";
 
 export default withConfig();
 ```
 
-本配置会根据 `package.json` 文件中是否存在 `react` 和 `typescript` 依赖项来自动启用对应的规则。
+This configuration automatically enables corresponding rules based on whether `react` and `typescript` dependencies exist in your `package.json` file.
 
-你也可以手动覆盖相关配置，例如：
+You can also manually override the configuration, for example:
 
-```js
-import { withConfig } from "@goodbyenjn/configs/eslint";
-
-export default [
-    ...withConfig({
-        // 禁用 TypeScript 相关规则
-        typescript: false,
-
-        // 启用 React 相关规则
-        react: {
-            // 手动指定 React 版本
-            version: "18",
-
-            // 覆盖 React 相关规则
-            overrides: {
-                "react/react-in-jsx-scope": "off",
-            },
-        },
-    }),
-];
-```
-
-本配置带类型定义，在进行配置时会有智能提示。
-
-### Prettier
-
-```bash
-npm install --save-dev prettier
-# or
-pnpm add -D prettier
-# or
-yarn add -D prettier
-```
-
-在你的项目根目录下创建一个 `prettier.config.mjs` 文件，并将以下内容复制进去：
-
-```js
-import { withConfig } from "@goodbyenjn/configs/prettier";
-
-export default withConfig();
-```
-
-本配置会自动忽略 `.gitignore` 中列出的文件，并且会忽略一些常见的文件，例如 `dist`、`.next`、`.nuxt`、`.output`、`.vercel`、`package-lock.json`、`yarn.lock`、`pnpm-lock.yaml` 等。详细列表请查看 [globs.ts](src/globs.ts) 文件。
-
-如果你需要忽略其他文件，可以在 `prettier.config.mjs` 中添加 `ignores` 选项，例如：
-
-```js
-import { withConfig } from "@goodbyenjn/configs/prettier";
+```ts
+import { withConfig } from "@goodbyenjn/configs/oxlint";
 
 export default withConfig({
-    // 忽略所有的 JSON 文件
-    ignores: ["*.json"],
+    // Disable TypeScript-related rules
+    typescript: false,
+
+    // Enable React-related rules
+    react: true,
 });
 ```
 
-其中 `ignores` 选项的格式与 Prettier 配置中的 `overrides[].files` 选项相同。详情请参考 [Prettier 文档](https://prettier.io/docs/configuration#configuration-overrides)。
+This configuration includes type definitions, providing intelligent prompts during configuration.
+
+### Oxfmt
+
+This configuration provides a set of formatting configurations for [Oxfmt](https://oxc.rs/), supporting JavaScript, TypeScript, JSX, JSON, JSONC, YAML, and other file formats.
+
+```bash
+npm install --save-dev oxfmt
+# or
+pnpm add -D oxfmt
+# or
+yarn add -D oxfmt
+```
+
+Create an `oxfmt.config.ts` file in your project root and copy the following content into it:
+
+```ts
+import { withConfig } from "@goodbyenjn/configs/oxfmt";
+
+export default withConfig();
+```
+
+This configuration includes the following preset configurations:
+
+- **defaults**: Default formatting options
+- **imports**: Formatting rules for import statements
+- **jsdoc**: Formatting rules for JSDoc comments
+- **jsonc**: Formatting rules for JSONC files
+- **pkg**: Formatting rules for package.json files
+- **tailwind**: Sorting rules for Tailwind CSS class names
+- **yaml**: Formatting rules for YAML files
+
+You can also manually override the configuration, for example:
+
+```ts
+import { withConfig } from "@goodbyenjn/configs/oxfmt";
+
+export default withConfig(
+    {
+        // Disable tailwind configuration
+        tailwind: false,
+    },
+    {
+        // Directly override oxfmt configuration
+        lineWidth: 100,
+    },
+);
+```
+
+This configuration includes type definitions, providing intelligent prompts during configuration.
 
 ### TypeScript
 
@@ -105,7 +111,7 @@ pnpm add -D typescript
 yarn add -D typescript
 ```
 
-在你的项目根目录下创建一个 `tsconfig.json` 文件，并将以下内容复制进去：
+Create a `tsconfig.json` file in your project root and copy the following content into it:
 
 ```json
 {
@@ -113,8 +119,26 @@ yarn add -D typescript
 }
 ```
 
-其中 `<name>` 可以是以下值：
+Where `<name>` can be one of the following values:
 
-- `base`: 基础配置，包含大多数常用的配置项。
-- `react`: 在 `base` 的基础上增加了 React 相关配置，包含 `jsx` 配置项和 `dom` 相关的库。
-- `decorator`: 在 `base` 的基础上增加了装饰器相关配置，包含 `emitDecoratorMetadata` 和 `experimentalDecorators` 配置项。
+- `base`: Base configuration with most common configuration options.
+- `react`: Extends `base` with React-related configurations, including `jsx` configuration and DOM-related libraries.
+- `decorator`: Extends `base` with decorator-related configurations, including `emitDecoratorMetadata` and `experimentalDecorators` options.
+
+## Versioning
+
+**Note:** This project does **not** follow Semantic Versioning (semver). Instead, it uses a calendar-based versioning scheme:
+
+**Version Format:** `v<YY>.<M>.<PATCH>`
+
+- `<YY>` - Release year (e.g., 26 for 2026)
+- `<M>` - Release month (1-12)
+- `<PATCH>` - Patch/revision number within the same month (starting from 0)
+
+**Example versions:**
+
+- `v26.1.0` - First release in January 2026
+- `v26.1.1` - Second release in January 2026
+- `v26.2.0` - First release in February 2026
+
+This scheme provides clarity on when features were released while allowing multiple updates within the same month.
