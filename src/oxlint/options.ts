@@ -4,7 +4,7 @@ import type { Configs, Option, Options, Rules } from "./types";
 
 const defaultEnables: Required<Options> = {
     javascript: true,
-    typescript: isPackageExists("typescript"),
+    typescript: isPackageExists("typescript") || isPackageExists("@typescript/native-preview"),
     react: isPackageExists("react") || isPackageExists("preact"),
     import: true,
 };
