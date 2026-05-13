@@ -20,15 +20,15 @@ const baseRules: DummyRuleMap = {
     // override recommended rules in Oxlint
 
     // stylistic rules in TypeScript
-    "typescript/adjacent-overload-signatures": "error",
+    // "typescript/adjacent-overload-signatures": "error",
     "typescript/array-type": "error",
-    "typescript/consistent-generic-constructors": "warn",
-    "typescript/consistent-indexed-object-style": "warn",
-    "typescript/consistent-type-assertions": "warn",
-    "typescript/consistent-type-definitions": "warn",
+    // "typescript/consistent-generic-constructors": "warn",
+    // "typescript/consistent-indexed-object-style": "warn",
+    // "typescript/consistent-type-assertions": "warn",
+    // "typescript/consistent-type-definitions": "warn",
     "typescript/no-confusing-non-null-assertion": "error",
-    "typescript/prefer-for-of": "warn",
-    "typescript/prefer-function-type": "warn",
+    // "typescript/prefer-for-of": "warn",
+    // "typescript/prefer-function-type": "warn",
 
     // strict rules in TypeScript
 
@@ -41,7 +41,19 @@ const typedRules: DummyRuleMap = {
     "no-throw-literal": "off", // override ESLint rule
     "prefer-promise-reject-errors": "off", // override ESLint rule
     "require-await": "off", // override ESLint rule
-    "typescript/no-misused-promises": "error",
+    "typescript/no-misused-promises": [
+        "error",
+        {
+            checksVoidReturn: {
+                arguments: false,
+                attributes: false,
+                inheritedMethods: false,
+                properties: false,
+                returns: false,
+                variables: false,
+            },
+        },
+    ],
     "typescript/no-unnecessary-type-assertion": "error",
     "typescript/no-unsafe-argument": "off",
     "typescript/no-unsafe-assignment": "off",
@@ -55,25 +67,29 @@ const typedRules: DummyRuleMap = {
     "typescript/restrict-plus-operands": "error",
 
     // override recommended rules in Oxlint
+    "typescript/no-floating-promises": [
+        "error",
+        { checkThenables: true, ignoreIIFE: true, ignoreVoid: true },
+    ],
+    "typescript/unbound-method": ["warn", { ignoreStatic: true }],
 
     // stylistic rules in TypeScript
-    "typescript/dot-notation": "warn",
+    // "typescript/dot-notation": "warn",
     "typescript/non-nullable-type-assertion-style": "warn",
-    "typescript/prefer-find": "warn",
-    "typescript/prefer-includes": "warn",
-    "typescript/prefer-nullish-coalescing": "warn",
+    // "typescript/prefer-find": "warn",
+    // "typescript/prefer-includes": "warn",
+    // "typescript/prefer-nullish-coalescing": "warn",
     "typescript/prefer-optional-chain": "warn",
-    "typescript/prefer-regexp-exec": "warn",
-    "typescript/prefer-string-starts-ends-with": "warn",
+    // "typescript/prefer-readonly": "warn",
+    // "typescript/prefer-regexp-exec": "warn",
+    // "typescript/prefer-string-starts-ends-with": ["warn", { allowSingleElementEquality: "always" }],
+    "typescript/prefer-string-starts-ends-with": "off",
 
     // strict rules in TypeScript
     "typescript/return-await": "error",
     "typescript/use-unknown-in-catch-callback-variable": "error",
 
     // extra rules by user preference
-    "prefer-destructuring": "off",
-    // "typescript/prefer-destructuring": "warn",
-    "typescript/prefer-readonly": "warn",
     "typescript/promise-function-async": "error",
 };
 
