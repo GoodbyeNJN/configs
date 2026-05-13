@@ -24,5 +24,10 @@ export default defineConfig({
         moduleSideEffects: false,
     },
 
-    plugins: [dts()],
+    plugins: [
+        dts({
+            tsgo: true,
+            tsconfig: "tsconfig.build.json",
+        }),
+    ],
 });
