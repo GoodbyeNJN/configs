@@ -27,7 +27,7 @@ export const jsdoc = (options: Options): OxfmtConfig => {
             keepUnparsableExampleIndent: false,
             // 如果所有行都满足打印宽度限制，则保留换行符
             lineWrappingStyle: "balance",
-            // 对于没有语言标记的代码块，使用 ```` 替代 4 空格缩进
+            // 对于没有语言标记的代码块，使用 ``` 替代 4 空格缩进
             preferCodeFences: true,
             // 不在最后一个 @param 和 @returns 标签之间添加空行
             separateReturnsFromParam: false,
