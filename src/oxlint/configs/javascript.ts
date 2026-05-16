@@ -54,6 +54,7 @@ export const javascript = (options: Options): OxlintConfig => {
             "no-useless-computed-key": "error",
             "object-shorthand": "warn",
             "operator-assignment": "warn",
+            "prefer-arrow-callback": "warn",
             // "prefer-const": "warn",
             // "prefer-destructuring": "warn",
             // "prefer-object-spread": "warn",
