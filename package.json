@@ -63,10 +63,22 @@
         "vitest": "^4.1.6"
     },
     "peerDependencies": {
-        "oxfmt": "^0.40.0",
-        "oxlint": "^1.60.0"
+        "oxfmt": "^0.45.0",
+        "oxlint": "^1.60.0",
+        "oxlint-tsgolint": "^0.21.0"
+    },
+    "peerDependenciesMeta": {
+        "oxfmt": {
+            "optional": true
+        },
+        "oxlint": {
+            "optional": true
+        },
+        "oxlint-tsgolint": {
+            "optional": true
+        }
     },
     "engines": {
-        "node": ">=16"
+        "node": "^20.19.0 || >=22.12.0"
     }
 }
