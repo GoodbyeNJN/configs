@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { $ } from "@goodbyenjn/utils/exec";
+import { $ } from "@goodbyenjn/utils/process";
 import { test } from "vitest";
 
 const cases = [
@@ -39,12 +39,11 @@ const cases = [
 const cwd = path.resolve(import.meta.dirname);
 
 const oxfmt = (config: string, file: string) =>
-    $("cat", [path.join("__fixtures__", file)], {
-        spawnOptions: { cwd },
-    }).pipe("oxfmt", ["--config", config, "--stdin-filepath", file], {
-        spawnOptions: { cwd },
-    });
-
+    $("cat", [path.join("__fixtures__", file)], { cwd }).pipe(
+        "oxfmt",
+        ["--config", config, "--stdin-filepath", file],
+        { cwd },
+    );
 test.for(cases)("$name", async ({ input, snapshot, config }, { expect }) => {
     const { stdout } = await oxfmt(config, input);
 

@@ -1,6 +1,6 @@
 import path from "node:path";
 
-import { $ } from "@goodbyenjn/utils/exec";
+import { $ } from "@goodbyenjn/utils/process";
 import { test } from "vitest";
 
 const cases = [
@@ -48,7 +48,7 @@ const oxlint = (config: string, files: string[]) =>
             "json",
             ...files.map(file => path.join("__fixtures__", file)),
         ],
-        { spawnOptions: { cwd } },
+        { cwd },
     );
 
 const format = (output: string) => {
