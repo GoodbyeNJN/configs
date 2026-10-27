@@ -21,12 +21,12 @@ export const imports = (options: Options): OxfmtConfig => {
             ...config,
 
             groups: config.groups ?? [
+                "side_effect",
                 "builtin",
                 "external",
                 ["internal", "subpath"],
                 ["parent", "sibling", "index"],
                 ["style", "side_effect_style"],
-                "side_effect",
                 "type",
                 "unknown",
             ],
