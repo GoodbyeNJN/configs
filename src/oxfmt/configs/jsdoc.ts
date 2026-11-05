@@ -1,13 +1,13 @@
-import { getEnablesByKey, getConfigsByKey } from "../options";
+import { getEnableOrConfig } from "@/shared/options";
+
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { OxfmtConfig } from "oxfmt";
 
 export const jsdoc = (options: Options): OxfmtConfig => {
-    const enable = getEnablesByKey(options, "jsdoc");
+    const { enable, config } = getEnableOrConfig("jsdoc", options, defaultOptions);
     if (!enable) return { jsdoc: false };
-
-    const config = getConfigsByKey(options, "jsdoc");
 
     return {
         jsdoc: {

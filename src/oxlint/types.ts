@@ -16,11 +16,12 @@ export interface Rules {
     import: DummyRuleMap;
 }
 
-export type Option<T extends keyof Options> = Configs[T] & {
+export type Option<T extends Exclude<keyof Options, "cwd">> = Configs[T] & {
     rules?: Rules[T];
 };
 
 export interface Options {
+    cwd?: string;
     javascript?: boolean | Option<"javascript">;
     typescript?: boolean | Option<"typescript">;
     react?: boolean | Option<"react">;

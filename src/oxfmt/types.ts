@@ -16,6 +16,7 @@ export interface Configs {
 }
 
 export interface Options {
+    cwd?: string;
     import?: boolean | Configs["import"];
     jsdoc?: boolean | Configs["jsdoc"];
     package?: boolean | Configs["package"];

@@ -1,6 +1,7 @@
 import { GLOBS_JSX, GLOBS_TSX } from "@/shared/globs";
+import { getEnableOrConfigOrGetter } from "@/shared/options";
 
-import { getConfigsByKey, getEnablesByKey, getRulesByKey } from "../options";
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
@@ -34,12 +35,15 @@ const commonRules: DummyRuleMap = {
 };
 
 export const react = (options: Options): OxlintConfig => {
-    const enable = getEnablesByKey(options, "react");
+    const { enable, config } = getEnableOrConfigOrGetter("react", options, defaultOptions);
     if (!enable) return {};
 
-    const enableTypescript = getEnablesByKey(options, "typescript");
-    const { useTypescript, version = "detect" } = getConfigsByKey(options, "react");
-    const overrideRules = getRulesByKey(options, "react");
+    const { enable: enableTypescript } = getEnableOrConfigOrGetter(
+        "typescript",
+        options,
+        defaultOptions,
+    );
+    const { useTypescript, version = "detect", rules: overrideRules = {} } = config;
 
     const overrides: OxlintConfig["overrides"] = [
         {

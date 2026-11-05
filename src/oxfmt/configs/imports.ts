@@ -1,13 +1,13 @@
-import { getConfigsByKey, getEnablesByKey } from "../options";
+import { getEnableOrConfig } from "@/shared/options";
+
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { OxfmtConfig } from "oxfmt";
 
 export const imports = (options: Options): OxfmtConfig => {
-    const enable = getEnablesByKey(options, "import");
+    const { enable, config } = getEnableOrConfig("import", options, defaultOptions);
     if (!enable) return { sortImports: false };
-
-    const config = getConfigsByKey(options, "import");
 
     return {
         sortImports: {

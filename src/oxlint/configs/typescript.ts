@@ -1,6 +1,7 @@
 import { GLOBS_TS, GLOBS_TSX } from "@/shared/globs";
+import { getEnableOrConfigOrGetter } from "@/shared/options";
 
-import { getConfigsByKey, getEnablesByKey, getRulesByKey } from "../options";
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { DummyRuleMap, OxlintConfig } from "oxlint";
@@ -94,11 +95,10 @@ const typedRules: DummyRuleMap = {
 };
 
 export const typescript = (options: Options): OxlintConfig => {
-    const enable = getEnablesByKey(options, "typescript");
+    const { enable, config } = getEnableOrConfigOrGetter("typescript", options, defaultOptions);
     if (!enable) return {};
 
-    const { useTypeLinting = true } = getConfigsByKey(options, "typescript");
-    const overrideRules = getRulesByKey(options, "typescript");
+    const { useTypeLinting = true, rules: overrideRules = {} } = config;
 
     return {
         options: {

@@ -1,13 +1,15 @@
-import { getEnablesByKey, getRulesByKey } from "../options";
+import { getEnableOrConfig } from "@/shared/options";
+
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { OxlintConfig } from "oxlint";
 
 export const imports = (options: Options): OxlintConfig => {
-    const enable = getEnablesByKey(options, "import");
+    const { enable, config } = getEnableOrConfig("import", options, defaultOptions);
     if (!enable) return {};
 
-    const rules = getRulesByKey(options, "import");
+    const { rules = {} } = config;
 
     return {
         plugins: ["import"],

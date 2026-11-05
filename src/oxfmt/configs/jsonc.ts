@@ -1,15 +1,14 @@
 import { GLOBS_JSONC } from "@/shared/globs";
+import { getEnableOrConfig } from "@/shared/options";
 
-import { getConfigsByKey, getEnablesByKey } from "../options";
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { OxfmtConfig } from "oxfmt";
 
 export const jsonc = (options: Options): OxfmtConfig => {
-    const enable = getEnablesByKey(options, "jsonc");
+    const { enable, config } = getEnableOrConfig("jsonc", options, defaultOptions);
     if (!enable) return {};
-
-    const config = getConfigsByKey(options, "jsonc");
 
     return {
         overrides: [

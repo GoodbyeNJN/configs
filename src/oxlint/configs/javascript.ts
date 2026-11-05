@@ -1,13 +1,14 @@
-import { getEnablesByKey, getRulesByKey } from "../options";
+import { getEnableOrConfig } from "@/shared/options";
+
+import { defaultOptions } from "../options";
 
 import type { Options } from "../types";
 import type { OxlintConfig } from "oxlint";
-
 export const javascript = (options: Options): OxlintConfig => {
-    const enable = getEnablesByKey(options, "javascript");
+    const { enable, config } = getEnableOrConfig("javascript", options, defaultOptions);
     if (!enable) return {};
 
-    const rules = getRulesByKey(options, "javascript");
+    const { rules = {} } = config;
 
     return {
         plugins: ["eslint"],
