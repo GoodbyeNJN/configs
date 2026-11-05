@@ -46,8 +46,7 @@
         "lint:fix": "oxlint --fix",
         "format": "oxfmt --check",
         "format:write": "oxfmt",
-        "test": "vitest",
-        "test:ci": "vitest run"
+        "test": "vitest"
     },
     "devDependencies": {
         "@goodbyenjn/utils": "^26.10.7",

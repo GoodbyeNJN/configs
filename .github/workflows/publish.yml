@@ -25,16 +25,19 @@ jobs:
           cache: true
           require-lockfile: true
 
+      - name: Build
+        run: pnpm run build
+
+      - name: Check
+        run: pnpm run check
+
+      - name: Test
+        run: pnpm run test
+
       - name: Changelog
         run: pnpx changelogithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Test
-        run: pnpm run test:ci
 
       - name: Publish
         run: pnpm publish
