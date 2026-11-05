@@ -1,8 +1,6 @@
 import { defineConfig } from "rolldown";
 import { dts } from "rolldown-plugin-dts";
 
-const dist = "dist";
-
 export default defineConfig({
     input: {
         "oxlint/index": "src/oxlint/index.ts",
@@ -10,22 +8,14 @@ export default defineConfig({
     },
 
     output: {
-        dir: dist,
+        dir: "dist",
         cleanDir: true,
         format: "esm",
         hashCharacters: "hex",
-        chunkFileNames: ({ name }) =>
-            `shared/[name]${name.startsWith("rolldown-runtime") ? "" : `-[hash]`}.js`,
+        chunkFileNames: "chunks/chunk-[hash].js",
     },
 
     platform: "node",
-    resolve: {
-        mainFields: ["module", "main"],
-    },
-
-    treeshake: {
-        moduleSideEffects: false,
-    },
 
     plugins: [
         dts({
