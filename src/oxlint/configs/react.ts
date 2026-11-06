@@ -1,5 +1,6 @@
 import { GLOBS_JSX, GLOBS_TSX } from "@/shared/globs";
 import { getEnableOrConfigOrGetter } from "@/shared/options";
+import { getPackageVersion } from "@/shared/pkg";
 
 import { defaultOptions } from "../options";
 
@@ -43,7 +44,13 @@ export const react = (options: Options): OxlintConfig => {
         options,
         defaultOptions,
     );
-    const { useTypescript, version = "detect", rules: overrideRules = {} } = config;
+    const { useTypescript, rules: overrideRules = {} } = config;
+
+    /** See [defaultOptions.react]({@link ../options.ts}) */
+    const version =
+        config.version
+        ?? getPackageVersion("react", options.cwd ?? process.cwd())
+        ?? getPackageVersion("preact", options.cwd ?? process.cwd());
 
     const overrides: OxlintConfig["overrides"] = [
         {
