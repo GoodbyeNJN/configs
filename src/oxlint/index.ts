@@ -1,3 +1,4 @@
+import { defaults } from "./configs/defaults";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
 import { react } from "./configs/react";
@@ -9,6 +10,7 @@ import type { OxlintConfig } from "oxlint";
 export type { Options, OxlintConfig };
 
 export const withConfig = (options: Options = {}, config: OxlintConfig = {}): OxlintConfig => {
+    const defaultsConfig = defaults(options);
     const javascriptConfig = javascript(options);
     const typescriptConfig = typescript(options);
     const reactConfig = react(options);
@@ -18,9 +20,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
         ...config,
 
         env: {
-            browser: true,
-            node: true,
-            builtin: true, // latest ECMAScript globals
+            ...defaultsConfig.env,
             ...config.env,
         },
         plugins: [
@@ -28,6 +28,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
             ...(typescriptConfig.plugins ?? []),
             ...(reactConfig.plugins ?? []),
             ...(importsConfig.plugins ?? []),
+            ...(defaultsConfig.plugins ?? []),
             ...(config.plugins ?? []),
         ],
         options: {
@@ -35,6 +36,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
             ...(typescriptConfig.options ?? {}),
             ...(reactConfig.options ?? {}),
             ...(importsConfig.options ?? {}),
+            ...(defaultsConfig.options ?? {}),
             ...(config.options ?? {}),
         },
         settings: {
@@ -42,6 +44,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
             ...(typescriptConfig.settings ?? {}),
             ...(reactConfig.settings ?? {}),
             ...(importsConfig.settings ?? {}),
+            ...(defaultsConfig.settings ?? {}),
             ...(config.settings ?? {}),
         },
         rules: {
@@ -49,6 +52,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
             ...(typescriptConfig.rules ?? {}),
             ...(reactConfig.rules ?? {}),
             ...(importsConfig.rules ?? {}),
+            ...(defaultsConfig.rules ?? {}),
             ...(config.rules ?? {}),
         },
         overrides: [
@@ -56,6 +60,7 @@ export const withConfig = (options: Options = {}, config: OxlintConfig = {}): Ox
             ...(typescriptConfig.overrides ?? []),
             ...(reactConfig.overrides ?? []),
             ...(importsConfig.overrides ?? []),
+            ...(defaultsConfig.overrides ?? []),
             ...(config.overrides ?? []),
         ],
     };
